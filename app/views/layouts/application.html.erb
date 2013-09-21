@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DotaSeller</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div class="container">
+			<!--#This is the main container for the body#It provides padding too -->
+
+			<div class="row">
+				<!--#This is the row for logo -->
+				<div class="col-md-12">
+					<!--It takes 12  column (fullwidth)-->
+					<div id="demo1">
+						<h1>This is My Logo</h1>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<!--#This is the row for upper navigation -->
+				<nav class="col-md-12">
+					<!--It takes 12  column (fullwidth)-->
+					<ul class="nav nav-pills navbar-inverse">
+						<li class="active">
+							<a href="#"> <span class="glyphicon glyphicon-envelope"></span> Home </a>
+						</li>
+						<li>
+							<a href="#">Profile</a>
+						</li>
+						<li>
+							<a href="#">Messages</a>
+						</li>
+						<li class="pull-right">
+							<% if user_signed_in? %>
+								<div class="lower"><%= link_to('Logout', destroy_user_session_path,:method=>:delete) %></div>
+								<div class="text-success lower" >Welcome <%= current_user.email%>!!&nbsp;&nbsp;</div>
+							<%else%>
+								<div class="text-primary lower"><%= link_to('Log in',user_session_path)%></div>
+							<%end%>
+						</li>
+					</ul>
+
+				</nav>
+			</div>
+			<div class="container">
+				<div class="row">
+					<nav class="col-md-3">
+						<!-- This is right navigation gride 3cols-->
+						<ul class="nav nav-stacked nav-pills">
+							<li>Nav 1</li>
+							<li>Nav 2</li>
+							<li>Nav 3</li>
+							<li>Nav 4</li>
+							<li>Nav 5</li>
+						</ul>
+					</nav>
+
+					<article class="col-md-6">
+						<!--This is middle content grid 6cols-->
+						<div class="container">
+							<%= yield %>
+						</div>
+					</article>
+					<nav class="col-md-3">
+						<%= render :partial=>"heros/two_buttons" unless user_signed_in?%>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
