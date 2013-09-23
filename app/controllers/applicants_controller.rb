@@ -1,9 +1,10 @@
 class ApplicantsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /applicants
   # GET /applicants.json
   def index
-    @applicants = Applicant.all
-
+   
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @applicants }
@@ -13,8 +14,7 @@ class ApplicantsController < ApplicationController
   # GET /applicants/1
   # GET /applicants/1.json
   def show
-    @applicant = Applicant.find(params[:id])
-
+   
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @applicant }
@@ -24,7 +24,7 @@ class ApplicantsController < ApplicationController
   # GET /applicants/new
   # GET /applicants/new.json
   def new
-    @applicant = Applicant.new
+    
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,14 +34,13 @@ class ApplicantsController < ApplicationController
 
   # GET /applicants/1/edit
   def edit
-    @applicant = Applicant.find(params[:id])
+    
   end
 
   # POST /applicants
   # POST /applicants.json
   def create
-    @applicant = Applicant.new(params[:applicant])
-
+    
     respond_to do |format|
       if @applicant.save
         format.html { redirect_to @applicant, notice: 'Applicant was successfully created.' }
@@ -56,7 +55,7 @@ class ApplicantsController < ApplicationController
   # PUT /applicants/1
   # PUT /applicants/1.json
   def update
-    @applicant = Applicant.find(params[:id])
+  
 
     respond_to do |format|
       if @applicant.update_attributes(params[:applicant])
@@ -72,7 +71,7 @@ class ApplicantsController < ApplicationController
   # DELETE /applicants/1
   # DELETE /applicants/1.json
   def destroy
-    @applicant = Applicant.find(params[:id])
+   
     @applicant.destroy
 
     respond_to do |format|
