@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>App name:</b>
+  <%= @applicant.app_name %>
+</p>
+
+<p>
+  <b>App nrc:</b>
+  <%= @applicant.app_nrc %>
+</p>
+
+<p>
+  <b>App url:</b>
+  <%= @applicant.app_url %>
+</p>
+
+<p>
+  <b>App contact email:</b>
+  <%= @applicant.app_contact_email %>
+</p>
+
+<p>
+  <b>App gender:</b>
+  <%= @applicant.app_gender %>
+</p>
+
+<p>
+  <b>App marital status:</b>
+  <%= @applicant.app_marital_status %>
+</p>
+
+<p>
+  <b>App dob:</b>
+  <%= @applicant.app_dob %>
+</p>
+
+<p>
+  <b>App address:</b>
+  <%= @applicant.app_address %>
+</p>
+
+<p>
+  <b>App phone number:</b>
+  <%= @applicant.app_phone_number %>
+</p>
+
+<p>
+  <b>App language:</b>
+  <%= @applicant.app_language %>
+</p>
+
+<p>
+  <b>App skills:</b>
+  <%= @applicant.app_skills %>
+</p>
+
+<p>
+  <b>App description:</b>
+  <%= @applicant.app_description %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @applicant.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_applicant_path(@applicant) %> |
+<%= link_to 'Back', applicants_path %>

@@ -1,4 +1,7 @@
 JobMatchBasic::Application.routes.draw do
+  resources :applicants
+
+
   devise_for :users
 
   root :to=>'welcome#index'

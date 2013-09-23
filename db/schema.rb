@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130923025226) do
+ActiveRecord::Schema.define(:version => 20130923040923) do
+
+  create_table "applicants", :force => true do |t|
+    t.string   "app_name"
+    t.string   "app_nrc"
+    t.string   "app_url"
+    t.string   "app_contact_email"
+    t.string   "app_gender"
+    t.boolean  "app_marital_status"
+    t.date     "app_dob"
+    t.text     "app_address"
+    t.string   "app_phone_number"
+    t.text     "app_language"
+    t.text     "app_skills"
+    t.text     "app_description"
+    t.integer  "user_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

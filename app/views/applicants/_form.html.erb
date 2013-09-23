@@ -1,0 +1,69 @@
+<%= form_for(@applicant) do |f| %>
+  <% if @applicant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@applicant.errors.count, "error") %> prohibited this applicant from being saved:</h2>
+
+      <ul>
+      <% @applicant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :app_name %><br />
+    <%= f.text_field :app_name %>
+  </div>
+  <div class="field">
+    <%= f.label :app_nrc %><br />
+    <%= f.text_field :app_nrc %>
+  </div>
+  <div class="field">
+    <%= f.label :app_url %><br />
+    <%= f.text_field :app_url %>
+  </div>
+  <div class="field">
+    <%= f.label :app_contact_email %><br />
+    <%= f.text_field :app_contact_email %>
+  </div>
+  <div class="field">
+    <%= f.label :app_gender %><br />
+    <%= f.text_field :app_gender %>
+  </div>
+  <div class="field">
+    <%= f.label :app_marital_status %><br />
+    <%= f.check_box :app_marital_status %>
+  </div>
+  <div class="field">
+    <%= f.label :app_dob %><br />
+    <%= f.date_select :app_dob %>
+  </div>
+  <div class="field">
+    <%= f.label :app_address %><br />
+    <%= f.text_area :app_address %>
+  </div>
+  <div class="field">
+    <%= f.label :app_phone_number %><br />
+    <%= f.text_field :app_phone_number %>
+  </div>
+  <div class="field">
+    <%= f.label :app_language %><br />
+    <%= f.text_area :app_language %>
+  </div>
+  <div class="field">
+    <%= f.label :app_skills %><br />
+    <%= f.text_area :app_skills %>
+  </div>
+  <div class="field">
+    <%= f.label :app_description %><br />
+    <%= f.text_area :app_description %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

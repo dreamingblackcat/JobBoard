@@ -1,0 +1,16 @@
+<h1> My Profile</h1>
+<% @applicants.each do|applicant|%>
+    Name: <%=applicant.app_name%>
+    Gender: <%=applicant.app_gender%>
+    Email: <%=applicant.user.email%>
+    Contact Email <%= applicant.app_contact_email %>
+    
+        <%= link_to "Show",applicant_path(applicant)%>
+        <% if can?(:manage,applicant) %>
+            <%= link_to "Edit",edit_applicant_path(applicant)%>
+            <%= link_to "Destroy",applicant_path(applicant),:method=>:delete %>
+        <% end %>
+    <br/>
+    <hr>
+<%end%>    
+<%= link_to "New",new_applicant_path %>
