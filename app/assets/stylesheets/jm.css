@@ -1,0 +1,225 @@
+.border-double-pay
+{
+	border:2px double red;
+}
+.banner
+{
+	font-size: 4em;
+	font-weight: bold;
+	font-family: ZawgyiOne;
+	color: #B99254;
+	text-shadow: 3px 3px #B99230;
+}
+
+.dropdown-menu
+{
+	background-color: #3A3B44;
+	width: 400%;
+}
+.bg-gradient-pay
+{
+	background: rgb(124,122,112); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(124,122,112,1) 0%, rgba(50,52,63,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(124,122,112,1)), color-stop(100%,rgba(50,52,63,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(124,122,112,1) 0%,rgba(50,52,63,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(124,122,112,1) 0%,rgba(50,52,63,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(124,122,112,1) 0%,rgba(50,52,63,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(124,122,112,1) 0%,rgba(50,52,63,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7c7a70', endColorstr='#32343f',GradientType=0 ); /* IE6-9 */
+	
+}
+ul
+{
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+a:link, a:visited {
+color: #FFFFFF;
+}
+a:hover, a:active {
+color: #0AD8CC;
+text-decoration: none;
+}
+table 
+{
+	width: 100%;
+}
+body
+{
+	background: #9C9694; /* Old browsers */
+	color: #DCDCDC;
+	
+}
+
+.sidenav-deco
+{
+	//background-color: #669999;
+	border: 0px solid #0AD8CC;
+	border-radius: 15px 15px 15px 15px;
+	
+}
+.sidenav-ul a {
+	text-decoration: none;
+	margin-bottom: 10px;
+}
+.sidenav-ul a:link, .sidenav a:visited {
+//color: #15A589;
+}
+.sidenav-ul a:hover, .sidenav a:active {
+color: #0AD8CC;
+text-decoration: none;
+}
+
+.sidenav-ul
+{
+	list-style: none;
+	margin-left: -40px;
+	margin-top: 20px;
+	//background-color: #999967;
+}
+.header-gradient-pay
+{
+
+	background: #e2e2e2; /* Old browsers */
+	background: -moz-linear-gradient(top,  #e2e2e2 0%, #dbdbdb 50%, #d1d1d1 51%, #fefefe 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e2e2e2), color-stop(50%,#dbdbdb), color-stop(51%,#d1d1d1), color-stop(100%,#fefefe)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #e2e2e2 0%,#dbdbdb 50%,#d1d1d1 51%,#fefefe 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #e2e2e2 0%,#dbdbdb 50%,#d1d1d1 51%,#fefefe 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #e2e2e2 0%,#dbdbdb 50%,#d1d1d1 51%,#fefefe 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #e2e2e2 0%,#dbdbdb 50%,#d1d1d1 51%,#fefefe 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */
+}
+.middlecontent
+{
+	background-color: #62615E;
+	//border: 1px solid rgb(200,0,0);
+	border-radius: 20px;
+	padding: 0px 0px 10px 10px;
+}
+
+.box-shadow-pay
+{
+	box-shadow: 4px 4px 3px #666; 
+}
+.btn
+{
+	box-shadow: 4px 4px 3px #666; 
+}
+
+
+
+.jobpost-table
+{
+	//border: 1px solid rgb(200,0,0);
+	border-radius: 15px;
+	padding-left:10px;
+	background-color: #B7BD11;
+
+	
+}
+.jobpost_category
+{
+	border-bottom: 2px solid red;
+
+}
+.jobpost_category_title
+{
+	font-size: 1.2em;
+	text-align: center;
+	color: #92A2C6!important;
+	text-shadow: 1px 1px gray;
+}
+.jobpost_title
+{
+	font-size:1.5em;
+	min-height: 80px;
+	border-bottom:3px double red;
+	
+}
+td a:link,td a:visited
+{
+	color: #003366;
+}
+td a:hover, td a:active {
+	color: white;
+	text-decoration: none;
+}
+.category_header
+{
+	margin-top:10px;
+	background-color: #563D7C;
+	width:10%;
+	box-shadow: 3px 3px #B99254;
+}
+.category_current
+{
+	color: red;
+}
+/*this section is used by home page*/
+.keynote
+{
+	border:2px solid blue;
+	border-radius:0% 50% 0% 50%;
+}
+.keynote-applicant
+{
+	background-color: #33CC66;
+}
+.keynote-employer
+{
+	background-color: #0080D0;
+}
+.pad
+{
+	margin:0px 5px 5px 0px;
+}
+.intro
+{
+	border:2px solid #ED9C28;
+	background-color: #E24838;
+	text-align: center;
+	border-radius: 10px 10px 10px 10px;
+	margin-bottom: 10px;
+}
+.intro-heading
+{
+	color: #084B5B;
+}
+/*This section is used by company show page*/
+.company-logo
+{
+	
+	padding:10px;
+}
+
+.company-name
+{
+	font-size: 2em;
+	color: red;
+}
+.company-logoname
+{
+	color: #0153A3;
+	font-size:1.1em;
+	padding:10px;
+}
+.company-description
+{
+	border:1px solid green;
+	border-radius: 10px 10px 10px 10px;
+	background-color: #39B3D7;
+}
+.company-description h4
+{
+	padding-left:10px;
+}
+.company-description section
+{
+	padding-left: 10px;
+}
+.box-shadow-pay-gray
+{
+	box-shadow: 4px 4px 3px #111111;
+}

@@ -78,10 +78,31 @@
           </div><!--/.navbar-collapse -->
       
     </div>
-	<%= yield %>
-    
-    <script src="jquery-1.9.0.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+	    <div class="row">
+      <div class="col-md-2 sidenav-deco">
+        <nav>
+          <ul class="sidenav-ul">
+            <li><a href="#" class="btn btn-primary btn-lg btn-block">Profile</a></li>
+            <li><a href="#" class="btn btn-primary btn-lg btn-block">Preferences</a></li>
+            <li><a href="#" class="btn btn-primary btn-lg btn-block">Job History</a></li>
+            <li><a href="#" class="btn btn-primary btn-lg btn-block">Education History</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-md-8">
+        <div class="middlecontent box-shadow-pay">
+          <div class="container">
+            <%= yield%>  
+          </div> 
+        </div>
+      </div>
+      <div class="col-md-2">
+        <ul class="sidenav-ul">
+          <li><a href="#" class="btn btn-warning">Prepare CV </a></li>
+          <li><a href="#" class="btn btn-info">View my applied jobs </a></li>
+          <li><a href="#" class="btn btn-success">Recommended jobs</a></li>
+        </ul>
+      </div>
+    </div>
   </body>
 </html>
