@@ -4,7 +4,12 @@ JobMatchBasic::Application.routes.draw do
   resources :users do
     resource :applicant
   end
-
+  resources :companies do
+    resources :job_posts
+  end
+  
+  resources :job_posts
+  
   root :to=>'welcome#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.

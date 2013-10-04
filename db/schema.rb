@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130923054959) do
+ActiveRecord::Schema.define(:version => 20131004064521) do
 
   create_table "applicants", :force => true do |t|
     t.string   "app_name"
@@ -29,6 +29,36 @@ ActiveRecord::Schema.define(:version => 20130923054959) do
     t.integer  "user_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+  end
+
+  create_table "companies", :force => true do |t|
+    t.string   "com_name"
+    t.string   "com_logo_name"
+    t.string   "com_email"
+    t.string   "com_address"
+    t.string   "com_web_url"
+    t.string   "com_phone_number"
+    t.string   "com_fax_number"
+    t.text     "com_description"
+    t.string   "com_logo_image_url"
+    t.integer  "user_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "job_posts", :force => true do |t|
+    t.string   "job_post_title"
+    t.string   "job_post_gender"
+    t.text     "job_post_description"
+    t.date     "job_post_start_date"
+    t.date     "job_post_end_date"
+    t.integer  "job_post_basic_salary"
+    t.text     "job_post_requirement"
+    t.integer  "company_id"
+    t.integer  "category_id"
+    t.integer  "location_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   create_table "users", :force => true do |t|
