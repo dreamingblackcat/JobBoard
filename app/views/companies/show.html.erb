@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Com name:</b>
+  <%= @company.com_name %>
+</p>
+
+<p>
+  <b>Com logo name:</b>
+  <%= @company.com_logo_name %>
+</p>
+
+<p>
+  <b>Com email:</b>
+  <%= @company.com_email %>
+</p>
+
+<p>
+  <b>Com address:</b>
+  <%= @company.com_address %>
+</p>
+
+<p>
+  <b>Com web url:</b>
+  <%= @company.com_web_url %>
+</p>
+
+<p>
+  <b>Com phone number:</b>
+  <%= @company.com_phone_number %>
+</p>
+
+<p>
+  <b>Com fax number:</b>
+  <%= @company.com_fax_number %>
+</p>
+
+<p>
+  <b>Com description:</b>
+  <%= @company.com_description %>
+</p>
+
+<p>
+  <b>Com logo image url:</b>
+  <%= @company.com_logo_image_url %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @company.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %> |
+<%= link_to 'New Job post', new_company_job_post_path(@company) %>
