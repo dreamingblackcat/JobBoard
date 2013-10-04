@@ -25,7 +25,7 @@
 					<!--It takes 12  column (fullwidth)-->
 					<ul class="nav nav-pills navbar-inverse">
 						<li class="active">
-							<a href="#"> <span class="glyphicon glyphicon-envelope"></span> Home </a>
+							<%= link_to "Home", root_url %>
 						</li>
 						<li>
 							<a href="#">Profile</a>
@@ -40,7 +40,7 @@
 								<%= link_to "log in now",new_user_session_path,:class=>'btn btn-primary pull-right'%>
 								<%else %>
 								
-									<div style="float: left">Welcome <%= current_user.email %> !! </div>
+									<div style="float: left; color: red!important;">Welcome <%= current_user.email %> !! </div>
 									<%= link_to "log out now",destroy_session_path(current_user),:class=>'btn btn-primary pull-right',:method=>:delete%>
 								<%end%>
 								
@@ -70,6 +70,7 @@
 					</article>
 					<nav class="col-md-3">
 						<h1>left navigation</h1>
+						hello hello hello
 					</nav>
 				</div>
 			</div>

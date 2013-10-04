@@ -11,7 +11,9 @@
 
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
-
+  <div><%=f.label :role %><br />
+  <%= f.radio_button :role,"applicant",:checked=>'checked'%>Applicant
+  <%= f.radio_button :role,"company"%>Company
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 

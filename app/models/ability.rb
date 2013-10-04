@@ -5,11 +5,10 @@ class Ability
 		user||=User.new
 			if user.email== "dbc@gmail.com"
 				can :manage, :all
-			else	
-				can :read,:all
 			end
-		else can :read,:all	
+		if user.role=="applicant" then
+			can :manage,:all
+			
+		end
 	end
-	
-	
 end

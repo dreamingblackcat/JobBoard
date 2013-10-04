@@ -1,8 +1,9 @@
 JobMatchBasic::Application.routes.draw do
-  resources :applicants
-
 
   devise_for :users
+  resources :users do
+    resource :applicant
+  end
 
   root :to=>'welcome#index'
   # The priority is based upon order of creation:

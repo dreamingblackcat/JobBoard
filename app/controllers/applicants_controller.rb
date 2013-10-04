@@ -1,7 +1,6 @@
 class ApplicantsController < ApplicationController
-  load_and_authorize_resource
-
-  # GET /applicants
+  load_and_authorize_resource :user
+  load_and_authorize_resource :applicant,:through=>:user,:singleton=>true
   # GET /applicants.json
   def index
    
@@ -43,7 +42,7 @@ class ApplicantsController < ApplicationController
     
     respond_to do |format|
       if @applicant.save
-        format.html { redirect_to @applicant, notice: 'Applicant was successfully created.' }
+        format.html { redirect_to user_applicant_path(current_user), notice: 'Applicant was successfully created.' }
         format.json { render json: @applicant, status: :created, location: @applicant }
       else
         format.html { render action: "new" }
@@ -59,7 +58,7 @@ class ApplicantsController < ApplicationController
 
     respond_to do |format|
       if @applicant.update_attributes(params[:applicant])
-        format.html { redirect_to @applicant, notice: 'Applicant was successfully updated.' }
+        format.html { redirect_to user_applicant_path(@applicant.user), notice: 'Applicant was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

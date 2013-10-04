@@ -1,6 +1,10 @@
 <h1>Welcome from Job Match Basics</h1>
-
-<%= link_to "View Applicants",applicants_path%>
-
-
-
+<% if user_signed_in? then%>
+	<%if current_user.role=="applicant" %>
+		<%if current_user.applicant.nil?%>
+			<%= link_to "create your profile",new_user_applicant_path(current_user)%>
+		<%else%>
+			<%= link_to "view your profile",user_applicant_path(current_user)%>
+		<%end%>
+	<%end%>
+<%end%>
