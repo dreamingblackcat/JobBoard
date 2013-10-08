@@ -26,11 +26,11 @@
     <td><%= job_post.job_post_end_date %></td>
     <td><%= job_post.job_post_basic_salary %></td>
     <td><%= job_post.job_post_requirement %></td>
-    <td><%= job_post.company_id %></td>
+    <td><%= link_to "#{job_post.company.com_name}", [job_post.company.user,job_post.company] %></td>
     <td><%= job_post.category_id %></td>
     <td><%= job_post.location_id %></td>
-    <td><%= link_to 'Show', [job_post.company,job_post] %></td>
-    <td><%= link_to 'Edit', edit_company_job_post_path({:company_id=>job_post.company.id,:id=>job_post.id}) %></td>
+    <td><%= link_to 'Show', [job_post.company.user,job_post.company,job_post] %></td>
+    <td><%= link_to 'Edit', edit_user_company_job_post_path({:user_id=>job_post.company.user,:company_id=>job_post.company.id,:id=>job_post.id}) %></td>
     <td><%= link_to 'Destroy', job_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

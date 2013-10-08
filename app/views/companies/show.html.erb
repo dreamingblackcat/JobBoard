@@ -1,56 +1,112 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Com name:</b>
-  <%= @company.com_name %>
-</p>
-
-<p>
-  <b>Com logo name:</b>
-  <%= @company.com_logo_name %>
-</p>
-
-<p>
-  <b>Com email:</b>
-  <%= @company.com_email %>
-</p>
-
-<p>
-  <b>Com address:</b>
-  <%= @company.com_address %>
-</p>
-
-<p>
-  <b>Com web url:</b>
-  <%= @company.com_web_url %>
-</p>
-
-<p>
-  <b>Com phone number:</b>
-  <%= @company.com_phone_number %>
-</p>
-
-<p>
-  <b>Com fax number:</b>
-  <%= @company.com_fax_number %>
-</p>
-
-<p>
-  <b>Com description:</b>
-  <%= @company.com_description %>
-</p>
-
-<p>
-  <b>Com logo image url:</b>
-  <%= @company.com_logo_image_url %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @company.user_id %>
-</p>
 
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %> |
-<%= link_to 'New Job post', new_company_job_post_path(@company) %>
+
+ <div class="container">
+            <header class="row">
+              <div class="col-md-8">
+              	<p id="notice" class="form-error"><%= notice %></p>
+                <h1 class="company-name"><%= @company.com_name %></h1>
+                <div class="company-logoname">
+                  <%= @company.com_logo_name %>
+                </div>
+              </div>
+              <div class="col-md-3 col-md-offset-1 company-logo">
+                <%= image_tag @company.com_logo_image_url,:class=>"img-rounded pull-right box-shadow-pay-gray",:width=>"100px",:height=>"100px"%>
+              </div>
+            </header>
+            <article class="company-meta-data">
+              <section class="row">
+                <div class="col-md-8 company-description">
+                  <h4>About</h4>
+                  <section>
+                    <%= @company.com_description %>
+                  </section>
+                </div>
+              </section>
+              <br/>
+              <section class="company-contact-info">
+                <div class="company-email">Email : <%= @company.com_email %></div>
+                <div class="company-weburl">Website : <%= link_to @company.com_web_url, @company.com_web_url %></div>
+                <div class="company-phone-number">Phone: <%= @company.com_phone_number %></div>
+                <div class="company-faxnumber">Fax: <%= @company.com_fax_number %></div>
+                <div class="company-address">
+                  <h4>Address</h4>
+                  <%= @company.com_address %>
+                </div>
+              </section>
+              <%= link_to 'Edit', edit_user_company_path(@company.user,@company) %>
+            </article>
+            <hr/>
+            <hr />
+            <article class="company-own-jobpost">
+              <h3>Job Posts by AWITD Company</h3>
+              <table class="table">
+
+              <!-- Table header -->
+            
+              <thead>
+                <tr>
+                  <th scope="col">Job Type</th>
+                
+                  <th scope="col">Job Title</th>
+
+                  <th scope="col">Company</th>
+                
+                  <th scope="col">Start Date</th>
+                  
+                  <th scope="col">End Date</th>
+                
+                  <th scope="col">Location</th>
+                </tr>
+              </thead>
+            
+              <!-- Table footer -->
+            
+              <tfoot>
+                    <tr>
+                          <td>THis is footer</td>
+                    
+                          <td>THis is footer</td>
+                    
+                          <td>
+                            <ul class="pagination">
+                              <li><a href="#">&laquo;</a></li>
+                              <li><a href="#">1</a></li>
+                              <li><a href="#">2</a></li>
+                              <li><a href="#">3</a></li>
+                              <li><a href="#">4</a></li>
+                              <li><a href="#">5</a></li>
+                              <li><a href="#">&raquo;</a></li>
+                            </ul>                           
+                          </td>
+                    
+                          <td>THis is footer</td>
+
+                          <td>THis is footer</td>
+                          <td>THis is footer</td>
+                    </tr>
+              </tfoot>
+            
+              <!-- Table body -->
+            
+              <tbody>
+              	<%@company.job_posts.each do |jp|%>
+                <tr>
+                  <td><%= jp.job_type%></td>
+                  <td><%= link_to "#{jp.job_post_title}",[@company.user,@company,jp]%></td>
+                  <td><%= link_to "#{jp.company.com_name}",[@company.user,@company]%></td>
+                  <td><%= jp.job_post_start_date%></td>
+                  <td><%= jp.job_post_end_date%></td>
+                  <td><%= jp.location_id %></td>
+        
+                <%end%>
+              </tbody>
+
+            </table>
+            </article>          
+          </div> 
+          <% content_for :right_bar do%>
+                 <%=unless @company.nil? then link_to 'Post a new Job', new_user_company_job_post_path({:user_id=>@company.user.id,:company_id=>@company.id}),:class=>'btn btn-warning' end%>
+		  <%end%>

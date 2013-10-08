@@ -71,7 +71,7 @@
 			<%else %>
 			
 				<div style="float: left; color: red!important;">Welcome <%= current_user.email %> !! </div>
-				<%= link_to "log out now",destroy_session_path(current_user),:class=>'btn btn-primary pull-right',:method=>:delete%>
+				<%= current_user.role link_to "log out now",destroy_session_path(current_user),:class=>'btn btn-primary pull-right',:method=>:delete%>
 			<%end%>
 		  </li>
           </ul>
@@ -83,7 +83,9 @@
         <nav>
           <ul class="sidenav-ul">
             <li><a href="#" class="btn btn-primary btn-lg btn-block">Profile</a></li>
-            <li><a href="#" class="btn btn-primary btn-lg btn-block">Search Job</a></li>
+            <li><a href="#" class="btn btn-primary btn-lg btn-block">Preferences</a></li>
+            <li><a href="#" class="btn btn-primary btn-lg btn-block">Job History</a></li>
+            <li><a href="#" class="btn btn-primary btn-lg btn-block">Education History</a></li>
           </ul>
         </nav>
       </div>
@@ -96,8 +98,9 @@
       </div>
       <div class="col-md-2">
         <ul class="sidenav-ul">
-          <li><%= yield :right_bar%></li>
-          <li><a href="#" class="btn btn-info">My Jobs</a></li>"
+          <li><a href="#" class="btn btn-warning">Prepare CV </a></li>
+          <li><a href="#" class="btn btn-info">View my applied jobs </a></li>
+          <li><a href="#" class="btn btn-success">Recommended jobs</a></li>
         </ul>
       </div>
     </div>

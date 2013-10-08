@@ -13,8 +13,9 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
+    
     @company = Company.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @company }
@@ -24,7 +25,8 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   # GET /companies/new.json
   def new
-    @company = Company.new
+    @user=User.find(params[:user_id])
+    @company = Company.new(:user_id=>@user.id)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +42,13 @@ class CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new(params[:company])
-
+    @user=User.find(params[:user_id])
+    @company=Company.new(params[:company])
+    @company.user_id=@user.id
+   # redirect_to [@company.user,@company]
     respond_to do |format|
       if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
+        format.html { redirect_to [@company.user,@company], notice: 'Company was successfully created.' }
         format.json { render json: @company, status: :created, location: @company }
       else
         format.html { render action: "new" }

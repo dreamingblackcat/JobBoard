@@ -37,7 +37,7 @@
 
 <p>
   <b>Company:</b>
-  <%= link_to "#{@job_post.company.com_name}",@job_post.company%>
+  <%= link_to "#{@job_post.company.com_name}",[@job_post.company.user,@job_post.company]%>
 </p>
 
 <p>
@@ -51,5 +51,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_company_job_post_path({:company_id=>@job_post.company.id,:id=>@job_post.id}) %> |
-<%= link_to 'Back', company_job_posts_path %>
+<%= link_to 'Edit', edit_user_company_job_post_path({:user_id=>@job_post.company.user.id,:company_id=>@job_post.company.id,:id=>@job_post.id}) %> |
+<%= link_to 'Back', user_company_job_posts_path %>

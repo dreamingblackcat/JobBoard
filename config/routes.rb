@@ -1,12 +1,17 @@
 JobMatchBasic::Application.routes.draw do
 
   devise_for :users
+  # resources :registrations
+  # resources :sessions
   resources :users do
     resource :applicant
+    resources :companies do
+      resources :job_posts
+    end
   end
-  resources :companies do
-    resources :job_posts
-  end
+  # resources :companies do
+    # resources :job_posts
+  # end
   
   resources :job_posts
   

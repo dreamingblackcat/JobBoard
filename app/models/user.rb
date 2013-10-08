@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_one :applicant
+  has_one :company
 
 
 

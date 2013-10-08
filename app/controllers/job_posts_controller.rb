@@ -32,7 +32,7 @@ class JobPostsController < ApplicationController
   def create
     @company = Company.find(params[:company_id])
     @job_post = @company.job_posts.create(params[:job_post])
-    redirect_to [@company,@job_post]
+    redirect_to [@company.user,@company,@job_post]
   end
   def edit
     @company = Company.find(params[:company_id])
@@ -44,7 +44,7 @@ class JobPostsController < ApplicationController
     @job_post=@company.job_posts.find(params[:id])
     respond_to do |format|
       if @job_post.update_attributes(params[:job_post])
-        format.html { redirect_to [@job_post.company,@job_post], notice: 'Company was successfully updated.' }
+        format.html { redirect_to [@job_post.company.user,@job_post.company,@job_post], notice: 'Job Posts was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
