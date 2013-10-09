@@ -17,11 +17,12 @@
   </div>
   <div class="field">
     <%= f.label :job_type %><br />
-    <%= f.text_field :job_type %>
+    <%= f.select :job_type,["Full Time","Part Time","Freelance","Internship","Temporary"]%>
   </div>
   <div class="field">
     <%= f.label :job_post_gender %><br />
-    <%= f.text_field :job_post_gender %>
+    <%= f.radio_button :job_post_gender,'male',:checked=>'checked' %>Male
+    <%= f.radio_button :job_post_gender,'female' %>Female
   </div>
   <div class="field">
     <%= f.label :job_post_description %><br />
@@ -48,12 +49,12 @@
     <%= f.number_field :company_id %>
   </div>
   <div class="field">
-    <%= f.label :category_id %><br />
-    <%= f.number_field :category_id %>
+    <%= f.label :category_id,"Category" %><br />
+    <%= f.select :category_id, Category.all_for_select %>
   </div>
-  <div class="field">
-    <%= f.label :location_id %><br />
-    <%= f.number_field :location_id %>
+   <div class="field">
+    <%= f.label :location_id,"Location" %><br />
+    <%= f.select :location_id, Location.all_for_select %>
   </div>
   <div class="actions">
     <%= f.submit %>

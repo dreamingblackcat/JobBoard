@@ -50,6 +50,7 @@ body
 {
 	background: #9C9694; /* Old browsers */
 	color: #DCDCDC;
+	font-family:Courier;
 	
 }
 
@@ -196,6 +197,7 @@ td a:hover, td a:active {
 
 .company-name
 {
+	font: PT serif;
 	font-size: 2em;
 	color: red;
 }
