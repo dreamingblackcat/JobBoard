@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Prefer job time:</b>
+  <%= @applicant_job_preference.prefer_job_time %>
+</p>
+
+<p>
+  <b>Prefer start available:</b>
+  <%= @applicant_job_preference.prefer_start_available %>
+</p>
+
+<p>
+  <b>Prefer expected salary:</b>
+  <%= @applicant_job_preference.prefer_expected_salary %>
+</p>
+
+<p>
+  <b>Applicant:</b>
+  <%= link_to "#{@applicant_job_preference.applicant.applicant_name}", @applicant_job_preference.applicant %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @applicant_job_preference.location.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_applicant_applicant_job_preference_path({:applicant_id => @applicant_job_preference.applicant.id, :id => @applicant_job_preference.id}) %> |
+<%= link_to 'Back', applicant_job_preferences_path %>

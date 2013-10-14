@@ -1,0 +1,38 @@
+<%= form_for([@applicant,@applicant_job_preference]) do |f| %>
+  <% if @applicant_job_preference.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@applicant_job_preference.errors.count, "error") %> prohibited this applicant_job_preference from being saved:</h2>
+
+      <ul>
+      <% @applicant_job_preference.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :prefer_job_time %><br />
+    <%= f.radio_button :prefer_job_time, 'full time', :checked => 'checked' %>Full time
+    <%= f.radio_button :prefer_job_time, 'part time' %>Part time
+  </div>
+  <div class="field">
+    <%= f.label :prefer_start_available %><br />
+    <%= f.text_field :prefer_start_available %>
+  </div>
+  <div class="field">
+    <%= f.label :prefer_expected_salary %><br />
+    <%= f.text_field :prefer_expected_salary %>
+  </div>
+  <div class="field">
+    <%= f.label :applicant_id %><br />
+    <%= f.number_field :applicant_id %>
+  </div>
+  <div class="field">
+    <%= f.label :location_id %><br />
+    <%= f.select(:location_id, Location.location_list) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
