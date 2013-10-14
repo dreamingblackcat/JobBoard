@@ -1,6 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-
 
 
  <div class="container">
@@ -13,7 +10,7 @@
                 </div>
               </div>
               <div class="col-md-3 col-md-offset-1 company-logo">
-                <%= image_tag @company.com_logo_image_url,:class=>"img-rounded pull-right box-shadow-pay-gray",:width=>"100px",:height=>"100px"%>
+                <%= image_tag @company.photo.url(:medium),:class=>"img-rounded pull-right box-shadow-pay-gray",:width=>"100px",:height=>"100px"%>
               </div>
             </header>
             <article class="company-meta-data">

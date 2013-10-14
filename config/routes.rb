@@ -10,7 +10,7 @@ JobMatchBasic::Application.routes.draw do
   # resources :registrations
   # resources :sessions
   resources :users do
-    resource :applicant
+    resource :applicants
     resources :companies do
       resources :job_posts
     end
