@@ -11,24 +11,37 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131010081010) do
+ActiveRecord::Schema.define(:version => 20131014074132) do
+
+  create_table "applicant_job_preferences", :force => true do |t|
+    t.string   "prefer_job_time"
+    t.date     "prefer_start_available"
+    t.string   "prefer_expected_salary"
+    t.integer  "applicant_id"
+    t.integer  "location_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
 
   create_table "applicants", :force => true do |t|
-    t.string   "app_name"
-    t.string   "app_nrc"
-    t.string   "app_url"
-    t.string   "app_contact_email"
-    t.string   "app_gender"
-    t.boolean  "app_marital_status"
-    t.date     "app_dob"
-    t.text     "app_address"
-    t.string   "app_phone_number"
-    t.text     "app_language"
-    t.text     "app_skills"
-    t.text     "app_description"
+    t.string   "applicant_name"
+    t.string   "applicant_nrc"
+    t.string   "applicant_contact_email"
+    t.string   "applicant_gender"
+    t.string   "applicant_marital_status"
+    t.date     "applicant_dob"
+    t.string   "applicant_address"
+    t.string   "applicant_phone_number"
+    t.string   "applicant_language"
+    t.text     "applicant_skills"
+    t.text     "applicant_description"
     t.integer  "user_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "categories", :force => true do |t|
