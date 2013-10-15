@@ -1,4 +1,4 @@
-<%= form_for([@applicant,@applicant_job_preference]) do |f| %>
+<%= form_for([@applicant_job_preference.applicant.user,@applicant_job_preference.applicant,@applicant_job_preference]) do |f| %>
   <% if @applicant_job_preference.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@applicant_job_preference.errors.count, "error") %> prohibited this applicant_job_preference from being saved:</h2>
@@ -18,7 +18,7 @@
   </div>
   <div class="field">
     <%= f.label :prefer_start_available %><br />
-    <%= f.text_field :prefer_start_available %>
+    <%= f.date_select :prefer_start_available %>
   </div>
   <div class="field">
     <%= f.label :prefer_expected_salary %><br />
@@ -30,7 +30,7 @@
   </div>
   <div class="field">
     <%= f.label :location_id %><br />
-    <%= f.select(:location_id, Location.location_list) %>
+    <%= f.select(:location_id, Location.all_for_select) %>
   </div>
   <div class="actions">
     <%= f.submit %>

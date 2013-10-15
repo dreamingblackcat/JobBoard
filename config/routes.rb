@@ -1,16 +1,19 @@
 JobMatchBasic::Application.routes.draw do
 
   resources :locations
-
+  
 
   resources :categories
-
+  resources :applicant_job_preferences,{:only=>:index}
 
   devise_for :users
   # resources :registrations
   # resources :sessions
   resources :users do
-    resource :applicants
+    resources :applicants do
+      resources :applicant_job_preferences
+      resources :applicant_job_histories
+    end
     resources :companies do
       resources :job_posts
     end

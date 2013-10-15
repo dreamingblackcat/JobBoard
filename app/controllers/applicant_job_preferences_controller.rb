@@ -48,7 +48,7 @@ class ApplicantJobPreferencesController < ApplicationController
 
     respond_to do |format|
       if @applicant_job_preference.save
-        format.html { redirect_to [@applicant,@applicant_job_preference], notice: 'Applicant job preference was successfully created.' }
+        format.html { redirect_to [@applicant.user,@applicant,@applicant_job_preference], notice: 'Applicant job preference was successfully created.' }
         format.json { render json: @applicant_job_preference, status: :created, location: @applicant_job_preference }
       else
         format.html { render action: "new" }
@@ -65,7 +65,7 @@ class ApplicantJobPreferencesController < ApplicationController
 
     respond_to do |format|
       if @applicant_job_preference.update_attributes(params[:applicant_job_preference])
-        format.html { redirect_to [@applicant_job_preference.applicant, @applicant_job_preference], notice: 'Applicant job preference was successfully updated.' }
+        format.html { redirect_to [@applicant_job_preference.applicant.user,@applicant_job_preference.applicant, @applicant_job_preference], notice: 'Applicant job preference was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

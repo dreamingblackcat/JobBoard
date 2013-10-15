@@ -11,39 +11,39 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="input-group">
     <%= f.label :com_name %><br />
-    <%= f.text_field :com_name %>
+    <%= f.text_field :com_name ,:html=>{:class=>"form-control",:placeholder=>"Company Name"}%>
   </div>
-  <div class="field">
+  <div class="input-group">
     <%= f.label :com_logo_name %><br />
-    <%= f.text_field :com_logo_name %>
+    <%= f.text_field :com_logo_name ,:html=>{:class=>"form-control",:placeholder=>"Company Logo Name"}%>
   </div>
-  <div class="field">
+  <div class="input-group">
     <%= f.label :com_email %><br />
-    <%= f.text_field :com_email %>
+    <%= f.text_field :com_email ,:html=>{:class=>"form-control",:placeholder=>"Company email"} %>
   </div>
-  <div class="field">
+  <div class="input-group">
     <%= f.label :com_address %><br />
-    <%= f.text_field :com_address %>
+    <%= f.text_area :com_address ,:html=>{:class=>"form-control",:placeholder=>"Company address"}%>
   </div>
-  <div class="field">
+  <div class="input-group">
     <%= f.label :com_web_url %><br />
-    <%= f.text_field :com_web_url %>
+    <%= f.text_field :com_web_url,:html=>{:class=>"form-control",:placeholder=>"Company Website Url"} %>
   </div>
-  <div class="field">
+  <div class="input-group">
     <%= f.label :com_phone_number %><br />
     <%= f.text_field :com_phone_number %>
   </div>
-  <div class="field">
+  <div class="input-group">
     <%= f.label :com_fax_number %><br />
     <%= f.text_field :com_fax_number %>
   </div>
-  <div class="field">
+  <div class="input-group">
     <%= f.label :com_description %><br />
     <%= f.text_area :com_description %>
   </div>
-  <div class="field">
+  <div class="input-group">
     <%= f.label :photo %><br />
     <%= f.file_field :photo %>
   </div>

@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @applicant_job_preference %> |
-<%= link_to 'Back', applicant_applicant_job_preferences_path %>
+<%= link_to 'Show', [@applicant_job_preference.applicant.user,@applicant_job_preference.applicant,@applicant_job_preference] %> |
+

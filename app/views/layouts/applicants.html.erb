@@ -71,7 +71,7 @@
 			<%else %>
 			
 				<div style="float: left; color: red!important;">Welcome <%= current_user.email %> !! </div>
-				<%= current_user.role link_to "log out now",destroy_session_path(current_user),:class=>'btn btn-primary pull-right',:method=>:delete%>
+				<%= link_to "log out now",destroy_session_path(current_user),:class=>'btn btn-primary pull-right',:method=>:delete%>
 			<%end%>
 		  </li>
           </ul>

@@ -17,7 +17,7 @@
 
 <p>
   <b>Applicant:</b>
-  <%= link_to "#{@applicant_job_preference.applicant.applicant_name}", @applicant_job_preference.applicant %>
+  <%= link_to "#{@applicant_job_preference.applicant.applicant_name}", [@applicant_job_preference.applicant.user,@applicant_job_preference.applicant] %>
 </p>
 
 <p>
@@ -26,5 +26,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_applicant_applicant_job_preference_path({:applicant_id => @applicant_job_preference.applicant.id, :id => @applicant_job_preference.id}) %> |
-<%= link_to 'Back', applicant_job_preferences_path %>
+<%= link_to 'Edit', edit_user_applicant_applicant_job_preference_path({:user_id=>@applicant_job_preference.applicant.user.id,:applicant_id=>@applicant_job_preference.applicant.id,:id=>@applicant_job_preference.id}) %> |
+

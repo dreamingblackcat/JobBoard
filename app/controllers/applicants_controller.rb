@@ -1,48 +1,30 @@
 class ApplicantsController < ApplicationController
-  load_and_authorize_resource :user
-  load_and_authorize_resource :applicant,:through=>:user,:singleton=>true
-  # GET /applicants.json
-  def index
-   
+	def index
+    # @companies = Company.all
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @applicants }
     end
   end
 
-  # GET /applicants/1
-  # GET /applicants/1.json
-  def show
-   
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @applicant }
-    end
-  end
+  	def new
+		@applicant = Applicant.new(:user_id=>params[:user_id])
 
-  # GET /applicants/new
-  # GET /applicants/new.json
-  def new
-    
+		respond_to do |format|
+			format.html
+			format.json{render json: @applicant}
+		end
+	end
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @applicant }
-    end
-  end
-
-  # GET /applicants/1/edit
-  def edit
-    
-  end
-
-  # POST /applicants
-  # POST /applicants.json
-  def create
-    
+	def create
+    #@user=User.find(params[:user_id])
+    @applicant=Applicant.new(params[:applicant])
+    #@company.user_id=@user.id
+   # redirect_to [@company.user,@company]
     respond_to do |format|
       if @applicant.save
-        format.html { redirect_to user_applicant_path(current_user), notice: 'Applicant was successfully created.' }
+        format.html { redirect_to [@applicant.user,@applicant], notice: 'Applicant was successfully created.' }
         format.json { render json: @applicant, status: :created, location: @applicant }
       else
         format.html { render action: "new" }
@@ -51,14 +33,25 @@ class ApplicantsController < ApplicationController
     end
   end
 
-  # PUT /applicants/1
-  # PUT /applicants/1.json
-  def update
-  
+	def show
+		@applicant = Applicant.find(params[:id])
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @applicant }
+  		end
+	end
+
+	def edit
+    @applicant = Applicant.find(params[:id])
+ 	end
+
+ 	def update
+    @applicant = Applicant.find(params[:id])
 
     respond_to do |format|
       if @applicant.update_attributes(params[:applicant])
-        format.html { redirect_to user_applicant_path(@applicant.user), notice: 'Applicant was successfully updated.' }
+        format.html { redirect_to [@applicant.user,@applicant], notice: 'applicant was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -67,15 +60,4 @@ class ApplicantsController < ApplicationController
     end
   end
 
-  # DELETE /applicants/1
-  # DELETE /applicants/1.json
-  def destroy
-   
-    @applicant.destroy
-
-    respond_to do |format|
-      format.html { redirect_to applicants_url }
-      format.json { head :no_content }
-    end
-  end
 end

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   def after_sign_in_path_for(resource)
     
-    if resource.role == "company"then
+    if resource.role == "company" then
       
       if resource.company.nil? then
         new_user_company_path(resource)
@@ -11,7 +11,14 @@ class ApplicationController < ActionController::Base
          ([resource,resource.company])
         
       end
-    else
+    elsif resource.role== "applicant" then
+      
+      if resource.applicant.nil? then
+        new_user_applicant_path(resource)
+        else
+        ([resource,resource.applicant])
+        end 
+     else
       root_url
     end
   end

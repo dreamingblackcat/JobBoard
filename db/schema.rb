@@ -13,6 +13,18 @@
 
 ActiveRecord::Schema.define(:version => 20131014074132) do
 
+  create_table "applicant_job_histories", :force => true do |t|
+    t.string   "company_name"
+    t.string   "job_title"
+    t.text     "address"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.text     "reason"
+    t.integer  "applicant_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "applicant_job_preferences", :force => true do |t|
     t.string   "prefer_job_time"
     t.date     "prefer_start_available"
