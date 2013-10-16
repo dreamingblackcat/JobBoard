@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Company name:</b>
+  <%= @applicant_job_history.company_name %>
+</p>
+
+<p>
+  <b>Job title:</b>
+  <%= @applicant_job_history.job_title %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @applicant_job_history.address %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @applicant_job_history.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @applicant_job_history.end_date %>
+</p>
+
+<p>
+  <b>Reason:</b>
+  <%= @applicant_job_history.reason %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_user_applicant_applicant_job_history_path(@applicant_job_history.applicant.user,@applicant_job_history.applicant,@applicant_job_history) %>| |
+<%= link_to "To My Profile",user_applicant_path({:user_id=>@applicant_job_history.applicant.user,:id=>@applicant_job_history.applicant})%> 
