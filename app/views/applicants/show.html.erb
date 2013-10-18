@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Applicant name:</b>
+  <%= @applicant.applicant_name %>
+</p>
+
+<p>
+  <b>Applicant nrc:</b>
+  <%= @applicant.applicant_nrc %>
+</p>
+
+
+
+<p>
+  <b>Applicant contact email:</b>
+  <%= @applicant.applicant_contact_email %>
+</p>
+
+<p>
+  <b>Applicant gender:</b>
+  <%= @applicant.applicant_gender %>
+</p>
+
+<p>
+  <b>Applicant marital status:</b>
+
+  <%= @applicant.applicant_marital_status %>
+
+</p>
+
+<p>
+  <b>Applicant dob:</b>
+  <%= @applicant.applicant_dob %>
+</p>
+
+<p>
+  <b>Applicant address:</b>
+  <%= @applicant.applicant_address %>
+</p>
+
+<p>
+  <b>Applicant phone number:</b>
+  <%= @applicant.applicant_phone_number %>
+</p>
+
+<p>
+  <b>Applicant language:</b>
+  <%= @applicant.applicant_language %>
+</p>
+
+<p>
+  <b>Applicant skills:</b>
+  <%= @applicant.applicant_skills %>
+</p>
+
+<p>
+  <b>Applicant description:</b>
+  <%= @applicant.applicant_description %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @applicant.user_id %>
+</p>
+
+<%= image_tag @applicant.photo.url(:thumb)%>
+
+
+<%= link_to 'Edit', edit_user_applicant_path({:user_id=>@applicant.user,:id=>@applicant}) %> |
+ 
+<%= link_to 'New Applicant job preference', new_user_applicant_applicant_job_preference_path(@applicant.user,@applicant) %>
+|
+<%= link_to 'New Applicant job history', new_user_applicant_applicant_job_history_path(@applicant.user,@applicant) %>

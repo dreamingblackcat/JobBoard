@@ -1,0 +1,48 @@
+<h1>Listing applicants</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>NRC</th>
+    <th>Url</th>
+    <th>Email</th>
+    <th>Gender</th>
+    <th>Marital Status</th>
+    <th>Date of birth</th>
+    <th>Address</th>
+    <th>Phone Number</th>
+    <th>language</th>
+    <th>Skills</th>
+    <th>Description</th>
+    <!--<th>User</th>-->
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @applicants.each do |applicant| %>
+  <tr style="background-color: <%= cycle("#EBEBEB", "c5c5c5") %>">
+    <td><%= applicant.applicant_name %></td>
+    <td><%= applicant.applicant_nrc %></td>
+    <td><%= applicant.applicant_url %></td>
+    <td><%= applicant.applicant_contact_email %></td>
+    <td><%= applicant.applicant_gender %></td>
+    <td>
+    	<%= applicant.applicant_marital_status %>
+    </td>
+    <td><%= applicant.applicant_dob %></td>
+    <td><%= applicant.applicant_address %></td>
+    <td><%= applicant.applicant_phone_number %></td>
+    <td><%= applicant.applicant_language %></td>
+    <td><%= applicant.applicant_skills %></td>
+    <td><%= applicant.applicant_description %></td>
+   <!--<td><%= applicant.user_id %></td>-->
+    <td><%= link_to 'Show', [applicant.user,applicant] %></td>
+    <td><%= link_to 'Edit', edit_user_applicant_path([@applicant]) %></td>
+    <td><%= link_to 'Destroy', applicant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
