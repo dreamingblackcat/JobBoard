@@ -225,3 +225,8 @@ td a:hover, td a:active {
 {
 	box-shadow: 4px 4px 3px #111111;
 }
+.label-primary
+{
+	background-color: #808080!important;
+	color: #39B3D7;
+}

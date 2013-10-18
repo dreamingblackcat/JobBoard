@@ -3,6 +3,7 @@ class Applicant < ActiveRecord::Base
   #after_save :save_photo
   belongs_to :user
   has_many :applicant_job_preferences, dependent: :destroy
+  has_many :applicant_job_histories, dependent: :destroy
   attr_accessible :applicant_address, :applicant_contact_email, :applicant_description, :applicant_dob, :applicant_gender, :applicant_language, :applicant_marital_status, :applicant_name, :applicant_nrc, :applicant_phone_number, :applicant_skills, :applicant_url, :user_id, :photo 
   
   has_attached_file :photo, :styles => { :medium => "300x300", :thumb => "100x100" }

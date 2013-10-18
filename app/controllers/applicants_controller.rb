@@ -1,4 +1,7 @@
 class ApplicantsController < ApplicationController
+    load_and_authorize_resource :user
+    load_and_authorize_resource :applicant,:through=>:user,:singleton=>true
+  
 	def index
     # @companies = Company.all
 
@@ -9,7 +12,7 @@ class ApplicantsController < ApplicationController
   end
 
   	def new
-		@applicant = Applicant.new(:user_id=>params[:user_id])
+		# @applicant = Applicant.new(:user_id=>params[:user_id])
 
 		respond_to do |format|
 			format.html
@@ -18,10 +21,9 @@ class ApplicantsController < ApplicationController
 	end
 
 	def create
-    #@user=User.find(params[:user_id])
-    @applicant=Applicant.new(params[:applicant])
-    #@company.user_id=@user.id
-   # redirect_to [@company.user,@company]
+    
+    # @applicant=Applicant.new(params[:applicant])
+
     respond_to do |format|
       if @applicant.save
         format.html { redirect_to [@applicant.user,@applicant], notice: 'Applicant was successfully created.' }
@@ -34,7 +36,7 @@ class ApplicantsController < ApplicationController
   end
 
 	def show
-		@applicant = Applicant.find(params[:id])
+		#@applicant = Applicant.find(params[:id])
     
     respond_to do |format|
       format.html # show.html.erb
@@ -43,11 +45,11 @@ class ApplicantsController < ApplicationController
 	end
 
 	def edit
-    @applicant = Applicant.find(params[:id])
+    # @applicant = Applicant.find(params[:id])
  	end
 
  	def update
-    @applicant = Applicant.find(params[:id])
+    # @applicant = Applicant.find(params[:id])
 
     respond_to do |format|
       if @applicant.update_attributes(params[:applicant])

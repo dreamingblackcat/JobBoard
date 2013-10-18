@@ -1,4 +1,6 @@
-<%= form_for([@applicant_job_preference.applicant.user,@applicant_job_preference.applicant,@applicant_job_preference]) do |f| %>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+<%= form_for([@applicant_job_preference.applicant.user,@applicant_job_preference.applicant,@applicant_job_preference],:class=>"form") do |f| %>
   <% if @applicant_job_preference.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@applicant_job_preference.errors.count, "error") %> prohibited this applicant_job_preference from being saved:</h2>
@@ -11,28 +13,26 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :prefer_job_time %><br />
-    <%= f.radio_button :prefer_job_time, 'full time', :checked => 'checked' %>Full time
-    <%= f.radio_button :prefer_job_time, 'part time' %>Part time
+  <div class="form-group">
+    <%= f.label :prefer_job_time,{:class=>"label label-primary"} %><br />
+    <%= f.radio_button :prefer_job_time, 'full time', :checked => 'checked',:class=>"radio-inline" %>Full time
+    <%= f.radio_button :prefer_job_time, 'part time' , :class=>"radio-inline"%>Part time
   </div>
-  <div class="field">
-    <%= f.label :prefer_start_available %><br />
-    <%= f.date_select :prefer_start_available %>
+  <div class="form-group">
+    <%= f.label :prefer_start_available ,{:class=>"label label-primary"}%><br />
+    <%= f.date_select :prefer_start_available,:class=>"form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :prefer_expected_salary %><br />
-    <%= f.text_field :prefer_expected_salary %>
+  <div class="form-group">
+    <%= f.label :prefer_expected_salary ,{:class=>"label label-primary"}%><br />
+    <%= f.text_field :prefer_expected_salary ,{:class=>"form-control",:placeholder=>"Enter your prefer salary range"}%>
   </div>
-  <div class="field">
-    <%= f.label :applicant_id %><br />
-    <%= f.number_field :applicant_id %>
-  </div>
-  <div class="field">
-    <%= f.label :location_id %><br />
-    <%= f.select(:location_id, Location.all_for_select) %>
+
+  <div class="form-group">
+    <%= f.label :location_id,{:class=>"label label-primary"} %><br />
+    <%= f.select(:location_id, Location.all_for_select,:class=>"form-control") %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit",:class=>"btn btn-primary"%>
   </div>
 <% end %>
+</div></div>

@@ -1,54 +1,69 @@
-<%= form_for([@company.user,@company]) do |f| %>
-  <% if @company.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_for([@company.user,@company],:html=>{:class=>"form"}) do |f| %>
+		<% if @company.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
 
-      <ul>
-      <% @company.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+			<ul>
+				<% @company.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
 
-  <div class="input-group">
-    <%= f.label :com_name %><br />
-    <%= f.text_field :com_name ,:html=>{:class=>"form-control",:placeholder=>"Company Name"}%>
-  </div>
-  <div class="input-group">
-    <%= f.label :com_logo_name %><br />
-    <%= f.text_field :com_logo_name ,:html=>{:class=>"form-control",:placeholder=>"Company Logo Name"}%>
-  </div>
-  <div class="input-group">
-    <%= f.label :com_email %><br />
-    <%= f.text_field :com_email ,:html=>{:class=>"form-control",:placeholder=>"Company email"} %>
-  </div>
-  <div class="input-group">
-    <%= f.label :com_address %><br />
-    <%= f.text_area :com_address ,:html=>{:class=>"form-control",:placeholder=>"Company address"}%>
-  </div>
-  <div class="input-group">
-    <%= f.label :com_web_url %><br />
-    <%= f.text_field :com_web_url,:html=>{:class=>"form-control",:placeholder=>"Company Website Url"} %>
-  </div>
-  <div class="input-group">
-    <%= f.label :com_phone_number %><br />
-    <%= f.text_field :com_phone_number %>
-  </div>
-  <div class="input-group">
-    <%= f.label :com_fax_number %><br />
-    <%= f.text_field :com_fax_number %>
-  </div>
-  <div class="input-group">
-    <%= f.label :com_description %><br />
-    <%= f.text_area :com_description %>
-  </div>
-  <div class="input-group">
-    <%= f.label :photo %><br />
-    <%= f.file_field :photo %>
-  </div>
+		<div class="form-group">
+			<%= f.label :com_name ,:class=>"label label-primary"%>
+			<br />
+			<%= f.text_field :com_name ,{:class=>"form-control",:placeholder=>"Company Name"}%>
+		</div>
+		<div class="form-group">
+			<%= f.label :com_logo_name ,{:class=>"label label-primary"}%>
+			<br />
+			<%= f.text_field :com_logo_name ,{:class=>"form-control",:placeholder=>"Company Logo Name"}%>
+		</div>
+		<div class="form-group">
+			<%= f.label :com_email ,{:class=>"label label-primary"}%>
+			<br />
+			<%= f.text_field :com_email ,{:class=>"form-control",:placeholder=>"Company email"} %>
+		</div>
+		<div class="form-group">
+			<%= f.label :com_address,{:class=>"label label-primary"} %>
+			<br />
+			<%= f.text_area :com_address ,{:class=>"form-control",:placeholder=>"Company address"}%>
+		</div>
+		<div class="form-group">
+			<%= f.label :com_web_url ,{:class=>"label label-primary"}%>
+			<br />
+			<%= f.text_field :com_web_url,{:class=>"form-control",:placeholder=>"Company Website Url"} %>
+		</div>
+		<div class="form-group">
+			<%= f.label :com_phone_number,{:class=>"label label-primary"} %>
+			<br />
+			<%= f.text_field :com_phone_number,{:class=>"form-control",:placeholder=>"Company Phone Number"} %>
+		</div>
+		<div class="form-group">
+			<%= f.label :com_fax_number,{:class=>"label label-primary"} %>
+			<br />
+			<%= f.text_field :com_fax_number %>
+		</div>
+		<div class="form-group">
+			<%= f.label :com_description ,{:class=>"label label-primary"}%>
+			<br />
+			<%= f.text_area :com_description,{:class=>"form-control",:placeholder=>"Briefly describe about your company"} %>
+		</div>
+		<div class="form-group">
+			<%= f.label :photo ,{:class=>"label label-primary"}%>
+			<br />
+			<%= f.file_field :photo,{:class=>"form-control"} %>
+		</div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+		<div class="actions">
+			<%= f.submit "Submit",{:class=>"btn btn-primary"} %>
+		</div>
+		<% end %>
+	</div>
+</div>

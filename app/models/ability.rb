@@ -7,7 +7,10 @@ class Ability
 				can :manage, :all
 			end
 		if user.role=="applicant" then
-			can :manage,:all
+		  can :manage,User,:id=>user.id
+			can [:show,:new,:create,:update,:edit,:destroy],Applicant.where(:user_id=> user.id)
+			can [:show,:edit,:new,:destroy,:create,:update],ApplicantJobHistory,:applicant=>{:user_id=>user.id}
+			can [:show,:edit,:new,:destroy,:create,:update],ApplicantJobPreference,:applicant=>{:user_id=>user.id}  
 			
 		end
 	end

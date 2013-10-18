@@ -1,5 +1,5 @@
 class JobPostsController < ApplicationController
-  
+  layout "companies"
   def index
     @job_posts = JobPost.all
 
