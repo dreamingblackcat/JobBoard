@@ -1,8 +1,11 @@
 class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
+  load_and_authorize_resource :user
+  load_and_authorize_resource :company,:through=>:user,:singleton=>true
+   
   def index
-    @companies = Company.all
+    # @companies = Company.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +17,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     
-    @company = Company.find(params[:id])
+    #@company = Company.find(params[:id])
     
     respond_to do |format|
       format.html # show.html.erb
@@ -25,8 +28,8 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   # GET /companies/new.json
   def new
-    @user=User.find(params[:user_id])
-    @company = Company.new(:user_id=>@user.id)
+    # @user=User.find(params[:user_id])
+    # @company = Company.new(:user_id=>@user.id)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,15 +39,15 @@ class CompaniesController < ApplicationController
 
   # GET /companies/1/edit
   def edit
-    @company = Company.find(params[:id])
+    #@company = Company.find(params[:id])
   end
 
   # POST /companies
   # POST /companies.json
   def create
-    @user=User.find(params[:user_id])
-    @company=Company.new(params[:company])
-    @company.user_id=@user.id
+    # @user=User.find(params[:user_id])
+    # @company=Company.new(params[:company])
+    # @company.user_id=@user.id
    # redirect_to [@company.user,@company]
     respond_to do |format|
       if @company.save
@@ -60,7 +63,7 @@ class CompaniesController < ApplicationController
   # PUT /companies/1
   # PUT /companies/1.json
   def update
-    @company = Company.find(params[:id])
+    #@company = Company.find(params[:id])
 
     respond_to do |format|
       if @company.update_attributes(params[:company])
@@ -76,7 +79,7 @@ class CompaniesController < ApplicationController
   # DELETE /companies/1
   # DELETE /companies/1.json
   def destroy
-    @company = Company.find(params[:id])
+   # @company = Company.find(params[:id])
     @company.destroy
 
     respond_to do |format|

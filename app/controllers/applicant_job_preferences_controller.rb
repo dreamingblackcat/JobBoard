@@ -1,6 +1,10 @@
 class ApplicantJobPreferencesController < ApplicationController
   # GET /applicant_job_preferences
   # GET /applicant_job_preferences.json
+  load_and_authorize_resource :user
+  load_and_authorize_resource :applicant,:through=>:user,:singleton=>true
+  load_and_authorize_resource :applicant_job_preference,:through=>:applicant
+    
   def index
     @applicant_job_preferences = ApplicantJobPreference.all
 

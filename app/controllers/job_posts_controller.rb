@@ -1,7 +1,10 @@
 class JobPostsController < ApplicationController
+  load_and_authorize_resource :user
+  load_and_authorize_resource :company,:through=>:user,:singleton=>true
+  load_and_authorize_resource :job_post,:through=>:company
   layout "companies"
   def index
-    @job_posts = JobPost.all
+    # @job_posts = JobPost.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,8 +13,8 @@ class JobPostsController < ApplicationController
   end
   
   def new
-    @company = Company.find(params[:company_id])
-    @job_post = @company.job_posts.new
+    # @company = Company.find(params[:company_id])
+    # @job_post = @company.job_posts.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -21,7 +24,7 @@ class JobPostsController < ApplicationController
   
   def show
     
-    @job_post = JobPost.find(params[:id])
+    # @job_post = JobPost.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -30,18 +33,18 @@ class JobPostsController < ApplicationController
   end
   
   def create
-    @company = Company.find(params[:company_id])
-    @job_post = @company.job_posts.create(params[:job_post])
+    # @company = Company.find(params[:company_id])
+    # @job_post = @company.job_posts.create(params[:job_post])
     redirect_to [@company.user,@company,@job_post]
   end
   def edit
-    @company = Company.find(params[:company_id])
-    @job_post=@company.job_posts.find(params[:id])
+    # @company = Company.find(params[:company_id])
+    # @job_post=@company.job_posts.find(params[:id])
     
   end
   def update
-    @company = Company.find(params[:company_id])
-    @job_post=@company.job_posts.find(params[:id])
+    # @company = Company.find(params[:company_id])
+    # @job_post=@company.job_posts.find(params[:id])
     respond_to do |format|
       if @job_post.update_attributes(params[:job_post])
         format.html { redirect_to [@job_post.company.user,@job_post.company,@job_post], notice: 'Job Posts was successfully updated.' }
@@ -53,8 +56,8 @@ class JobPostsController < ApplicationController
     end
   end
   def destroy
-    @job_post=JobPost.find(params[:id])
-    @job_post.destroy
+    # @job_post=JobPost.find(params[:id])
+    # @job_post.destroy
 
     respond_to do |format|
       format.html { redirect_to job_posts_url }
