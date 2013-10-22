@@ -31,33 +31,15 @@
               <ul class="dropdown-menu">
                 <div class="row">
                   <div class="col-md-6 margin5">
-                    <li><a href="#">All</a></li>
-                    <li><a href="#">Accounting</a></li>
-                    <li><a href="#">Admin / Human Resources</a></li>
-                    <li><a href="#">Banking / Finance</a></li>
-                    <li><a href="#">Beauty and Wellness / Health and Fitness</a></li>
-                    <li><a href="#">Building and Construction</a></li>
-                    <li><a href="#">Design</a></li>
-                    <li><a href="#">Education</a></li>
-                    <li><a href="#">Engineering</a></li>
-                    <li><a href="#">Hospitality / F and B</a></li>
-                    <li><a href="#">Information Technology (IT)</a></li>
-                    <li><a href="#">Insurance</a></li>
-                    <li><a href="#">Management</a></li>
-                    <li><a href="#">Manufacturing</a></li>
+                  <%Category.all_for_navigation.first.each do |a|%>
+                   <li><%= link_to "#{a.name}",job_posts_path(:category=>a.name)%></li>
+            		<%end%>
                   </div>
                   <div class="col-md-6">
-                    <li><a href="#">Marketing / Public Relations</a></li>
-                    <li><a href="#">Media and Advertising</a></li>
-                    <li><a href="#">Medical Services</a></li>
-                    <li><a href="#">Merchandising and Purchasing</a></li>
-                    <li><a href="#">Professional Services</a></li>
-                    <li><a href="#">Property</a></li>
-                    <li><a href="#">Sales / Customer Service / Business Development</a></li>
-                    <li><a href="#">Sciences / Laboratory / R and D</a></li>
-                    <li><a href="#">Telecommunications</a></li>
-                    <li><a href="#">Transportation / Logistics</a></li>
-                    <li><a href="#">Others</a></li>
+                     <%Category.all_for_navigation.second.each do |a|%> 
+                   		<li><%= link_to "#{a.name}",job_posts_path(:category=>a.name)%></li>
+            		<%end%>
+                    
                   </div>
                 </div>                      
               </ul>
