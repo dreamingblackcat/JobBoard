@@ -230,3 +230,7 @@ td a:hover, td a:active {
 	background-color: #808080!important;
 	color: #39B3D7;
 }
+.preference-table td
+{
+	background-color: #62615E;
+}

@@ -1,6 +1,6 @@
 <h1>Listing applicant_job_preferences</h1>
 
-<table>
+<table class="jobpost-table preference-table">
   <tr>
     <th>Prefer job time</th>
     <th>Prefer start available</th>
@@ -19,8 +19,8 @@
     <td><%= applicant_job_preference.prefer_expected_salary %></td>
     <td><%= applicant_job_preference.applicant.applicant_name %></td>
     <td><%= applicant_job_preference.location.name %></td>
-    <td><%= link_to 'Show', [applicant_job_preference.applicant,applicant_job_preference] %></td>
-    <td><%= link_to 'Edit', edit_applicant_applicant_job_preference_path({:applicant_id => applicant_job_preference.applicant, :id => applicant_job_preference}) %></td>
+    <td><%= link_to 'Show', [applicant_job_preference.applicant.user,applicant_job_preference.applicant,applicant_job_preference] %></td>
+    <td><%= link_to 'Edit', edit_user_applicant_applicant_job_preference_path({:user_id=>applicant_job_preference.applicant.user,:applicant_id => applicant_job_preference.applicant, :id => applicant_job_preference}) %></td>
     <td><%= link_to 'Destroy', applicant_job_preference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

@@ -1,8 +1,11 @@
 class JobPostsController < ApplicationController
-  load_and_authorize_resource :user
-  load_and_authorize_resource :company,:through=>:user,:singleton=>true
-  load_and_authorize_resource :job_post,:through=>:company
+  
+  load_and_authorize_resource :user,:except=>[:show,:destroy]
+  load_and_authorize_resource :company,:through=>:user,:singleton=>true,:except=>[:show,:destroy]
+  load_and_authorize_resource :job_post,:through=>:company,:except=>[:show,:destroy]
+  
   layout "companies"
+  
   def index
     # @job_posts = JobPost.all
 
@@ -15,7 +18,7 @@ class JobPostsController < ApplicationController
   def new
     # @company = Company.find(params[:company_id])
     # @job_post = @company.job_posts.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @job_post }
@@ -23,11 +26,21 @@ class JobPostsController < ApplicationController
   end
   
   def show
+    @user=User.find(params[:user_id])
+    if @user.role=="applicant" then
+      @applicant=@user.applicant
+      layout="applicants"
+    else
+      @company=@user.company
+      layout="companies"       
+    end
+    @job_post = JobPost.find(params[:id])
     
-    # @job_post = JobPost.find(params[:id])
-
     respond_to do |format|
-      format.html # show.html.erb
+      format.html do 
+        render :action=>"show", :layout=>layout
+        
+      end    
       format.json { render json: @job_post }
     end
   end
@@ -35,7 +48,16 @@ class JobPostsController < ApplicationController
   def create
     # @company = Company.find(params[:company_id])
     # @job_post = @company.job_posts.create(params[:job_post])
-    redirect_to [@company.user,@company,@job_post]
+    
+    respond_to do |format|
+      if @job_post.save
+        format.html { redirect_to [@company.user,@company,@job_post], notice: 'Job Post was successfully created.' }
+        format.json { render json: @job_post, status: :created, location: @job_post }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @applicant_job_preference.errors, status: :unprocessable_entity }
+      end
+    end   
   end
   def edit
     # @company = Company.find(params[:company_id])
@@ -56,11 +78,11 @@ class JobPostsController < ApplicationController
     end
   end
   def destroy
-    # @job_post=JobPost.find(params[:id])
-    # @job_post.destroy
-
+    @job_post=JobPost.find(params[:id])
+    @job_post.destroy
+    authorize! :destroy,@job_post
     respond_to do |format|
-      format.html { redirect_to job_posts_url }
+      format.html { redirect_to [@job_post.company.user,@job_post.company] }
       format.json { head :no_content }
     end
   end

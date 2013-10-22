@@ -37,7 +37,7 @@
 
 <p>
   <b>Company:</b>
-  <%= link_to "#{@job_post.company.com_name}",[@job_post.company.user,@job_post.company]%>
+  <%= link_to "#{@job_post.company.com_name}",[current_user,@job_post.company]%>
 </p>
 
 <p>
@@ -51,5 +51,30 @@
 </p>
 
 
-<%= link_to 'Edit', edit_user_company_job_post_path({:user_id=>@job_post.company.user.id,:company_id=>@job_post.company.id,:id=>@job_post.id}) %> |
-<%= link_to 'Back', user_company_job_posts_path %>
+<%= if can? :edit,@job_post then link_to 'Edit', edit_user_company_job_post_path({:user_id=>@job_post.company.user.id,:company_id=>@job_post.company.id,:id=>@job_post.id})end %> |
+
+<%case current_user.role%>
+          <%when "company"%> 
+          	<% content_for :right_bar do%>
+                 <%=unless @company.nil? then link_to 'Post a new Job', new_user_company_job_post_path({:user_id=>@company.user.id,:company_id=>@company.id}),:class=>'btn btn-warning' end%>
+		  	<%end%>
+		  
+		  <%else%>
+			<% content_for :left_bar do %>
+			<nav>
+				<ul class="sidenav-ul">
+					<%= link_to 'Edit Profile', edit_user_applicant_path({:user_id=>@applicant.user,:id=>@applicant}),:class=>"btn btn-primary btn-lg btn-block" %>
+					<%= link_to 'Edit Preferences',user_applicant_applicant_job_preferences_path(@applicant.user,@applicant),:class=>"btn btn-primary btn-lg btn-block"%>
+					<%= link_to 'Job Histories', user_applicant_applicant_job_histories_path(@applicant.user,@applicant),:class=>"btn btn-primary btn-lg btn-block"%>
+					<a href="#" class="btn btn-primary btn-lg btn-block">Education</a>
+				</ul>
+			</nav>	
+			<%end%>
+			<% content_for :right_bar do %>
+				<ul class="sidenav-ul">
+			          <li><a href="#" class="btn btn-warning">Prepare CV </a></li>
+			          <li><a href="#" class="btn btn-info">View my applied jobs </a></li>
+			          <li><a href="#" class="btn btn-success">Recommended jobs</a></li>
+			     </ul>
+			<%end%>
+		<%end%>

@@ -56,6 +56,7 @@
                   <th scope="col">End Date</th>
                 
                   <th scope="col">Location</th>
+                  <th scope="col">Delete</th>
                 </tr>
               </thead>
             
@@ -95,13 +96,35 @@
                   <td><%= jp.job_post_start_date%></td>
                   <td><%= jp.job_post_end_date%></td>
                   <td><%= jp.location_id %></td>
-        
+        			<td><%= link_to "Destroy",jp,:method=>:delete,:data=> { confirm: 'Are you sure?' }%></td>
                 <%end%>
               </tbody>
 
             </table>
             </article>          
-          </div> 
-          <% content_for :right_bar do%>
+          </div>
+          <%case current_user.role%>
+          <%when "company"%> 
+          	<% content_for :right_bar do%>
                  <%=unless @company.nil? then link_to 'Post a new Job', new_user_company_job_post_path({:user_id=>@company.user.id,:company_id=>@company.id}),:class=>'btn btn-warning' end%>
-		  <%end%>
+		  	<%end%>
+		  
+		  <%else%>
+			<% content_for :left_bar do %>
+			<nav>
+				<ul class="sidenav-ul">
+					<%= link_to 'Edit Profile', edit_user_applicant_path({:user_id=>@applicant.user,:id=>@applicant}),:class=>"btn btn-primary btn-lg btn-block" %>
+					<%= link_to 'Edit Preferences',user_applicant_applicant_job_preferences_path(@applicant.user,@applicant),:class=>"btn btn-primary btn-lg btn-block"%>
+					<%= link_to 'Job Histories', user_applicant_applicant_job_histories_path(@applicant.user,@applicant),:class=>"btn btn-primary btn-lg btn-block"%>
+					<a href="#" class="btn btn-primary btn-lg btn-block">Education</a>
+				</ul>
+			</nav>	
+			<%end%>
+			<% content_for :right_bar do %>
+				<ul class="sidenav-ul">
+			          <li><a href="#" class="btn btn-warning">Prepare CV </a></li>
+			          <li><a href="#" class="btn btn-info">View my applied jobs </a></li>
+			          <li><a href="#" class="btn btn-success">Recommended jobs</a></li>
+			     </ul>
+			<%end%>
+		<%end%>

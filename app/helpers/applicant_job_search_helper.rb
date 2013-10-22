@@ -1,0 +1,2 @@
+module ApplicantJobSearchHelper
+end

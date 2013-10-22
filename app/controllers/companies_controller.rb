@@ -1,8 +1,8 @@
 class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
-  load_and_authorize_resource :user
-  load_and_authorize_resource :company,:through=>:user,:singleton=>true
+  load_and_authorize_resource :user,:except=>[:show]
+  load_and_authorize_resource :company,:through=>:user,:singleton=>true,:except=>[:show]
    
   def index
     # @companies = Company.all
@@ -16,11 +16,19 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
-    
-    #@company = Company.find(params[:id])
+    @user=User.find(params[:user_id])
+    if @user.role=="applicant" then
+      @applicant=@user.applicant
+      layout="applicants"
+    else
+      layout="companies"      
+    end
+    @company = Company.find(params[:id])
     
     respond_to do |format|
-      format.html # show.html.erb
+      format.html do
+        render :action=>"show",:layout=>layout
+      end
       format.json { render json: @company }
     end
   end

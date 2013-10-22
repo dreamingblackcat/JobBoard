@@ -11,7 +11,8 @@ class Ability
 		  can [:new,:create],Applicant if user.applicant.nil?
 			can [:show,:update,:edit,:destroy],Applicant.where(:user_id=> user.id)
 			can [:show,:edit,:new,:destroy,:create,:update],ApplicantJobHistory,:applicant=>{:user_id=>user.id}
-			can [:show,:edit,:new,:destroy,:create,:update],ApplicantJobPreference,:applicant=>{:user_id=>user.id}  
+			can [:index,:show,:edit,:new,:destroy,:create,:update],ApplicantJobPreference,:applicant=>{:user_id=>user.id} 
+			can [:show],JobPost
 		elsif user.role=="company"then
 		  can :manage,User,:id=>user.id
 		  can [:new,:create],Company if user.company.nil?

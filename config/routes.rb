@@ -4,7 +4,7 @@ JobMatchBasic::Application.routes.draw do
   
 
   resources :categories
-  resources :applicant_job_preferences,{:only=>:index}
+  resources :applicant_job_preferences,{:only=>[:index,:destroy]}
 
   devise_for :users
   # resources :registrations
@@ -13,6 +13,7 @@ JobMatchBasic::Application.routes.draw do
     resources :applicants do
       resources :applicant_job_preferences
       resources :applicant_job_histories
+      resources :applicant_job_search
     end
     resources :companies do
       resources :job_posts
@@ -22,8 +23,9 @@ JobMatchBasic::Application.routes.draw do
     # resources :job_posts
   # end
   
-  resources :job_posts ,{:only=>["index","destroy"]}
   
+  resources :job_posts ,{:only=>["index","destroy","show"]}
+  resources :companies ,{:only=>["index","show"]}
   root :to=>'welcome#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.

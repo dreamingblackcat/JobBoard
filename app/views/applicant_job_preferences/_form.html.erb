@@ -31,6 +31,7 @@
     <%= f.label :location_id,{:class=>"label label-primary"} %><br />
     <%= f.select(:location_id, Location.all_for_select,:class=>"form-control") %>
   </div>
+  <%= f.hidden_field :applicant_id %>
   <div class="actions">
     <%= f.submit "Submit",:class=>"btn btn-primary"%>
   </div>
