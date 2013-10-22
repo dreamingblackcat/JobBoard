@@ -23,7 +23,7 @@ JobMatchBasic::Application.routes.draw do
     # resources :job_posts
   # end
   
-  
+  resources :applicant_job_search,{:only=>["index"]}
   resources :job_posts ,{:only=>["index","destroy","show"]}
   resources :companies ,{:only=>["index","show"]}
   root :to=>'welcome#index'

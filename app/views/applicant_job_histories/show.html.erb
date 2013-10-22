@@ -33,4 +33,6 @@
 
 
 <%= link_to 'Edit', edit_user_applicant_applicant_job_history_path(@applicant_job_history.applicant.user,@applicant_job_history.applicant,@applicant_job_history) %>| |
-<%= link_to "To My Profile",user_applicant_path({:user_id=>@applicant_job_history.applicant.user,:id=>@applicant_job_history.applicant})%> 
+<%= link_to "To My Profile",user_applicant_path({:user_id=>@applicant_job_history.applicant.user,:id=>@applicant_job_history.applicant})%>
+
+<%= render :partial=>"layouts/applicant_sidebars"%> 

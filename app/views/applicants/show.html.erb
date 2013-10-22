@@ -73,20 +73,4 @@
 |
 <%= link_to 'New Applicant job history', new_user_applicant_applicant_job_history_path(@applicant.user,@applicant) %>
 
-<% content_for :left_bar do %>
-	<nav>
-		<ul class="sidenav-ul">
-			<%= link_to 'Edit Profile', edit_user_applicant_path({:user_id=>@applicant.user,:id=>@applicant}),:class=>"btn btn-primary btn-lg btn-block" %>
-			<%= link_to 'Edit Preferences',user_applicant_applicant_job_preferences_path(@applicant.user,@applicant),:class=>"btn btn-primary btn-lg btn-block"%>
-			<%= link_to 'Job Histories', user_applicant_applicant_job_histories_path(@applicant.user,@applicant),:class=>"btn btn-primary btn-lg btn-block"%>
-			<a href="#" class="btn btn-primary btn-lg btn-block">Education</a>
-		</ul>
-	</nav>	
-<%end%>
-<% content_for :right_bar do %>
-	<ul class="sidenav-ul">
-          <li><a href="#" class="btn btn-warning">Prepare CV </a></li>
-          <li><a href="#" class="btn btn-info">View my applied jobs </a></li>
-          <li><a href="#" class="btn btn-success">Recommended jobs</a></li>
-     </ul>
-<%end%>
+<%= render :partial=>"layouts/applicant_sidebars"%>
