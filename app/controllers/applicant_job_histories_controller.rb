@@ -3,6 +3,8 @@ class ApplicantJobHistoriesController < ApplicationController
     load_and_authorize_resource :user
     load_and_authorize_resource :applicant,:through=>:user,:singleton=>true
     load_and_authorize_resource :applicant_job_history,:through=>:applicant
+    layout "applicants"
+    
   # GET /applicant_job_histories
   # GET /applicant_job_histories.json
   def index
