@@ -3,8 +3,8 @@ class ApplicantsController < ApplicationController
     load_and_authorize_resource :applicant,:through=>:user,:singleton=>true
   
 	def index
-    # @companies = Company.all
-
+    
+      @applicants=@applicants.paginate(:page=>params[:page],:per_page=>2)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @applicants }

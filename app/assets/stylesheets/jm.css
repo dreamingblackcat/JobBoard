@@ -234,3 +234,9 @@ td a:hover, td a:active {
 {
 	background-color: #62615E;
 }
+.pagination li a,.pagination li span
+{
+	//color:#084B5B;
+	background-color:#62615E;
+	font-size: 10pt;
+}

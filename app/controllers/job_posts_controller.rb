@@ -8,7 +8,7 @@ class JobPostsController < ApplicationController
   
   def index
     # @job_posts = JobPost.all
-
+      @job_posts=@job_posts.paginate(:page=>params[:page],:per_page=>2)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @job_posts }

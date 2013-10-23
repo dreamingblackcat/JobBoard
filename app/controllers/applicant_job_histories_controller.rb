@@ -9,7 +9,7 @@ class ApplicantJobHistoriesController < ApplicationController
   # GET /applicant_job_histories.json
   def index
     # @applicant_job_histories = ApplicantJobHistory.all
-
+      @applicant_job_histories=@applicant_job_histories.paginate(:page=>params[:page],:per_page=>2)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @applicant_job_histories }

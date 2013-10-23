@@ -7,7 +7,7 @@ class ApplicantJobPreferencesController < ApplicationController
   layout "applicants"
   def index
     # @applicant_job_preferences = ApplicantJobPreference.all
-
+      @applicant_job_preferences=@applicant_job_preferences.paginate(:page=>params[:page],:per_page=>2)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @applicant_job_preferences }

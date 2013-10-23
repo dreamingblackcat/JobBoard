@@ -34,7 +34,7 @@
 	</div>
 	
 <% end %>
-
+<%= will_paginate @job_posts, :renderer=> BootstrapPagination::Rails %>
 <%= render :partial=>"layouts/applicant_sidebars"%>
 
 

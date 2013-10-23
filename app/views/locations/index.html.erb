@@ -19,5 +19,5 @@
 </table>
 
 <br />
-
+<%= will_paginate @locations, :renderer=> BootstrapPagination::Rails %>
 <%= link_to 'New Location', new_location_path %>

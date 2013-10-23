@@ -33,5 +33,6 @@
 <hr/>
 
 <%end%>
+<%= will_paginate @applicant_job_histories, :renderer=> BootstrapPagination::Rails %>
 <%= link_to 'New', new_user_applicant_applicant_job_history_path(@user,@applicant) %>
 <%= render :partial=>"layouts/applicant_sidebars"%>

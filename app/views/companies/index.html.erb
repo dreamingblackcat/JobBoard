@@ -41,7 +41,7 @@
             <hr/><hr />
 <% end %>
 </article>
-
+<%= will_paginate @companies, :renderer=> BootstrapPagination::Rails %>
 <br />
 
 <%= link_to 'New Company', new_company_path %>

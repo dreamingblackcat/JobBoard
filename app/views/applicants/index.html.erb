@@ -42,6 +42,7 @@
     <td><%= link_to 'Destroy', applicant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
+<%= will_paginate @applicants, :renderer=> BootstrapPagination::Rails %>
 </table>
 
 <br />
