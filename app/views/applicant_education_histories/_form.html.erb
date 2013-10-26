@@ -1,0 +1,41 @@
+<%= form_for([@applicant_education_history.applicant.user,@applicant_education_history.applicant,@applicant_education_history]) do |f| %>
+  <% if @applicant_education_history.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@applicant_education_history.errors.count, "error") %> prohibited this applicant_education_history from being saved:</h2>
+
+      <ul>
+      <% @applicant_education_history.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :institute_name %><br />
+    <%= f.text_field :institute_name %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :diploma_degree_certificate %><br />
+    <%= f.text_field :diploma_degree_certificate %>
+  </div>
+  <div class="field">
+    <%= f.label :course_of_study %><br />
+    <%= f.text_area :course_of_study %>
+  </div>
+  <div class="field">
+    <%= f.label :certificate %><br/>
+    <%= f.file_field :certificate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <%= f.hidden_field :applicant_id%>
+  <div class="actions">
+    <%= f.submit "Submit",:class=>"btn btn-primary"%>
+  </div>
+<% end %>

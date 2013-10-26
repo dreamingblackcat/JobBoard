@@ -1,0 +1,29 @@
+<h1>Listing applicant_education_histories</h1>
+
+<table>
+  <tr>
+    <th>Institute name</th>
+    <th>Location</th>
+    <th>Diploma degree certificate</th>
+    <th>Course of study</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @applicant_education_histories.each do |applicant_education_history| %>
+  <tr>
+    <td><%= applicant_education_history.institute_name %></td>
+    <td><%= applicant_education_history.location %></td>
+    <td><%= applicant_education_history.diploma_degree_certificate %></td>
+    <td><%= applicant_education_history.course_of_study %></td>
+    <td><%= link_to 'Show', applicant_education_history %></td>
+    <td><%= link_to 'Edit', edit_applicant_education_history_path(applicant_education_history) %></td>
+    <td><%= link_to 'Destroy', applicant_education_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Applicant education history', new_applicant_education_history_path %>

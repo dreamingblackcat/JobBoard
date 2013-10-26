@@ -67,10 +67,7 @@
 <%= image_tag @applicant.photo.url(:thumb)%>
 
 
-<%= link_to 'Edit', edit_user_applicant_path({:user_id=>@applicant.user,:id=>@applicant}) %> |
+<%= link_to 'Edit', edit_user_applicant_path({:user_id=>@applicant.user,:id=>@applicant}) %> 
  
-<%= link_to 'New Applicant job preference', new_user_applicant_applicant_job_preference_path(@applicant.user,@applicant) %>
-|
-<%= link_to 'New Applicant job history', new_user_applicant_applicant_job_history_path(@applicant.user,@applicant) %>
 
 <%= render :partial=>"layouts/applicant_sidebars"%>

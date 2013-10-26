@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Institute name:</b>
+  <%= @applicant_education_history.institute_name %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @applicant_education_history.location %>
+</p>
+
+<p>
+  <b>Diploma degree certificate:</b>
+  <%= @applicant_education_history.diploma_degree_certificate %>
+</p>
+
+<p>
+  <b>Course of study:</b>
+  <%= @applicant_education_history.course_of_study %>
+</p>
+
+
+<%= link_to 'Edit', edit_applicant_education_history_path(@applicant_education_history) %> |
+<%= link_to 'Back', applicant_education_histories_path %>
