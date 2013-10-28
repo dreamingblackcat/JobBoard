@@ -19,7 +19,8 @@
   <b>Course of study:</b>
   <%= @applicant_education_history.course_of_study %>
 </p>
+<p><%=link_to "Download soft copy",user_applicant_applicant_education_history_path(:user_id=>@applicant_education_history.applicant.user.id,:applicant_id=>@applicant_education_history.applicant.id,:id=>@applicant_education_history.id,:format=>content_type_format(@applicant_education_history.certificate_content_type))%></p>
 
 
-<%= link_to 'Edit', edit_applicant_education_history_path(@applicant_education_history) %> |
-<%= link_to 'Back', applicant_education_histories_path %>
+<%= link_to 'Edit', edit_user_applicant_applicant_education_history_path(:applicant_id=>@applicant_education_history.applicant.id,:id=>@applicant_education_history.id) %> 
+<%= render :partial=>"layouts/applicant_sidebars"%>

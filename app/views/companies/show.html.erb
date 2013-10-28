@@ -63,32 +63,13 @@
               <!-- Table footer -->
             
               <tfoot>
-                    <tr>
-                          <td>THis is footer</td>
-                    
-                          <td>THis is footer</td>
-                    
-                          <td>
-                            <ul class="pagination">
-                              <li><a href="#">&laquo;</a></li>
-                              <li><a href="#">1</a></li>
-                              <li><a href="#">2</a></li>
-                              <li><a href="#">3</a></li>
-                              <li><a href="#">&raquo;</a></li>
-                            </ul>                           
-                          </td>
-                    
-                          <td>THis is footer</td>
-
-                          <td>THis is footer</td>
-                          <td>THis is footer</td>
-                    </tr>
+               <%= will_paginate @job_posts, :renderer=> BootstrapPagination::Rails %>
               </tfoot>
             
               <!-- Table body -->
             
               <tbody>
-              	<%@company.job_posts.each do |jp|%>
+              	<%@job_posts.each do |jp|%>
                 <tr>
                   <td><%= jp.job_type%></td>
                   <td><%= link_to "#{jp.job_post_title}",[@company.user,@company,jp]%></td>

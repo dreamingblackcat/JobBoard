@@ -4,8 +4,8 @@ JobMatchBasic::Application.routes.draw do
   
 
   resources :categories
-  resources :applicant_job_preferences,{:only=>[:index,:destroy]}
-
+  resources :applicant_job_preferences,{:only=>[:destroy]}
+  resources :applicant_education_histories,{:only=>[:destroy]}
   devise_for :users
   # resources :registrations
   # resources :sessions
@@ -14,6 +14,7 @@ JobMatchBasic::Application.routes.draw do
       resources :applicant_job_preferences
       resources :applicant_job_histories
       resources :applicant_job_search
+      resources :applicant_education_histories
     end
     resources :companies do
       resources :job_posts

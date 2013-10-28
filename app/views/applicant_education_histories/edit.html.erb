@@ -2,5 +2,6 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @applicant_education_history %> |
-<%= link_to 'Back', applicant_education_histories_path %>
+<%= link_to 'Show', [@applicant_education_history.applicant.user,@applicant_education_history.applicant,@applicant_education_history] %> |
+
+<%= render :partial=>"layouts/applicant_sidebars"%>

@@ -1,10 +1,10 @@
 <% content_for :left_bar do %>
 	<nav>
 		<ul class="sidenav-ul">
-			<%= link_to 'View Profile', user_applicant_path({:user_id=>@applicant.user,:id=>@applicant}),:class=>"btn btn-primary btn-lg btn-block" %>
-			<%= link_to 'Edit Preferences',user_applicant_applicant_job_preferences_path(@applicant.user,@applicant),:class=>"btn btn-primary btn-lg btn-block"%>
+			<%= link_to 'Profile', user_applicant_path({:user_id=>@applicant.user,:id=>@applicant}),:class=>"btn btn-primary btn-lg btn-block" %>
+			<%= link_to 'Preferences',user_applicant_applicant_job_preferences_path(@applicant.user,@applicant),:class=>"btn btn-primary btn-lg btn-block"%>
 			<%= link_to 'Job Histories', user_applicant_applicant_job_histories_path(@applicant.user,@applicant),:class=>"btn btn-primary btn-lg btn-block"%>
-			<a href="#" class="btn btn-primary btn-lg btn-block">Education</a>
+			<%= link_to 'Education Info',user_applicant_applicant_education_histories_path(@applicant.user,@applicant),:class=>"btn btn-primary btn-lg btn-block"%>
 		</ul>
 	</nav>	
 <%end%>

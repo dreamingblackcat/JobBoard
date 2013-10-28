@@ -1,8 +1,14 @@
 class ApplicantEducationHistoriesController < ApplicationController
+    
+  load_and_authorize_resource :user,:except=>[:show,:destroy]
+  load_and_authorize_resource :applicant,:through=>:user,:singleton=>true,:except=>[:show,:destroy]
+  load_and_authorize_resource :applicant_education_history,:through=>:applicant,:except=>[:show,:destroy]
+  layout "applicants"
+    
   # GET /applicant_education_histories
   # GET /applicant_education_histories.json
   def index
-    @applicant_education_histories = ApplicantEducationHistory.all
+    #@applicant_education_histories = ApplicantEducationHistory.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,10 +19,16 @@ class ApplicantEducationHistoriesController < ApplicationController
   # GET /applicant_education_histories/1
   # GET /applicant_education_histories/1.json
   def show
+    @user=User.find(params[:user_id])
+    @applicant = Applicant.find(params[:applicant_id])
     @applicant_education_history = ApplicantEducationHistory.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
+      format.pdf {certificates(@applicant_education_history)}
+      format.jpg {certificates(@applicant_education_history)}
+      format.csv {certificates(@applicant_education_history)}
+      format.jpeg {certificates(@applicant_education_history)}
       format.json { render json: @applicant_education_history }
     end
   end
@@ -24,7 +36,7 @@ class ApplicantEducationHistoriesController < ApplicationController
   # GET /applicant_education_histories/new
   # GET /applicant_education_histories/new.json
   def new
-    @applicant_education_history = ApplicantEducationHistory.new(:applicant_id=>params[:applicant_id])
+    #@applicant_education_history = ApplicantEducationHistory.new(:applicant_id=>params[:applicant_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +46,13 @@ class ApplicantEducationHistoriesController < ApplicationController
 
   # GET /applicant_education_histories/1/edit
   def edit
-    @applicant_education_history = ApplicantEducationHistory.find(params[:id])
+    #@applicant_education_history = ApplicantEducationHistory.find(params[:id])
   end
 
   # POST /applicant_education_histories
   # POST /applicant_education_histories.json
   def create
-    @applicant_education_history = ApplicantEducationHistory.new(params[:applicant_education_history])
+    #@applicant_education_history = ApplicantEducationHistory.new(params[:applicant_education_history])
 
     respond_to do |format|
       if @applicant_education_history.save
@@ -56,7 +68,7 @@ class ApplicantEducationHistoriesController < ApplicationController
   # PUT /applicant_education_histories/1
   # PUT /applicant_education_histories/1.json
   def update
-    @applicant_education_history = ApplicantEducationHistory.find(params[:id])
+    #@applicant_education_history = ApplicantEducationHistory.find(params[:id])
 
     respond_to do |format|
       if @applicant_education_history.update_attributes(params[:applicant_education_history])
@@ -79,5 +91,9 @@ class ApplicantEducationHistoriesController < ApplicationController
       format.html { redirect_to applicant_education_histories_url }
       format.json { head :no_content }
     end
+  end
+  private
+  def certificates aeh
+    send_file aeh.certificate.path,:type=>aeh.certificate_content_type
   end
 end

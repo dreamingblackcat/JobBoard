@@ -17,6 +17,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @user=User.find(params[:user_id])
+    
     if @user.role=="applicant" then
       @applicant=@user.applicant
       layout="applicants"
@@ -24,7 +25,7 @@ class CompaniesController < ApplicationController
       layout="companies"      
     end
     @company = Company.find(params[:id])
-    
+    @job_posts=@company.job_posts.paginate(:page=>params[:page],:per_page=>2)
     respond_to do |format|
       format.html do
         render :action=>"show",:layout=>layout
