@@ -10,7 +10,11 @@
 <%end%>
 <% content_for :right_bar do %>
 	<ul class="sidenav-ul">
-          <li><a href="#" class="btn btn-warning">Prepare CV </a></li>
+		<% if @applicant.resume.nil? then%>
+			<%= link_to "Publish CV",new_user_applicant_resume_path(@applicant.user,@applicant,@applicant.resume),:class=>"btn btn-warning"%>
+        <%else%>  
+          <li><%= link_to "View CV",user_applicant_resume_path(@applicant.user,@applicant,@applicant.resume),:class=>"btn btn-warning"%></li>
+        <%end%> 
           <li><a href="#" class="btn btn-info">View my applied jobs </a></li>
           <li><a href="#" class="btn btn-success">Recommended jobs</a></li>
      </ul>

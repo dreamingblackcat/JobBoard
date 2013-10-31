@@ -1,0 +1,16 @@
+<%= content_for :left_bar do%>
+	<nav>
+          <ul class="sidenav-ul">
+            <li><%= link_to "Profile",[@company.user,@company], :class=>"btn btn-primary btn-lg btn-block" %></li>
+            <li><a href="#" class="btn btn-primary btn-lg btn-block">Search Job</a></li>
+          </ul>
+     </nav>	
+<%end%>
+
+<%= content_for :right_bar do%>
+	<ul class="sidenav-ul">
+	  <li></li>
+	  <li><a href="#" class="btn btn-info">My Jobs</a></li>
+	</ul>
+
+<%end%>

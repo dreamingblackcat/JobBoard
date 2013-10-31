@@ -15,6 +15,7 @@ JobMatchBasic::Application.routes.draw do
       resources :applicant_job_histories
       resources :applicant_job_search
       resources :applicant_education_histories
+      resources :resumes
     end
     resources :companies do
       resources :job_posts

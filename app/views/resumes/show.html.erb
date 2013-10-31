@@ -1,0 +1,130 @@
+<h1>CV of <%=@resume.applicant.applicant_name%></h1>
+<h2>Personal Information:</h2>
+
+	<p>
+  <b>Applicant name:</b>
+  <%= @resume.applicant.applicant_name %>
+</p>
+
+<p>
+  <b>Applicant nrc:</b>
+  <%= @resume.applicant.applicant_nrc %>
+</p>
+
+
+
+<p>
+  <b>Applicant contact email:</b>
+  <%= @resume.applicant.applicant_contact_email %>
+</p>
+
+<p>
+  <b>Applicant gender:</b>
+  <%= @resume.applicant.applicant_gender %>
+</p>
+
+<p>
+  <b>Applicant marital status:</b>
+
+  <%= @resume.applicant.applicant_marital_status %>
+
+</p>
+
+<p>
+  <b>Applicant dob:</b>
+  <%= @resume.applicant.applicant_dob %>
+</p>
+
+<p>
+  <b>Applicant address:</b>
+  <%= @resume.applicant.applicant_address %>
+</p>
+
+<p>
+  <b>Applicant phone number:</b>
+  <%= @resume.applicant.applicant_phone_number %>
+</p>
+
+<p>
+  <b>Applicant language:</b>
+  <%= @resume.applicant.applicant_language %>
+</p>
+
+<p>
+  <b>Applicant skills:</b>
+  <%= @resume.applicant.applicant_skills %>
+</p>
+
+<p>
+  <b>Applicant description:</b>
+  <%= @resume.applicant.applicant_description %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @resume.applicant.user_id %>
+</p>
+
+<%= image_tag @resume.applicant.photo.url(:thumb)%>
+
+
+<h2>Previous jobs:</h2>
+<%@resume.applicant.applicant_job_histories.each do |ajh|%>
+	<p>
+  <b>Company name:</b>
+  <%= ajh.company_name %>
+</p>
+
+<p>
+  <b>Job title:</b>
+  <%= ajh.job_title %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= ajh.address %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= ajh.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= ajh.end_date %>
+</p>
+
+<p>
+  <b>Reason:</b>
+  <%= ajh.reason %>
+</p>
+<hr/>
+<%end%>
+
+<h2>Education info:</h2>
+<%@resume.applicant.applicant_education_histories.each do|aeh|%>
+	<p>
+  <b>Institute name:</b>
+  <%= aeh.institute_name %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= aeh.location %>
+</p>
+
+<p>
+  <b>Diploma degree certificate:</b>
+  <%= aeh.diploma_degree_certificate %>
+</p>
+
+<p>
+  <b>Course of study:</b>
+  <%= aeh.course_of_study %>
+</p>
+
+<hr/>
+<%end%>	
+<%= link_to "Download CV",user_applicant_resume_path(@resume.applicant.user,@resume.applicant,@resume,:format=>"pdf"),:class=>"btn btn-primary"%>
+<%= render :partial=>"layouts/applicant_sidebars"%>
