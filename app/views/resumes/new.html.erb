@@ -1,40 +1,44 @@
-<h1>You haven't published your resume yet!</h1>
+<h1>Your Resume will contain you personal info plus the follwing data!</h1>
 <h2>Your previous jobs</h2>
-<%@resume.applicant.applicant_job_histories.each do |ajh|%>
+<%if @resume.applicant.applicant_job_histories.nil? then "You Don't Have any previous job history!"%>
+ <div class='text-info'>You Don't Have any previous job history yet!</div>
+<%else @resume.applicant.applicant_job_histories.each do |ajh|%>
+		<p>
+	  <b>Company name:</b>
+	  <%= ajh.company_name %>
+	</p>
+	
 	<p>
-  <b>Company name:</b>
-  <%= ajh.company_name %>
-</p>
-
-<p>
-  <b>Job title:</b>
-  <%= ajh.job_title %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= ajh.address %>
-</p>
-
-<p>
-  <b>Start date:</b>
-  <%= ajh.start_date %>
-</p>
-
-<p>
-  <b>End date:</b>
-  <%= ajh.end_date %>
-</p>
-
-<p>
-  <b>Reason:</b>
-  <%= ajh.reason %>
-</p>
-
+	  <b>Job title:</b>
+	  <%= ajh.job_title %>
+	</p>
+	
+	<p>
+	  <b>Address:</b>
+	  <%= ajh.address %>
+	</p>
+	
+	<p>
+	  <b>Start date:</b>
+	  <%= ajh.start_date %>
+	</p>
+	
+	<p>
+	  <b>End date:</b>
+	  <%= ajh.end_date %>
+	</p>
+	
+	<p>
+	  <b>Reason:</b>
+	  <%= ajh.reason %>
+	</p>
+	
+	<%end%>
 <%end%>
-
 <h2>Your Education info</h2>
-<%@resume.applicant.applicant_education_histories.each do|aeh|%>
+<%if @resume.applicant.applicant_education_histories.nil? then%>
+ <div class='text-info'>You Don't Have any education  history yet!</div>
+<% else @resume.applicant.applicant_education_histories.each do|aeh|%>
 	<p>
   <b>Institute name:</b>
   <%= aeh.institute_name %>
@@ -56,7 +60,7 @@
 </p>
 <p><%=link_to "Download soft copy",user_applicant_applicant_education_history_path(:user_id=>aeh.applicant.user.id,:applicant_id=>aeh.applicant.id,:id=>aeh.id,:format=>content_type_format(aeh.certificate_content_type))%></p>
 <%end%>	
-
+<%end%>
 <%= link_to "Publish",user_applicant_resumes_path(@resume.applicant.user,@resume.applicant),:method=>:post%>
 
 <%= render :partial=>"layouts/applicant_sidebars"%>

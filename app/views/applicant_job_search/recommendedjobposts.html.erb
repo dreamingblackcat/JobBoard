@@ -1,0 +1,44 @@
+<h1>Recommended job_posts</h1>
+
+<p id="notice" class="form-error"><%= notice %></p>
+<%@applicant_job_preferences.each do|ajp|%>
+<% JobPost.recommend(ajp).each do |job_post| %>
+	<div class="row">
+		<div class="col-md-3">
+			<%=job_post.job_type.upcase%>
+		</div>
+		<div class="col-md-9">
+			<div class="row">
+				<div class="col-md-12">
+					<h1><%= job_post.category.name%></h1>
+					<%= link_to"#{job_post.job_post_title}",[current_user,job_post.company,job_post]%>
+				</div>	
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-md-offset-2">
+					<%=job_post.job_post_start_date%>
+				</div>
+				<div class="col-md-4 col-md-offset-2">
+					<%=job_post.job_post_end_date%>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<%= job_post.job_post_requirement.truncate(300)%>
+				</div>	
+			</div>	
+			<div class="row">
+				<div class="col-md-12">
+					<%= job_post.location.name%>
+					<%= apply_job_link(@applicant,job_post)%>
+				</div>	
+			</div>	
+		</div>
+	</div>
+	
+<% end %>
+<%end%>
+
+<%= render :partial=>"layouts/applicant_sidebars"%>
+
+

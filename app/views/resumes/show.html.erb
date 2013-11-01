@@ -68,63 +68,69 @@
 <%= image_tag @resume.applicant.photo.url(:thumb)%>
 
 
-<h2>Previous jobs:</h2>
-<%@resume.applicant.applicant_job_histories.each do |ajh|%>
+<h2>Your previous jobs</h2>
+<%if @resume.applicant.applicant_job_histories.count===0 then%>
+ <div class='text-info'>You Don't Have any previous job history yet!</div>
+<%else @resume.applicant.applicant_job_histories.each do |ajh|%>
+		<p>
+	  <b>Company name:</b>
+	  <%= ajh.company_name %>
+	</p>
+	
 	<p>
-  <b>Company name:</b>
-  <%= ajh.company_name %>
-</p>
-
-<p>
-  <b>Job title:</b>
-  <%= ajh.job_title %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= ajh.address %>
-</p>
-
-<p>
-  <b>Start date:</b>
-  <%= ajh.start_date %>
-</p>
-
-<p>
-  <b>End date:</b>
-  <%= ajh.end_date %>
-</p>
-
-<p>
-  <b>Reason:</b>
-  <%= ajh.reason %>
-</p>
-<hr/>
+	  <b>Job title:</b>
+	  <%= ajh.job_title %>
+	</p>
+	
+	<p>
+	  <b>Address:</b>
+	  <%= ajh.address %>
+	</p>
+	
+	<p>
+	  <b>Start date:</b>
+	  <%= ajh.start_date %>
+	</p>
+	
+	<p>
+	  <b>End date:</b>
+	  <%= ajh.end_date %>
+	</p>
+	
+	<p>
+	  <b>Reason:</b>
+	  <%= ajh.reason %>
+	</p>
+	
+	<%end%>
 <%end%>
+<h2>Your Education info</h2>
+<%if @resume.applicant.applicant_education_histories.count===0 %>
+ <div class='text-info'>You Don't Have any education  history yet!</div>
+ <%else%>
 
-<h2>Education info:</h2>
-<%@resume.applicant.applicant_education_histories.each do|aeh|%>
+<%  @resume.applicant.applicant_education_histories.each do|aeh|%>
+		<p>
+	  <b>Institute name:</b>
+	  <%= aeh.institute_name %>
+	</p>
+	
 	<p>
-  <b>Institute name:</b>
-  <%= aeh.institute_name %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= aeh.location %>
-</p>
-
-<p>
-  <b>Diploma degree certificate:</b>
-  <%= aeh.diploma_degree_certificate %>
-</p>
-
-<p>
-  <b>Course of study:</b>
-  <%= aeh.course_of_study %>
-</p>
-
-<hr/>
-<%end%>	
+	  <b>Location:</b>
+	  <%= aeh.location %>
+	</p>
+	
+	<p>
+	  <b>Diploma degree certificate:</b>
+	  <%= aeh.diploma_degree_certificate %>
+	</p>
+	
+	<p>
+	  <b>Course of study:</b>
+	  <%= aeh.course_of_study %>
+	</p>
+	<p><%=link_to "Download soft copy",user_applicant_applicant_education_history_path(:user_id=>aeh.applicant.user.id,:applicant_id=>aeh.applicant.id,:id=>aeh.id,:format=>content_type_format(aeh.certificate_content_type))%></p>
+	<%end%>	
+<%end%>
 <%= link_to "Download CV",user_applicant_resume_path(@resume.applicant.user,@resume.applicant,@resume,:format=>"pdf"),:class=>"btn btn-primary"%>
 <%= render :partial=>"layouts/applicant_sidebars"%>

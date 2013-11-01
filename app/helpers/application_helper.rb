@@ -23,5 +23,18 @@ module ApplicationHelper
 	   end
 	   format.to_sym
 	  end
-	
+  	def apply_job_link(applicant,job_post)
+      
+      already=false
+      applicant.job_posts.each do |jp|
+        if jp==job_post then 
+          already=true
+        end
+      end
+      unless already then
+        link_to 'Apply Job', user_applicant_apply_jobs_path({:user_id=>@applicant.user,:applicant_id=>@applicant,:job_post_id=>job_post.id}),:method=>:post
+      else
+        " <div class='text-warning'>Applied</div> ".html_safe
+      end
+     end
 end
