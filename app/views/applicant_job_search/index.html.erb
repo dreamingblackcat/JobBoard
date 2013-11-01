@@ -1,5 +1,5 @@
 <h1>Listing job_posts</h1>
-
+<p id="notice" class="form-error"><%= notice %></p>
 <% @job_posts.each do |job_post| %>
 	<div class="row">
 		<div class="col-md-3">
@@ -28,6 +28,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<%= job_post.location.name%>
+					<%= apply_job_link(@applicant,job_post)%>
 				</div>	
 			</div>	
 		</div>

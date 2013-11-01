@@ -13,14 +13,20 @@ JobMatchBasic::Application.routes.draw do
     resources :applicants do
       resources :applicant_job_preferences
       resources :applicant_job_histories
-      resources :applicant_job_search
       resources :applicant_education_histories
+      resources :apply_jobs
       resources :resumes
+      resources :applicant_job_search do
+        collection do
+          get 'recommendedjobposts'
+        end
+      end  
     end
     resources :companies do
       resources :job_posts
     end
   end
+
   # resources :companies do
     # resources :job_posts
   # end

@@ -15,7 +15,7 @@
         <%else%>  
           <li><%= link_to "View CV",user_applicant_resume_path(@applicant.user,@applicant,@applicant.resume),:class=>"btn btn-warning"%></li>
         <%end%> 
-          <li><a href="#" class="btn btn-info">View my applied jobs </a></li>
-          <li><a href="#" class="btn btn-success">Recommended jobs</a></li>
+          <li><%= link_to "view Applied Jobs",user_applicant_apply_jobs_path(:user_id=>@applicant.user,:applicant_id=>@applicant),:class=>"btn btn-info"%></li>
+          <li><%= link_to 'Recommended jobs',url_for(:controller=>"applicant_job_search",:action=>"recommendedjobposts",:applicant_id=>@applicant.id,:user_id=>@applicant.user.id),:class=>"btn btn-success"%></li>
      </ul>
 <%end%>
