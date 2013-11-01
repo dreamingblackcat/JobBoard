@@ -15,6 +15,7 @@ class Ability
 			can [:index,:show,:edit,:new,:destroy,:create,:update],ApplicantEducationHistory,:applicant=>{:user_id=>user.id}
 			can [:show],JobPost
 			can [:index,:show,:edit,:new,:destroy,:create,:update],Resume,:applicant=>{:user_id=>user.id}
+			
 		elsif user.role=="company"then
 		  can :manage,User,:id=>user.id
 		  can [:new,:create],Company if user.company.nil?

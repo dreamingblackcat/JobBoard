@@ -1,5 +1,6 @@
 class ApplyJobsController < ApplicationController
-
+  load_and_authorize_resource :user
+  load_and_authorize_resource :applicant,:through=>:user,:singleton=>true
   
   layout "applicants"
   

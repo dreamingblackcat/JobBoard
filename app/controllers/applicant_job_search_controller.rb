@@ -1,6 +1,6 @@
 class ApplicantJobSearchController < ApplicationController
-  #load_and_authorize_resource :user
-  #load_and_authorize_resource :applicant,:through=>:user,:singleton=>true
+  load_and_authorize_resource :user
+  load_and_authorize_resource :applicant,:through=>:user,:singleton=>true
   layout "applicants"
   def index
     @user=current_user    
