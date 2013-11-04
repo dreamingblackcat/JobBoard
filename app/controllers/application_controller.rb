@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
         ([resource,resource.applicant])
         end 
      else
-      root_url
+      user_admin_path(resource,resource.admin)
     end
   end
  

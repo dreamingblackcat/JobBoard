@@ -37,4 +37,16 @@ module ApplicationHelper
         " <div class='text-warning'>Applied</div> ".html_safe
       end
      end
+     
+     def sidebar_chooser(current_user)
+        case current_user.role
+            when "company" 
+              render :partial=>"layouts/company_sidebars"
+            when "admin"
+             render :partial=>"layouts/admin_sidebars"
+            else
+              render :partial=>"layouts/applicant_sidebars"
+         end
+     end
+   
 end

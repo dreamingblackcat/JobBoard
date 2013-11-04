@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   has_one :applicant
   has_one :company
+  has_one :admin
 
 
 

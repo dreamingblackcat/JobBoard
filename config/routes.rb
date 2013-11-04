@@ -25,6 +25,7 @@ JobMatchBasic::Application.routes.draw do
     resources :companies do
       resources :job_posts
     end
+    resources :admin
   end
 
   # resources :companies do
@@ -33,7 +34,7 @@ JobMatchBasic::Application.routes.draw do
   
   resources :applicant_job_search,{:only=>["index"]}
   resources :job_posts ,{:only=>["index","destroy","show"]}
-  resources :companies ,{:only=>["index","show"]}
+  #resources :companies ,{:only=>["index","show"]}
   root :to=>'welcome#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.

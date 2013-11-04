@@ -22,7 +22,13 @@ class Ability
 		  can [:show,:new,:create,:update,:edit,:destroy],Company.where(:user_id=> user.id)
 		  can [:show,:new,:create,:update,:edit,:destroy],JobPost,:company=>{:user_id=>user.id}
 		  can [:read],Applicant
-		  can [:show,:index],Resume	
+		  can [:show,:index],Resume
+		else
+		  can :manage,User
+		  can [:show],Admin
+		  can [:manage],Category
+		  can [:index],Applicant
+		  can [:index,:destroy],Company	
 		end
 	end
 end

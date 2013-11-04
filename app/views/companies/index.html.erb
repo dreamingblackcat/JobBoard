@@ -7,7 +7,7 @@
 <header class="row">
               <div class="col-md-8">
               	<p id="notice" class="form-error"><%= notice %></p>
-                <h1 class="company-name"><%= company.com_name %></h1>
+                <h1 class="company-name"><%= link_to company.com_name,user_company_path(current_user,company) %></h1>
                 <div class="company-logoname">
                   <%= company.com_logo_name %>
                 </div>
@@ -36,7 +36,7 @@
                   <%= company.com_address %>
                 </div>
               </section>
-              <%= link_to 'Edit', edit_company_path(company) %>
+              <%= if can? :destroy,company then link_to 'Destroy', user_company_path(:user_id=>company.user_id,:id=>company.id,:method=>:delete) end%>
             </article>
             <hr/><hr />
 <% end %>
@@ -44,6 +44,5 @@
 <%= will_paginate @companies, :renderer=> BootstrapPagination::Rails %>
 <br />
 
-<%= link_to 'New Company', new_company_path %>
 
-<%= render :partial=>"layouts/company_sidebars"%>
+<%= render :partial=>"layouts/admin_sidebars"%>

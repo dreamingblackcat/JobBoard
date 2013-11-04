@@ -11,9 +11,11 @@
 <% @categories.each do |category| %>
   <tr>
     <td><%= category.name %></td>
+    <%if can? :manage,Category%>
     <td><%= link_to 'Show', category %></td>
     <td><%= link_to 'Edit', edit_category_path(category) %></td>
     <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <%end%>
   </tr>
 <% end %>
 </table>
@@ -21,3 +23,8 @@
 <br />
 <%= will_paginate @categories, :renderer=> BootstrapPagination::Rails %>
 <%= link_to 'New Category', new_category_path %>
+
+<%if current_user.role=="admin" then%>
+<%= render :partial=>"layouts/admin_sidebars"%>
+<%end%>
+

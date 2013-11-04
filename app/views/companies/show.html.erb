@@ -33,7 +33,7 @@
                   <%= @company.com_address %>
                 </div>
               </section>
-              <%= link_to 'Edit', edit_user_company_path(@company.user,@company) %>
+              	<%= if can? :edit,@company then link_to 'Edit', edit_user_company_path(@company.user,@company) end%>
             </article>
             <hr/>
             <hr />
@@ -72,22 +72,16 @@
               	<%@job_posts.each do |jp|%>
                 <tr>
                   <td><%= jp.job_type%></td>
-                  <td><%= link_to "#{jp.job_post_title}",[@company.user,@company,jp]%></td>
-                  <td><%= link_to "#{jp.company.com_name}",[@company.user,@company]%></td>
+                  <td><%= link_to "#{jp.job_post_title}",[current_user,@company,jp]%></td>
+                  <td><%= link_to "#{jp.company.com_name}",[current_user,@company]%></td>
                   <td><%= jp.job_post_start_date%></td>
                   <td><%= jp.job_post_end_date%></td>
                   <td><%= jp.location_id %></td>
-        			<td><%= link_to "Destroy",jp,:method=>:delete,:data=> { confirm: 'Are you sure?' }%></td>
+        			<td><%= if can? :destroy,jp then link_to "Destroy",jp,:method=>:delete,:data=> { confirm: 'Are you sure?' } end%></td>
                 <%end%>
               </tbody>
 
             </table>
             </article>          
           </div>
-          <%case current_user.role%>
-          <%when "company"%> 
-          	<%= render :partial=>"layouts/company_sidebars"%>
-		  
-		  <%else%>
-			<%= render :partial=>"layouts/applicant_sidebars"%>
-		<%end%>
+          <%=sidebar_chooser(current_user)%>
