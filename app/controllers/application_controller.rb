@@ -23,5 +23,18 @@ class ApplicationController < ActionController::Base
       user_admin_path(resource,resource.admin)
     end
   end
+  # this is layout chooser helper method for actions associated with multiple users
+  def layout_chooser(current_user)
+    if current_user.role=="applicant" then
+      @applicant=current_user.applicant
+      layout="applicants"
+    elsif current_user.role=="company" then
+      @company=current_user.company
+      layout="companies"
+    else
+      layout="admin"      
+    end
+    layout
+  end
  
 end

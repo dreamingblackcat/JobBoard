@@ -28,7 +28,8 @@ class Ability
 		  can [:show],Admin
 		  can [:manage],Category
 		  can [:index],Applicant
-		  can [:index,:destroy],Company	
+		  can [:index,:destroy,:show],Company
+		  can [:index],JobPost	
 		end
 	end
 end

@@ -1,12 +1,15 @@
 class ApplicantsController < ApplicationController
     load_and_authorize_resource :user
-    load_and_authorize_resource :applicant,:through=>:user,:singleton=>true
+    load_and_authorize_resource :applicant,:through=>:user,:singleton=>true,:except=>[:index]
   
 	def index
     
-      @applicants=@applicants.paginate(:page=>params[:page],:per_page=>2)
+      layout=layout_chooser(@user)
+      @applicants=Applicant.paginate(:page=>params[:page],:per_page=>2)
     respond_to do |format|
-      format.html # index.html.erb
+      format.html do
+        render :action=>"index",:layout=>layout
+      end
       format.json { render json: @applicants }
     end
   end

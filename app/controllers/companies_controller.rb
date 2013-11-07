@@ -5,11 +5,12 @@ class CompaniesController < ApplicationController
   load_and_authorize_resource :company,:through=>:user,:singleton=>true,:except=>[:show,:index]
    
   def index
-      
-      @admin=@user.admin
+     layout=layout_chooser(@user)
       @companies=Company.paginate(:page=>params[:page],:per_page=>2)
     respond_to do |format|
-      format.html # index.html.erb
+      format.html do
+        render :action=>"index",:layout=>layout
+      end
       format.json { render json: @companies }
     end
   end
@@ -18,16 +19,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @user=User.find(params[:user_id])
-    
-    if @user.role=="applicant" then
-      @applicant=@user.applicant
-      layout="applicants"
-    elsif @user.role=="company" then
-      layout="companies"
-    else
-      layout="admin"      
-    end
-    @admin= @user.admin
+    layout=layout_chooser(@user)
     @company = Company.find(params[:id])
     @job_posts=@company.job_posts.paginate(:page=>params[:page],:per_page=>2)
     respond_to do |format|

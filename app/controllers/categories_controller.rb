@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  load_and_authorize_resource :user
+  load_and_authorize_resource :user,:except=>[:new]
   layout "admin"
   # GET /categories
   # GET /categories.json
@@ -27,7 +27,6 @@ class CategoriesController < ApplicationController
   # GET /categories/new.json
   def new
     @category = Category.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @category }
@@ -46,7 +45,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
+        format.html { redirect_to category_path(@category,:user_id=>@user.id), notice: 'Category was successfully created.' }
         format.json { render json: @category, status: :created, location: @category }
       else
         format.html { render action: "new" }
@@ -62,7 +61,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
+        format.html { redirect_to category_path(@category,:user_id=>@user.id), notice: 'Category was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -78,7 +77,7 @@ class CategoriesController < ApplicationController
     @category.destroy
 
     respond_to do |format|
-      format.html { redirect_to categories_url }
+      format.html { redirect_to :action=>"index" }
       format.json { head :no_content }
     end
   end

@@ -32,12 +32,12 @@
                 <div class="row">
                   <div class="col-md-6 margin5">
                   <%Category.all_for_navigation.first.each do |a|%>
-                   <li><%= link_to "#{a.name}",job_posts_path(:category=>a.name)%></li>
+                   <li><%= link_to "#{a.name}",user_job_posts_path(:user_id=>current_user,:category=>a.name)%></li>
             		<%end%>
                   </div>
                   <div class="col-md-6">
                      <%Category.all_for_navigation.second.each do |a|%> 
-                   		<li><%= link_to "#{a.name}",job_posts_path(:category=>a.name)%></li>
+                   		<li><%= link_to "#{a.name}",user_job_posts_path(:user_id=>current_user,:category=>a.name)%></li>
             		<%end%>
                     
                   </div>

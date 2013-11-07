@@ -8,7 +8,9 @@ class Applicant < ActiveRecord::Base
   has_one :resume
   has_many :applicant_job_posts
   has_many :job_posts,:through=>:applicant_job_posts
-  attr_accessible :applicant_address, :applicant_contact_email, :applicant_description, :applicant_dob, :applicant_gender, :applicant_language, :applicant_marital_status, :applicant_name, :applicant_nrc, :applicant_phone_number, :applicant_skills, :applicant_url, :user_id, :photo 
+  attr_accessible :applicant_address, :applicant_contact_email, :applicant_description, :applicant_dob, :applicant_gender,
+                  :applicant_language, :applicant_marital_status, :applicant_name, :applicant_nrc, :applicant_phone_number, 
+                  :applicant_skills,:user_id, :photo 
   
   has_attached_file :photo, :styles => { :medium => "300x300", :thumb => "100x100" }
   
