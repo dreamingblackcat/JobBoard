@@ -25,6 +25,7 @@ class ApplicationController < ActionController::Base
   end
   # this is layout chooser helper method for actions associated with multiple users
   def layout_chooser(current_user)
+   unless current_user.nil?
     if current_user.role=="applicant" then
       @applicant=current_user.applicant
       layout="applicants"
@@ -34,7 +35,19 @@ class ApplicationController < ActionController::Base
     else
       layout="admin"      
     end
-    layout
+    
+   else
+    layout="welcome"
+   end
+   layout
   end
  
+  def check_for_guest
+    if(params[:user_id]) then 
+      @user=User.find(params[:user_id])
+    else
+      @user=nil
+    end
+    @user
+  end
 end

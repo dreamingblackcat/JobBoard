@@ -1,0 +1,19 @@
+
+<h3>Applicant List</h3>
+
+<%@company.job_posts.each do |jp|%>
+
+	<%= jp.job_post_title %>
+	<br />
+	<%unless jp.applicants.nil? then %>
+		<% jp.applicants.each do |a|%>
+			<%= link_to "#{a.applicant_name}",user_applicant_path(current_user,a) %><br />
+		<%end%>
+	<% else %>
+	 	<%= puts 'no applicant'%>
+	<%end%>
+	<hr />
+
+<%end%>
+
+<%= sidebar_chooser(current_user)%>

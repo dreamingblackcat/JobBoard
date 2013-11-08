@@ -14,7 +14,36 @@ class Applicant < ActiveRecord::Base
   
   has_attached_file :photo, :styles => { :medium => "300x300", :thumb => "100x100" }
   
+  #validations
+  validates :applicant_address,:presence=>true
+  validates :applicant_contact_email,:uniqueness => { :case_sensitive => false }
+  validate :applicant_dob_validator
+  validates :applicant_gender,:presence=>true
+  validates :applicant_marital_status,:presence=>true
+  validates :applicant_name,:presence=>true
+  validates :applicant_nrc,:presence=>true
+  validate :applicant_nrc_validator
+  validate :email_format_validator
   
+   #validates_format_of :email, :with => /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i
+
+  def applicant_dob_validator
+    if(applicant_dob.year>(Date.today.year-16))
+      errors.add("Birthday","must be at least 16 years less than today!")
+    end
+  end
+  
+  def email_format_validator
+    if(applicant_contact_email !~ /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i)#/[a-z]+[a-z0-9]*@[a-z]+[a-z0-9]\.[a-z0-9]+/)
+      errors.add("Contact Email","must be a valid email format")
+    end
+  end
+  
+  def applicant_nrc_validator
+    if applicant_nrc !~ /[1-14]{1}\/[A-Za-z]{6,9}\((naing|n|ng){1}\)[0-9]{6}/
+      errors.add("Nrc number","is not in correct format")
+    end
+  end
   
   # def load_photo_file=(data)
      # # Record the filename

@@ -72,8 +72,8 @@
               	<%@job_posts.each do |jp|%>
                 <tr>
                   <td><%= jp.job_type%></td>
-                  <td><%= link_to "#{jp.job_post_title}",[current_user,@company,jp]%></td>
-                  <td><%= link_to "#{jp.company.com_name}",[current_user,@company]%></td>
+                  <td><%= show_path_for_job_post(current_user,jp)%></td>
+                  <td><%= jp.company.com_name %></td>
                   <td><%= jp.job_post_start_date%></td>
                   <td><%= jp.job_post_end_date%></td>
                   <td><%= jp.location_id %></td>

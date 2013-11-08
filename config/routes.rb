@@ -1,8 +1,10 @@
 JobMatchBasic::Application.routes.draw do
 
   resources :locations
-  
-  resources :job_posts,{:only=>[:index,:show]}
+  resources :job_post_search
+  #public route for guest users
+  resources :job_posts,{:only=>[:show]}
+  resources :companies,{:only=>[:show]}
   resources :categories 
   resources :applicant_job_preferences,{:only=>[:destroy]}
   resources :applicant_education_histories,{:only=>[:destroy]}
@@ -25,6 +27,7 @@ JobMatchBasic::Application.routes.draw do
     end
     resources :companies do
       resources :job_posts
+      resources :applied_applicants
     end
     resources :admin
   end

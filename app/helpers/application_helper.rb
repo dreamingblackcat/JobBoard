@@ -39,6 +39,7 @@ module ApplicationHelper
      end
      
      def sidebar_chooser(current_user)
+       unless current_user.nil?
         case current_user.role
             when "company" 
               render :partial=>"layouts/company_sidebars"
@@ -47,6 +48,23 @@ module ApplicationHelper
             else
               render :partial=>"layouts/applicant_sidebars"
          end
+         end
      end
+     #this is the view helper for generating company show path based on user or guest
+     def show_path_for_company(current_user,company)
+      if current_user.nil? then
+        link_to "#{company.com_name}", company_path(company) 
+      else
+        link_to "#{company.com_name}", [current_user,company] 
+      end
+    end
+    #this is the view helper for generating company show path based on user or guest
+    def show_path_for_job_post(current_user,job_post)
+      if current_user.nil? then
+        link_to "#{job_post.job_post_title}", job_post_path(job_post) 
+      else
+        link_to "#{job_post.job_post_title}", [current_user,job_post.company,job_post] 
+      end
+    end
    
 end

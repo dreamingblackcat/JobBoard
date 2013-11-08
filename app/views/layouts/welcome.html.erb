@@ -29,19 +29,26 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">View Job Posts<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <div class="row">
-                  <div class="col-md-6 margin5">
-                  <%Category.all_for_navigation.first.each do |a|%>
-                   <li><%= link_to "#{a.name}",url_for(:controller=>'job_posts',:action=>'index',:category=>a.name)%></li>
-            		<%end%>
-                  </div>
-                  <div class="col-md-6">
-                     <%Category.all_for_navigation.second.each do |a|%> 
-                   		<li><%= link_to "#{a.name}",url_for(:controller=>'job_posts',:action=>'index',:category=>a.name)%></li>
-            		<%end%>
-                    
-                  </div>
-                </div>                      
+							<div class="row">
+								<div class="col-md-6 margin5">
+									<li>
+										<%= link_to "All",job_post_search_index_path()%>
+									</li>
+									<%Category.all_for_navigation.first.each do |a|%>
+									<li>
+										<%= link_to "#{a.name}",job_post_search_index_path(:category=>a.name)%>
+									</li>
+									<%end%>
+								</div>
+								<div class="col-md-6">
+									<%Category.all_for_navigation.second.each do |a|%>
+									<li>
+										<%= link_to "#{a.name}",job_post_search_index_path(:category=>a.name)%>
+									</li>
+									<%end%>
+
+								</div>
+							</div>                      
               </ul>
             </li>
 

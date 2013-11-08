@@ -3,7 +3,7 @@ class JobPost < ActiveRecord::Base
   belongs_to :category
   belongs_to :company
   has_many :applicant_job_posts
-  has_many :job_posts,:through=>:applicant_job_posts
+  has_many :applicants,:through=>:applicant_job_posts
   attr_accessible :category_id, :company_id, :job_post_basic_salary, :job_type,:job_post_description, :job_post_end_date, :job_post_gender, :job_post_requirement, :job_post_start_date, :job_post_title, :location_id
 
   def self.contain_job_id(id)

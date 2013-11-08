@@ -20,7 +20,7 @@ class Ability
 		  can :manage,User,:id=>user.id
 		  can [:new,:create],Company if user.company.nil?
 		  can [:show,:new,:create,:update,:edit,:destroy],Company.where(:user_id=> user.id)
-		  can [:show,:new,:create,:update,:edit,:destroy],JobPost,:company=>{:user_id=>user.id}
+		  can [:index,:show,:new,:create,:update,:edit,:destroy],JobPost,:company=>{:user_id=>user.id}
 		  can [:read],Applicant
 		  can [:show,:index],Resume
 		else

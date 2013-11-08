@@ -1,20 +1,16 @@
 class JobPostsController < ApplicationController
   
-  load_and_authorize_resource :user,:except=>[:show,:destroy,:index]
-  load_and_authorize_resource :company,:through=>:user,:singleton=>true,:except=>[:show,:destroy,:index]
-  load_and_authorize_resource :job_post,:through=>:company,:except=>[:show,:index,:destroy]
+  load_and_authorize_resource :user,:except=>[:show,:destroy]
+  load_and_authorize_resource :company,:through=>:user,:singleton=>true,:except=>[:show,:destroy]
+  load_and_authorize_resource :job_post,:through=>:company,:except=>[:show,:destroy]
   
   layout "companies"
-  
+  append_before_filter :check_for_guest,:only=>[:show]
   def index
     # @job_posts = JobPost.all
-    if(params[:category].nil?)
-      @job_posts=JobPost.paginate(:page=>params[:page],:per_page=>2)
-    else
-      @job_posts=Category.find_by_name(params[:category]).job_posts.paginate(:page=>params[:page],:per_page=>2)
-    end
+    @job_posts=@job_posts.paginate(:page=>params[:page],:per_page=>2)
     respond_to do |format|
-      format.html # index.html.erb
+      format.html 
       format.json { render json: @job_posts }
     end
   end
@@ -30,7 +26,7 @@ class JobPostsController < ApplicationController
   end
   
   def show
-    @user=User.find(params[:user_id])
+    
     layout=layout_chooser(@user)
     @job_post=JobPost.find(params[:id])
     respond_to do |format|
@@ -83,5 +79,6 @@ class JobPostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
     
 end

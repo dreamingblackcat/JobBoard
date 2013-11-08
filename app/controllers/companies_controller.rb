@@ -3,7 +3,7 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   load_and_authorize_resource :user,:except=>[:show]
   load_and_authorize_resource :company,:through=>:user,:singleton=>true,:except=>[:show,:index]
-   
+  append_before_filter :check_for_guest,:only=>[:show]
   def index
      layout=layout_chooser(@user)
       @companies=Company.paginate(:page=>params[:page],:per_page=>2)
@@ -18,7 +18,6 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
-    @user=User.find(params[:user_id])
     layout=layout_chooser(@user)
     @company = Company.find(params[:id])
     @job_posts=@company.job_posts.paginate(:page=>params[:page],:per_page=>2)
@@ -92,4 +91,6 @@ class CompaniesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 end
