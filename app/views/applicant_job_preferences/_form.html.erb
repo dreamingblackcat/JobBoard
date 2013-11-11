@@ -15,8 +15,7 @@
 
   <div class="form-group">
     <%= f.label :prefer_job_time,{:class=>"label label-primary"} %><br />
-    <%= f.radio_button :prefer_job_time, 'full time', :checked => 'checked',:class=>"radio-inline" %>Full time
-    <%= f.radio_button :prefer_job_time, 'part time' , :class=>"radio-inline"%>Part time
+    <%= f.select :prefer_job_time,["Full Time","Part Time","Freelance","Internship","Temporary"],{:class=>"form-control",:placeholder=>"Job Nature"}%>
   </div>
   <div class="form-group">
     <%= f.label :prefer_start_available ,{:class=>"label label-primary"}%><br />

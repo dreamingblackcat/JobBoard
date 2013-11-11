@@ -1,4 +1,11 @@
 class ApplicantJobHistory < ActiveRecord::Base
+    # FIXME: whitelist all the attributes that should be whitelisted
+
+
+  # TODO: add validations
+
+  # OPTIMIZE: improve the SQL
+  
 	belongs_to :applicant
   attr_accessible :address, :applicant_id, :company_name, :end_date, :job_title, :reason, :start_date
   validates :address,:presence=> true

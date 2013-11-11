@@ -2,7 +2,7 @@ class ApplicantJobPreference < ActiveRecord::Base
   belongs_to :applicant
   belongs_to :location
   attr_accessible :applicant_id, :location_id, :prefer_expected_salary, :prefer_job_time, :prefer_start_available
-  JOB_TIMES=["full time","part time","freelance",]
+  
   validate :job_time_validator
   validates :prefer_start_available,:presence=>true
   validate :prefer_start_available_date_restrictor

@@ -1,5 +1,10 @@
 class Applicant < ActiveRecord::Base
-  
+  # FIXME: whitelist all the attributes that should be whitelisted
+
+
+  # TODO: add validations
+
+  # OPTIMIZE: improve the SQL
   #after_save :save_photo
   belongs_to :user
   has_many :applicant_job_preferences, :dependent=>:destroy
@@ -24,7 +29,9 @@ class Applicant < ActiveRecord::Base
   validates :applicant_nrc,:presence=>true
   validate :applicant_nrc_validator
   validate :email_format_validator
-  
+  validates_attachment :photo,:presence=>true,
+                                    :content_type=>{:content_type=>/^image\/(png|gif|jpeg|jpg)/,:message=>'must be an image file type'},
+                                    :size=>{:in=>0..1.megabytes,:message=>" must not be greater than 1 Megabyte!"}
    #validates_format_of :email, :with => /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i
 
   def applicant_dob_validator
@@ -40,7 +47,7 @@ class Applicant < ActiveRecord::Base
   end
   
   def applicant_nrc_validator
-    if applicant_nrc !~ /[1-14]{1}\/[A-Za-z]{6,9}\((naing|n|ng){1}\)[0-9]{6}/
+    if applicant_nrc !~ /[1-14]{1,2}\/[A-Za-z]{6,9}\((naing|n|ng){1}\)[0-9]{6}/
       errors.add("Nrc number","is not in correct format")
     end
   end
