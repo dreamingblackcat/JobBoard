@@ -12,9 +12,9 @@
   <tr>
     <td><%= category.name %></td>
     <%if can? :manage,Category%>
-    <td><%= link_to 'Show', category_path(category,:user_id=>current_user.id) %></td>
-    <td><%= link_to 'Edit', edit_category_path(category,:user_id=>current_user.id) %></td>
-    <td><%= link_to 'Destroy', category_path(category,:user_id=>current_user.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', user_category_path(:user_id=>current_user.id,:id=>category.id) %></td>
+    <td><%= link_to 'Edit', edit_user_category_path(:user_id=>current_user.id,:id=>category.id) %></td>
+    <td><%= link_to 'Destroy', user_category_path(:user_id=>current_user.id,:id=>category.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <%end%>
   </tr>
 <% end %>
@@ -22,7 +22,7 @@
 
 <br />
 <%= will_paginate @categories, :renderer=> BootstrapPagination::Rails %>
-<%= link_to 'New Category', new_category_path() %>
+<%= link_to 'New Category', new_user_category_path(:user_id=>current_user.id) %>
 
 <%= sidebar_chooser(current_user)%>
-<%=self.class%>
+

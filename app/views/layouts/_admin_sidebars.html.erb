@@ -1,10 +1,11 @@
 <% content_for :left_bar do %>
 	<nav>
 		<ul class="sidenav-ul">
-			<%= link_to 'Category', categories_path(:user_id=>current_user.id),:class=>"btn btn-primary btn-lg btn-block" %>
+			<%= link_to 'Category list', user_categories_path(:user_id=>current_user.id),:class=>"btn btn-primary btn-lg btn-block" %>
+			<%= link_to 'Location list', user_locations_path(:user_id=>current_user.id),:class=>"btn btn-primary btn-lg btn-block" %>
 			<%= link_to 'Company list',user_companies_path(current_user),:class=>"btn btn-primary btn-lg btn-block"%>
 			<%= link_to 'Applicant list',user_applicants_path(current_user),:class=>"btn btn-primary btn-lg btn-block"%>
-			<%= link_to 'Job Post list',user_job_posts_path(current_user),:class=>"btn btn-primary btn-lg btn-block"%>
+			<%= link_to 'Job Post list',job_post_search_index_path(:user_id=>current_user.id),:class=>"btn btn-primary btn-lg btn-block"%>
 		</ul>
 	</nav>	
 <%end%>

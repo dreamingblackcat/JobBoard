@@ -27,6 +27,7 @@ class Ability
 		  can :manage,User
 		  can [:show],Admin
 		  can [:manage],Category
+		  can [:manage],Location
 		  can [:index],Applicant
 		  can [:index,:destroy,:show],Company
 		  can [:index],JobPost	

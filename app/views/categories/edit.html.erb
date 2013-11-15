@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', category_path(@category,:user_id=>current_user.id) %> |
+<%= link_to 'Show', user_category_path(current_user,@category) %> |
 <%= sidebar_chooser(current_user)%>

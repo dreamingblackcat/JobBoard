@@ -1,6 +1,9 @@
 class LocationsController < ApplicationController
+  load_and_authorize_resource :user
+ 
   # GET /locations
   # GET /locations.json
+  layout "admin"
   def index
     @locations = Location.paginate(:page=>params[:page],:per_page=>2)
 
@@ -44,7 +47,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.save
-        format.html { redirect_to @location, notice: 'Location was successfully created.' }
+        format.html { redirect_to user_location_path(:user_id=>current_user.id,:id=>@location.id), notice: 'Location was successfully created.' }
         format.json { render json: @location, status: :created, location: @location }
       else
         format.html { render action: "new" }
@@ -60,7 +63,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.update_attributes(params[:location])
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
+        format.html { redirect_to user_location_path(:user_id=>current_user.id,:id=>@location.id), notice: 'Location was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +79,7 @@ class LocationsController < ApplicationController
     @location.destroy
 
     respond_to do |format|
-      format.html { redirect_to locations_url }
+      format.html { redirect_to user_locations_path(:user_id=>current_user.id) }
       format.json { head :no_content }
     end
   end

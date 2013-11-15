@@ -1,10 +1,11 @@
 class CategoriesController < ApplicationController
-  load_and_authorize_resource :user,:except=>[:new]
+  load_and_authorize_resource :user
+
   layout "admin"
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.paginate(:page=>params[:page],:per_page=>2)
+    @categories=Category.paginate(:page=>params[:page],:per_page=>2)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,6 +27,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   # GET /categories/new.json
   def new
+    @action="new"
     @category = Category.new
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +37,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
+    @action="edit"
     @category = Category.find(params[:id])
   end
 
@@ -45,7 +48,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to category_path(@category,:user_id=>@user.id), notice: 'Category was successfully created.' }
+        format.html { redirect_to [@user,@admin,@category], notice: 'Category was successfully created.' }
         format.json { render json: @category, status: :created, location: @category }
       else
         format.html { render action: "new" }
@@ -61,7 +64,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
-        format.html { redirect_to category_path(@category,:user_id=>@user.id), notice: 'Category was successfully updated.' }
+        format.html { redirect_to [@user,@admin,@category], notice: 'Category was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

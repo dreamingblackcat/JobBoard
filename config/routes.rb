@@ -1,17 +1,19 @@
 JobMatchBasic::Application.routes.draw do
 
-  resources :locations
+  
   resources :job_post_search
   #public route for guest users
   resources :job_posts,{:only=>[:show]}
   resources :companies,{:only=>[:show]}
-  resources :categories 
+   
   resources :applicant_job_preferences,{:only=>[:destroy]}
   resources :applicant_education_histories,{:only=>[:destroy]}
   devise_for :users
   # resources :registrations
   # resources :sessions
   resources :users do
+    resources :categories
+    resources :locations
     resources :job_posts,{:only=>[:index]}
     resources :applicants do
       resources :applicant_job_preferences
@@ -29,7 +31,8 @@ JobMatchBasic::Application.routes.draw do
       resources :job_posts
       resources :applied_applicants
     end
-    resources :admin
+    resources :admin do
+    end
   end
 
   # resources :companies do
