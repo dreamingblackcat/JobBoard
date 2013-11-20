@@ -24,8 +24,8 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><%= home_chooser(current_user)%></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><%=link_to "About Us",about_path()%></li>
+            <li><%=link_to "Contact Us",new_contact_message_path%></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">View Job Posts<b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -59,7 +59,7 @@
 				<%= link_to "log in now",new_user_session_path,:class=>'btn btn-primary pull-right'%>
 			<%else %>
 			
-				<div style="float: left; color: red!important;"><%=current_user.role%>Welcome <%= current_user.email %> !! </div>
+				<div style="float: left; color: red!important;">Welcome <%= current_user.email %> !! </div>
 				
 				<%=  link_to "log out now",destroy_session_path(current_user),:class=>'btn btn-primary pull-right',:method=>:delete%>
 			<%end%>

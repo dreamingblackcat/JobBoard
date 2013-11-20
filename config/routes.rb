@@ -1,6 +1,8 @@
 JobMatchBasic::Application.routes.draw do
 
   
+  get "about/show",:as=>'about'
+
   resources :contact_messages,{:except=>[:index]}
 
 

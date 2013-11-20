@@ -1,5 +1,79 @@
-<h1>New contact_message</h1>
 
-<%= render 'form' %>
 
-<%= link_to 'Back', contact_messages_path %>
+<br/>
+<div class="panel panel-info awitd-panel">
+	<!-- Default panel contents -->
+	<div class="panel-heading">
+		<h1>Head Office</h1>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-2">
+				Address
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6">
+				(4/C) 4th Floor, Golden Gate Tower, No.(117-119),
+				Upper Pazundaung Road,Mingalar Taung Nyunt Township,
+				Yangon, Myanmar.
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+				Phone
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-4">
+				951-8610586
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+				Fax
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-4">
+				951-8610587
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+				Website
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-4">
+				http://www.awitd.com
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+				Email
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-4">
+				awitd.awitd@gmail.com
+			</div>
+		</div>
+	</div>
+
+</div>
+<div class="panel panel-warning awitd-panel">
+	<div class="panel-heading">
+		<h1>Contact Form</h1>
+	</div>
+	<div class="panel-body">
+		<%= render 'form' %>
+	</div>
+
+
+<%= sidebar_chooser(current_user)%>

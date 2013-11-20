@@ -27,10 +27,10 @@
 						<%= home_chooser(current_user)%>
 					</li>
 					<li>
-						<a href="#about">About</a>
+						<%=link_to "About Us",about_path()%>
 					</li>
 					<li>
-						<a href="#contact">Contact</a>
+						<%=link_to "Contact Us",new_contact_message_path%>
 					</li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">View Job Posts<b class="caret"></b></a>

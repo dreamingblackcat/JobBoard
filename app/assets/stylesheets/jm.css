@@ -240,3 +240,12 @@ td a:hover, td a:active {
 	background-color:#62615E;
 	font-size: 10pt;
 }
+.awitd-panel
+{
+	width: 60%;
+	margin-left: 20%;
+	color: black;
+}
+.panel-heading{
+	text-align: center;
+}
