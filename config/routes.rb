@@ -1,6 +1,9 @@
 JobMatchBasic::Application.routes.draw do
 
   
+  resources :contact_messages,{:except=>[:index]}
+
+
   resources :job_post_search
   #public route for guest users
   resources :job_posts,{:only=>[:show]}
@@ -12,6 +15,7 @@ JobMatchBasic::Application.routes.draw do
   # resources :registrations
   # resources :sessions
   resources :users do
+    resources :contact_messages,{:only=>[:index]}
     resources :categories
     resources :locations
     resources :job_posts,{:only=>[:index]}

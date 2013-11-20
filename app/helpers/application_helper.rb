@@ -66,5 +66,19 @@ module ApplicationHelper
         link_to "#{job_post.job_post_title}", [current_user,job_post.company,job_post] 
       end
     end
+    #this is the view helper for choosing home page to appropriately link to each user home page
+    def home_chooser(current_user)
+      if(current_user.nil?) then
+        link_to "Home",root_url
+      else
+         if(current_user.role=="admin") then
+          link_to "Home",user_admin_path(:user_id=>current_user.id,:id=>current_user.admin)
+         elsif(current_user.role=="company") then
+           link_to "Home",user_company_path(:user_id=>current_user.id,:id=>current_user.company.id)
+         else
+           link_to "Home",user_admin_path(:user_id=>current_user.id,:id=>current_user.applicant.id) 
+         end
+       end
+    end
    
 end
