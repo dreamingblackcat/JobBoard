@@ -41,16 +41,19 @@ class JobPost < ActiveRecord::Base
       errors.add(:job_type,"must be a valid job time")  
   end
   #data and business logic methods
-  def self.contain_job_id(id)
-    self.find_each do |jp|
-     if jp.id==id then  return true end
-    end
-    return false
-  end
+  # def self.contain_job_id(id)
+    # self.find_each do |jp|
+     # if jp.id==id then  return true end
+    # end
+    # return false
+  # end
   
   def self.recommend(job_preference)
-    JobPost.joins(:location)
-    .where('locations.id=:location_id AND job_posts.job_type=:job_type AND job_posts.job_post_basic_salary=:salary',
+    JobPost.active.joins(:location)
+    .where('locations.id=:location_id OR job_posts.job_type=:job_type OR job_posts.job_post_basic_salary=:salary',
     {:location_id=>job_preference.location_id,:job_type=>job_preference.prefer_job_time,:salary=>job_preference.prefer_expected_salary})
   end
+  
+  #DELETE EXPIRED
+  scope :active,where('job_post_end_date >= ?',Date.today)
 end

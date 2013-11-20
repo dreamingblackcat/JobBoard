@@ -27,7 +27,7 @@ class Applicant < ActiveRecord::Base
   validates :applicant_marital_status,:presence=>true
   validates :applicant_name,:presence=>true
   validates :applicant_nrc,:presence=>true
-  validate :applicant_nrc_validator
+  #validate :applicant_nrc_validator
   validate :email_format_validator
   validates_attachment :photo,:presence=>true,
                                     :content_type=>{:content_type=>/^image\/(png|gif|jpeg|jpg)/,:message=>'must be an image file type'},

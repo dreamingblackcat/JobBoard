@@ -22,6 +22,7 @@ class ApplyJobsController < ApplicationController
       end
     end
     @applicant.job_posts<<JobPost.where(:id=>params[:job_post_id])
+    ApplicantMailer.notification_mail(@job_post.company).deliver
     redirect_to :back,:notice=>"You have successfully applied job#{@applicant.job_posts.size}"   
   end
  
