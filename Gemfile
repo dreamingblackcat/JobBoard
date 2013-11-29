@@ -1,4 +1,4 @@
-source 'http://localhost:8808/'
+source 'https://rubygems.org/'
 
 gem 'rails', '3.2.13'
 
@@ -29,7 +29,7 @@ gem 'populator'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'prawn'
-
+gem 'jquery-ui-rails'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

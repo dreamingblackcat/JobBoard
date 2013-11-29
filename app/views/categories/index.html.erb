@@ -1,28 +1,31 @@
-<h1>Listing categories</h1>
+<h1 class="text-center stitle">Listing categories</h1>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<table>
+			<tr style="background-color: #3A3B44">
+				<th><strong><center>Name</center></strong></th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+			<% @categories.each do |category| %>
+			<tr style="background-color: <%= cycle("#777777", "#666666")%>" class="content">
+				<td><center><%= category.name %></center></td>
+				<%if can? :manage,Category%>
+				<td><%= link_to 'Show', user_category_path(:user_id=>current_user.id,:id=>category.id) %></td>
+				<td><%= link_to 'Edit', edit_user_category_path(:user_id=>current_user.id,:id=>category.id) %></td>
+				<td><%= link_to 'Destroy', user_category_path(:user_id=>current_user.id,:id=>category.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				<%end%>
+			</tr>
+			<% end %>
+		</table>
 
-<% @categories.each do |category| %>
-  <tr>
-    <td><%= category.name %></td>
-    <%if can? :manage,Category%>
-    <td><%= link_to 'Show', user_category_path(:user_id=>current_user.id,:id=>category.id) %></td>
-    <td><%= link_to 'Edit', edit_user_category_path(:user_id=>current_user.id,:id=>category.id) %></td>
-    <td><%= link_to 'Destroy', user_category_path(:user_id=>current_user.id,:id=>category.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <%end%>
-  </tr>
-<% end %>
-</table>
-
-<br />
-<%= will_paginate @categories, :renderer=> BootstrapPagination::Rails %>
-<%= link_to 'New Category', new_user_category_path(:user_id=>current_user.id) %>
-
+		<div class="text-center">
+			<%= will_paginate @categories, :renderer=> BootstrapPagination::Rails %>
+		</div>
+		<%= link_to 'New Category', new_user_category_path(:user_id => current_user.id), :class => "btn btn-primary" %>
+	</div>
+</div>
 <%= sidebar_chooser(current_user)%>
 

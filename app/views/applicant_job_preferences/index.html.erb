@@ -1,10 +1,10 @@
-<h1>Listing applicant_job_preferences</h1>
-
-<table class="jobpost-table preference-table">
-  <tr>
-    <th>Prefer job time</th>
-    <th>Prefer start available</th>
-    <th>Prefer expected salary</th>
+<h1 class="text-center stitle">Listing applicant_job_preferences</h1>
+<br/>
+<table class="table table-bordered">
+  <tr class="title">
+    <th>job time type</th>
+    <th>Available Start Date</th>
+    <th>Expected Salary</th>
     <th>Applicant</th>
     <th>Location</th>
     <th></th>
@@ -13,7 +13,7 @@
   </tr>
 
 <% @applicant_job_preferences.each do |applicant_job_preference| %>
-  <tr style="background-color: <%= cycle("#EBEBEB", "c5c5c5") %>">
+  <tr class="content">
     <td><%= applicant_job_preference.prefer_job_time %></td>
     <td><%= applicant_job_preference.prefer_start_available %></td>
     <td><%= applicant_job_preference.prefer_expected_salary %></td>
@@ -27,7 +27,7 @@
 </table>
 <%= will_paginate @applicant_job_preferences, :renderer=> BootstrapPagination::Rails %>
 <br />
-<%= link_to 'New', new_user_applicant_applicant_job_preference_path(@user,@applicant) %>
+<%= link_to 'New', new_user_applicant_applicant_job_preference_path(@user,@applicant), :class=>"btn btn-primary" %>
 <%= render :partial=>"layouts/applicant_sidebars"%>
 
 

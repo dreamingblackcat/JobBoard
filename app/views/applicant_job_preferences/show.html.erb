@@ -1,32 +1,64 @@
-<p id="notice"><%= notice %></p>
-<h1 class="text-center text-primary">Edit your job preferences</h1>
-
-<p>
-  <b>Prefer job time:</b>
-  <%= @applicant_job_preference.prefer_job_time %>
+<p id="notice">
+	<%= notice %>
 </p>
+<h1 class="text-center stitle">Your job preferences</h1>
+<br />
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
 
-<p>
-  <b>Prefer start available:</b>
-  <%= @applicant_job_preference.prefer_start_available %>
-</p>
+		<div class="row">
+			<div class="col-md-5 bluetext">
+				Job Time Type
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6 blacktext">
+				<%= @applicant_job_preference.prefer_job_time %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-5 bluetext">
+				Starting Available Date
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6 blacktext">
+				<%= @applicant_job_preference.prefer_start_available %>
+			</div>
+		</div>
 
-<p>
-  <b>Prefer expected salary:</b>
-  <%= @applicant_job_preference.prefer_expected_salary %>
-</p>
+		<div class="row">
+			<div class="col-md-5 bluetext">
+				Expected Salary
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6 blacktext">
+				<%= @applicant_job_preference.prefer_expected_salary %>
+			</div>
+		</div>
 
-<p>
-  
-  <%= link_to "#{@applicant_job_preference.applicant.applicant_name}", [@applicant_job_preference.applicant.user,@applicant_job_preference.applicant] %>
-</p>
+		<div class="row">
+			<div class="col-md-5 bluetext">
+				Location
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6 blacktext">
+				<%= @applicant_job_preference.location.name %>
+			</div>
+		</div>
+		<br />
+		<!--<p>
 
-<p>
-  <b>Location:</b>
-  <%= @applicant_job_preference.location.name %>
-</p>
+		<%= link_to "#{@applicant_job_preference.applicant.applicant_name}", [@applicant_job_preference.applicant.user,@applicant_job_preference.applicant] %>
+		</p>-->
 
-
-<%= link_to 'Edit', edit_user_applicant_applicant_job_preference_path({:user_id=>@applicant_job_preference.applicant.user.id,:applicant_id=>@applicant_job_preference.applicant.id,:id=>@applicant_job_preference.id}) %> |
-
+		<%= link_to 'Edit', edit_user_applicant_applicant_job_preference_path({:user_id=>@applicant_job_preference.applicant.user.id,:applicant_id=>@applicant_job_preference.applicant.id,:id=>@applicant_job_preference.id}),:class=>"btn btn-primary" %>
+	</div>
+</div>
 <%= render :partial=>"layouts/applicant_sidebars"%>

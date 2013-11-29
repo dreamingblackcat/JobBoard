@@ -2,10 +2,10 @@
 <nav>
 	<ul class="sidenav-ul">
 		<li>
-			<%= link_to "Profile",[@company.user,@company], :class=>"btn btn-primary btn-lg btn-block" %>
+			<%= link_to "Profile",[@company.user,@company], :class=>"btn btn-default btn-lg btn-block" %>
 		</li>
 		<li>
-			<%= unless @company.nil? then link_to 'My Job', user_company_job_posts_path({:user_id=>@company.user.id,:company_id=>@company.id}),:class=>'btn btn-primary btn-lg btn-block' end%>
+			<%= unless @company.nil? then link_to 'My Job', user_company_job_posts_path({:user_id=>@company.user.id,:company_id=>@company.id}),:class=>'btn btn-default btn-lg btn-block' end%>
 		</li>
 
 	</ul>
@@ -15,10 +15,10 @@
 <%= content_for :right_bar do%>
 <ul class="sidenav-ul">
 	<li>
-		 <%= link_to 'Applied Applicant', user_company_applied_applicants_path({:user_id=>@company.user.id,:company_id=>@company.id}),:class=>'btn btn-warning'%>
+		 <%= link_to 'Applied Applicant', user_company_applied_applicants_path({:user_id=>@company.user.id,:company_id=>@company.id}),:class=>'btn btn-default'%>
 	</li>
 	<li>
-		<%= unless @company.nil? then link_to 'Post a new Job', new_user_company_job_post_path({:user_id=>@company.user.id,:company_id=>@company.id}),:class=>'btn btn-warning' end%>
+		<%= unless @company.nil? then link_to 'Post a new Job', new_user_company_job_post_path({:user_id=>@company.user.id,:company_id=>@company.id}),:class=>'btn btn-default' end%>
 	</li>
 </ul>
 

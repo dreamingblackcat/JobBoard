@@ -28,17 +28,18 @@
   </div>
   <div class="field">
     <%= f.label :start_date ,{:class=>"label label-primary"}%><br />
-    <%= f.date_select :start_date ,{:class=>"form-control"}%>
+    <%= f.text_field :start_date ,{'data-behaviour'=> 'datepicker',:class=>"form-control dpk"}%>
   </div>
   <div class="field">
     <%= f.label :end_date ,{:class=>"label label-primary"}%><br />
-    <%= f.date_select :end_date,{:class=>"form-control"} %>
+    <%= f.text_field :end_date,{'data-behaviour'=> 'datepicker',:class=>"form-control dpk"} %>
   </div>
   <div class="field">
     <%= f.label :reason,{:class=>"label label-primary"} %><br />
     <%= f.text_area :reason ,{:class=>"form-control",:placeholder=>"Enter your reason for quitting the job"}%>
   </div>
 	<%= f.hidden_field :applicant_id%>
+	<br />
   <div class="actions">
     <%= f.submit "Submit",:class=>"btn btn-primary"%>
   </div>

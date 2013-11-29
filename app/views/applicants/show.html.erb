@@ -1,73 +1,148 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<p id="notice">
+				<%= notice %>
+			</p>
 
-<p>
-  <b>Applicant name:</b>
-  <%= @applicant.applicant_name %>
-</p>
+			<h3 class="stitle">Uer's Profile</h3>
 
-<p>
-  <b>Applicant nrc:</b>
-  <%= @applicant.applicant_nrc %>
-</p>
+			<br />
+			<div class="row">
+				<div class="col-md-4 bluetext">
+					Name
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= @applicant.applicant_name %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 bluetext">
+					NRC
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= @applicant.applicant_nrc %>
+				</div>
+			</div>
 
+			<div class="row">
+				<div class="col-md-4 bluetext">
+					Email
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= @applicant.applicant_contact_email %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 bluetext">
+					Gender
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= @applicant.applicant_gender %>
+				</div>
+			</div>
 
+			<div class="row">
+				<div class="col-md-4 bluetext">
+					Marital Status
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= @applicant.applicant_marital_status %>
+				</div>
+			</div>
 
-<p>
-  <b>Applicant contact email:</b>
-  <%= @applicant.applicant_contact_email %>
-</p>
+			<div class="row">
+				<div class="col-md-4 bluetext">
+					Date of Birth
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= @applicant.applicant_dob %>
+				</div>
+			</div>
 
-<p>
-  <b>Applicant gender:</b>
-  <%= @applicant.applicant_gender %>
-</p>
+			<div class="row">
+				<div class="col-md-4 bluetext">
+					Address
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= @applicant.applicant_address %>
+				</div>
+			</div>
 
-<p>
-  <b>Applicant marital status:</b>
+			<div class="row">
+				<div class="col-md-4 bluetext">
+					Phone
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= @applicant.applicant_phone_number %>
+				</div>
+			</div>
 
-  <%= @applicant.applicant_marital_status %>
+			<div class="row">
+				<div class="col-md-4 bluetext">
+					Language
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= @applicant.applicant_language %>
+				</div>
+			</div>
 
-</p>
+			<div class="row">
+				<div class="col-md-4 bluetext">
+					Skills
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= @applicant.applicant_skills %>
+				</div>
+			</div>
 
-<p>
-  <b>Applicant dob:</b>
-  <%= @applicant.applicant_dob %>
-</p>
+			<div class="row">
+				<div class="col-md-4 bluetext">
+					Description
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= @applicant.applicant_description %>
+				</div>
+			</div>
+			<br />
 
-<p>
-  <b>Applicant address:</b>
-  <%= @applicant.applicant_address %>
-</p>
-
-<p>
-  <b>Applicant phone number:</b>
-  <%= @applicant.applicant_phone_number %>
-</p>
-
-<p>
-  <b>Applicant language:</b>
-  <%= @applicant.applicant_language %>
-</p>
-
-<p>
-  <b>Applicant skills:</b>
-  <%= @applicant.applicant_skills %>
-</p>
-
-<p>
-  <b>Applicant description:</b>
-  <%= @applicant.applicant_description %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @applicant.user_id %>
-</p>
-
-<%= image_tag @applicant.photo.url(:thumb)%>
-
-
-<%= link_to 'Edit', edit_user_applicant_path({:user_id=>@applicant.user,:id=>@applicant}) %> 
- 
-
+			<%= link_to 'Edit', edit_user_applicant_path({:user_id=>@applicant.user,:id=>@applicant}),:class=>"btn btn-primary" %>
+		</div>
+		<div class="col-md-3 col-md-offset-1 company-logo"></div>
+		<%= image_tag @applicant.photo.url(:medium),:class=>"img-rounded pull-right box-shadow-pay-gray",:width=>"100px",:height=>"100px"%>
+	</div>
+</div>
 <%= render :partial=>"layouts/applicant_sidebars"%>

@@ -1,136 +1,292 @@
-<h1>CV of <%=@resume.applicant.applicant_name%></h1>
-<h2>Personal Information:</h2>
+<h1 class="text-center stitle">CV of <%= @resume.applicant.applicant_name%></h1>
+<div class="row">
 
-	<p>
-  <b>Applicant name:</b>
-  <%= @resume.applicant.applicant_name %>
-</p>
+	<h2 class="stitle">Personal Information</h2>
+	<div class="col-md-8 col-md-offset-1">
+		<div class="row">
+			<div class="col-md-4 bluetext">
+				Applicant name
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6 blacktext">
+				<%= @resume.applicant.applicant_name %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 bluetext">
+				Applicant nrc
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6 blacktext">
+				<%= @resume.applicant.applicant_nrc %>
+			</div>
+		</div>
 
-<p>
-  <b>Applicant nrc:</b>
-  <%= @resume.applicant.applicant_nrc %>
-</p>
+		<div class="row">
+			<div class="col-md-4 bluetext">
+				Applicant email
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6 blacktext">
+				<%= @resume.applicant.applicant_contact_email %>
+			</div>
+		</div>
 
+		<div class="row">
+			<div class="col-md-4 bluetext">
+				Applicant gender
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6 blacktext">
+				<%= @resume.applicant.applicant_gender %>
+			</div>
+		</div>
 
+		<div class="row">
+			<div class="col-md-4 bluetext">
+				Marital Status
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6 blacktext">
+				<%= @resume.applicant.applicant_marital_status %>
+			</div>
+		</div>
 
-<p>
-  <b>Applicant contact email:</b>
-  <%= @resume.applicant.applicant_contact_email %>
-</p>
+		<div class="row">
+			<div class="col-md-4 bluetext">
+				Applicant DOB
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6 blacktext">
+				<%= @resume.applicant.applicant_dob %>
+			</div>
+		</div>
 
-<p>
-  <b>Applicant gender:</b>
-  <%= @resume.applicant.applicant_gender %>
-</p>
+		<div class="row">
+			<div class="col-md-4 bluetext">
+				Applicant Address
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6 blacktext">
+				<%= @resume.applicant.applicant_address %>
+			</div>
+		</div>
 
-<p>
-  <b>Applicant marital status:</b>
+		<div class="row">
+			<div class="col-md-4 bluetext">
+				Applicant Phone
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6 blacktext">
+				<%= @resume.applicant.applicant_phone_number %>
+			</div>
+		</div>
 
-  <%= @resume.applicant.applicant_marital_status %>
+		<div class="row">
+			<div class="col-md-4 bluetext">
+				Language
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6 blacktext">
+				<%= @resume.applicant.applicant_language %>
+			</div>
+		</div>
 
-</p>
+		<div class="row">
+			<div class="col-md-4 bluetext">
+				Skills
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6 blacktext">
+				<%= @resume.applicant.applicant_skills %>
+			</div>
+		</div>
 
-<p>
-  <b>Applicant dob:</b>
-  <%= @resume.applicant.applicant_dob %>
-</p>
+		<div class="row">
+			<div class="col-md-4 bluetext">
+				Description
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6 blacktext">
+				<%= @resume.applicant.applicant_description %>
+			</div>
+		</div>
 
-<p>
-  <b>Applicant address:</b>
-  <%= @resume.applicant.applicant_address %>
-</p>
+		<!--<p>
+		<b>User:</b>
+		<%= @resume.applicant.user_id %>
+		</p>-->
+	</div>
+	<div class="col-md-3 company-logo">
 
-<p>
-  <b>Applicant phone number:</b>
-  <%= @resume.applicant.applicant_phone_number %>
-</p>
+		<%= image_tag @resume.applicant.photo.url(:thumb),:class=>"img-rounded box-shadow-pay-gray",:width=>"100px",:height=>"100px"%>
+	</div>
+</div>
 
-<p>
-  <b>Applicant language:</b>
-  <%= @resume.applicant.applicant_language %>
-</p>
+<hr />
 
-<p>
-  <b>Applicant skills:</b>
-  <%= @resume.applicant.applicant_skills %>
-</p>
+<h2 class="stitle">Your previous jobs</h2>
+<div class="row">
+	<div class="col-md-8 col-md-offset-1">
+		<%if @resume.applicant.applicant_job_histories.count===0 then%>
+		<div class='text-info'>
+			You Don't Have any previous job history yet!
+		</div>
+		<%else @resume.applicant.applicant_job_histories.each do |ajh|%>
 
-<p>
-  <b>Applicant description:</b>
-  <%= @resume.applicant.applicant_description %>
-</p>
+		<div class="col-md-4 bluetext">
+			Company Name
+		</div>
+		<div class="col-md-1">
+			:
+		</div>
+		<div class="col-md-6 blacktext">
+			<%= ajh.company_name %>
+		</div>
 
-<p>
-  <b>User:</b>
-  <%= @resume.applicant.user_id %>
-</p>
+		<div class="col-md-4 bluetext">
+			Job Title
+		</div>
+		<div class="col-md-1">
+			:
+		</div>
+		<div class="col-md-6 blacktext">
+			<%= ajh.job_title %>
+		</div>
 
-<%= image_tag @resume.applicant.photo.url(:thumb)%>
+		<div class="col-md-4 bluetext">
+			Address
+		</div>
+		<div class="col-md-1">
+			:
+		</div>
+		<div class="col-md-6 blacktext">
+			<%= ajh.address %>
+		</div>
 
+		<div class="col-md-4 bluetext">
+			Start Date
+		</div>
+		<div class="col-md-1">
+			:
+		</div>
+		<div class="col-md-6 blacktext">
+			<%= ajh.start_date %>
+		</div>
+		<div class="col-md-4 bluetext">
+			End Date
+		</div>
+		<div class="col-md-1">
+			:
+		</div>
+		<div class="col-md-6 blacktext">
+			<%= ajh.end_date %>
+		</div>
 
-<h2>Your previous jobs</h2>
-<%if @resume.applicant.applicant_job_histories.count===0 then%>
- <div class='text-info'>You Don't Have any previous job history yet!</div>
-<%else @resume.applicant.applicant_job_histories.each do |ajh|%>
-		<p>
-	  <b>Company name:</b>
-	  <%= ajh.company_name %>
-	</p>
-	
-	<p>
-	  <b>Job title:</b>
-	  <%= ajh.job_title %>
-	</p>
-	
-	<p>
-	  <b>Address:</b>
-	  <%= ajh.address %>
-	</p>
-	
-	<p>
-	  <b>Start date:</b>
-	  <%= ajh.start_date %>
-	</p>
-	
-	<p>
-	  <b>End date:</b>
-	  <%= ajh.end_date %>
-	</p>
-	
-	<p>
-	  <b>Reason:</b>
-	  <%= ajh.reason %>
-	</p>
-	
-	<%end%>
-<%end%>
-<h2>Your Education info</h2>
-<%if @resume.applicant.applicant_education_histories.count===0 %>
- <div class='text-info'>You Don't Have any education  history yet!</div>
- <%else%>
+		<div class="col-md-4 bluetext">
+			Reason
+		</div>
+		<div class="col-md-1">
+			:
+		</div>
+		<div class="col-md-6 blacktext">
+			<%= ajh.reason %>
+		</div>
 
-<%  @resume.applicant.applicant_education_histories.each do|aeh|%>
-		<p>
-	  <b>Institute name:</b>
-	  <%= aeh.institute_name %>
-	</p>
-	
-	<p>
-	  <b>Location:</b>
-	  <%= aeh.location %>
-	</p>
-	
-	<p>
-	  <b>Diploma degree certificate:</b>
-	  <%= aeh.diploma_degree_certificate %>
-	</p>
-	
-	<p>
-	  <b>Course of study:</b>
-	  <%= aeh.course_of_study %>
-	</p>
-	<p><%=link_to "Download soft copy",user_applicant_applicant_education_history_path(:user_id=>aeh.applicant.user.id,:applicant_id=>aeh.applicant.id,:id=>aeh.id,:format=>content_type_format(aeh.certificate_content_type))%></p>
-	<%end%>	
-<%end%>
-<%= link_to "Download CV",user_applicant_resume_path(@resume.applicant.user,@resume.applicant,@resume,:format=>"pdf"),:class=>"btn btn-primary"%>
+		<%end%>
+		<%end%>
+
+	</div>
+
+</div>
+
+<hr />
+<h2 class="stitle">Your Education info</h2>
+<div class="row">
+	<div class="col-md-12 col-md-offset-1">
+		<%if @resume.applicant.applicant_education_histories.count===0 %>
+		<div class='text-info'>
+			You Don't Have any education  history yet!
+		</div>
+		<%else%>
+
+		<%  @resume.applicant.applicant_education_histories.each do|aeh|%>
+		<div class="row">
+		<div class="col-md-4 bluetext">
+			Institute Name
+		</div>
+		<div class="col-md-1">
+			:
+		</div>
+		<div class="col-md-6 blacktext">
+			<%= aeh.institute_name %>
+		</div>
+		</div>
+		<div class="row">
+		<div class="col-md-4 bluetext">
+			Location
+		</div>
+		<div class="col-md-1">
+			:
+		</div>
+		<div class="col-md-6 blacktext">
+			<%= aeh.location %>
+		</div>
+		</div>
+		<div class="row">
+		<div class="col-md-4 bluetext">
+			Diploma/Degree/Certificate
+		</div>
+		<div class="col-md-1">
+			:
+		</div>
+		<div class="col-md-6 blacktext">
+			<%= aeh.diploma_degree_certificate %>
+		</div>
+		</div>
+		<div class="row">
+		<div class="col-md-4 bluetext">
+			Course of Study
+		</div>
+		<div class="col-md-1">
+			:
+		</div>
+		<div class="col-md-6 blacktext">
+			<%= aeh.course_of_study %>
+		</div>
+		</div>
+		<br /> 
+		<p>			
+			<%= link_to "Download soft copy",user_applicant_applicant_education_history_path(:user_id=>aeh.applicant.user.id,:applicant_id=>aeh.applicant.id,:id=>aeh.id,:format=>content_type_format(aeh.certificate_content_type)), :class=>"btn btn-primary"%>&nbsp;
+			<%= link_to "Download CV",user_applicant_resume_path(@resume.applicant.user,@resume.applicant,@resume,:format=>"pdf"),:class=>"btn btn-primary"%>
+		</p>
+		<%end%>
+		<%end%>
+
+		
+	</div>
+</div>
+<hr />
 <%= render :partial=>"layouts/applicant_sidebars"%>

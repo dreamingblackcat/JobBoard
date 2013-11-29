@@ -1,3 +1,5 @@
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
 <%= form_for([@applicant_education_history.applicant.user,@applicant_education_history.applicant,@applicant_education_history]) do |f| %>
   <% if @applicant_education_history.errors.any? %>
     <div id="error_explanation">
@@ -11,29 +13,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :institute_name %><br />
-    <%= f.text_field :institute_name %>
+  <div class="form-group">
+    <%= f.label :institute_name,{:class=>"label label-primary"} %><br />
+    <%= f.text_field :institute_name%>
   </div>
   <div class="field">
-    <%= f.label :location %><br />
+    <%= f.label :location,{:class=>"label label-primary"}  %><br />
     <%= f.text_field :location %>
-  </div>
+  </div><br />
   <div class="field">
-    <%= f.label :diploma_degree_certificate %><br />
+    <%= f.label :diploma_degree_certificate,{:class=>"label label-primary"}  %><br />
     <%= f.text_field :diploma_degree_certificate %>
-  </div>
+  </div><br />
   <div class="field">
-    <%= f.label :course_of_study %><br />
+    <%= f.label :course_of_study,{:class=>"label label-primary"}  %><br />
     <%= f.text_area :course_of_study %>
   </div>
+  <br />
   <div class="field">
-    <%= f.label :certificate %><br/>
+    <%= f.label :certificate,{:class=>"label label-primary"}  %><br/>
     <%= f.file_field :certificate %>
   </div>
 
   <%= f.hidden_field :applicant_id%>
+  <br />
   <div class="actions">
     <%= f.submit "Submit",:class=>"btn btn-primary"%>
   </div>
 <% end %>
+</div>
+</div>

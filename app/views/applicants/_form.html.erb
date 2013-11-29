@@ -51,8 +51,7 @@
 </div>
 <div class="form-group">
 	<%= f.label :applicant_dob,{:class=>"label label-primary"} %>
-	<br />
-	<%= f.date_select :applicant_dob, :start_year => 1950,:class=>"form-control" %>
+	<%= f.text_field :applicant_dob ,{'data-behavior' => 'datepicker',:class=>"form-control dpk"}%>
 </div>
 <div class="form-group">
 	<%= f.label :applicant_address,{:class=>"label label-primary"} %>

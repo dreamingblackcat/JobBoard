@@ -1,56 +1,119 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Job post title:</b>
-  <%= @job_post.job_post_title %>
-</p>
-
-<p>
-  <b>Job post gender:</b>
-  <%= @job_post.job_post_gender %>
-</p>
-
-<p>
-  <b>Job post:</b>
-  <%= @job_post.job_post_description %>
-</p>
-
-<p>
-  <b>Job post start date:</b>
-  <%= @job_post.job_post_start_date %>
-</p>
-
-<p>
-  <b>Job post end date:</b>
-  <%= @job_post.job_post_end_date %>
-</p>
-
-<p>
-  <b>Job post salary:</b>
-  <%= @job_post.job_post_basic_salary %>
-</p>
-
-<p>
-  <b>Job post requirement:</b>
-  <%= @job_post.job_post_requirement %>
-</p>
-
-<p>
-  <b>Company:</b>
-  <%= link_to "#{@job_post.company.com_name}",[current_user,@job_post.company]%>
-</p>
-
-<p>
-  <b>Category:</b>
-  <%= @job_post.category.name %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @job_post.location.name %>
-</p>
-
-
-<%= if can? :edit,@job_post then link_to 'Edit', edit_user_company_job_post_path({:user_id=>@job_post.company.user.id,:company_id=>@job_post.company.id,:id=>@job_post.id})end %> |
+<div class="row">
+	<div class="col-md-10 col-md-offset-2">
+		<div class="row">
+			<div class="col-md-3 bluetext">
+				Job Position
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-5 blacktext">
+				<%= @job_post.job_post_title %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 bluetext">
+				Gender
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-5 bluetext">
+				<%= @job_post.job_post_gender %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 bluetext">
+				Description
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-7 blacktext">
+				<%= @job_post.job_post_description %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 bluetext">
+				Start Date
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-5 blacktext">
+				<%= @job_post.job_post_start_date %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 bluetext">
+				End Date
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-5 blacktext">
+				<%= @job_post.job_post_end_date %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 bluetext">
+				Salary
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-5 blacktext">
+				<%= @job_post.job_post_basic_salary %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 bluetext">
+				Requirement
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-5 blacktext">
+				<%= @job_post.job_post_requirement %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 bluetext">
+				Company
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-5 blacktext">
+				<%= link_to "#{@job_post.company.com_name}",[current_user,@job_post.company]%>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 bluetext">
+				Category
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-5 blacktext">
+				<%= @job_post.category.name %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 bluetext">
+				Location
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-5 blacktext">
+				<%= @job_post.location.name %>
+			</div>
+		</div>
+		<br />
+		<%= link_to 'Back',job_post_search_index_path(:user_id=>current_user.id),:class=>"btn btn-primary"%>
+	</div>
+</div>
 
 <%=sidebar_chooser(current_user)%>

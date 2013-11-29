@@ -1,49 +1,139 @@
-<h1>Listing applicants</h1>
+<h1 class="text-center stitle">Listing applicants</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>NRC</th>
-    <th>Url</th>
-    <th>Email</th>
-    <th>Gender</th>
-    <th>Marital Status</th>
-    <th>Date of birth</th>
-    <th>Address</th>
-    <th>Phone Number</th>
-    <th>language</th>
-    <th>Skills</th>
-    <th>Description</th>
-    <!--<th>User</th>-->
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+	<% @applicants.each do |applicant|%>
+	
+			<div class="row">
+				<div class="col-md-3 bluetext">
+					Name
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= applicant.applicant_name %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 bluetext">
+					NRC
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= applicant.applicant_nrc %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 bluetext">
+					Email
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= applicant.applicant_contact_email %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 bluetext">
+					Gender
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= applicant.applicant_gender %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 bluetext">
+					Marital Status
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= applicant.applicant_marital_status %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 bluetext">
+					Date of birth
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= applicant.applicant_dob %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 bluetext">
+					Address
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= applicant.applicant_address %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 bluetext">
+					Phone
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= applicant.applicant_phone_number %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 bluetext">
+					Language
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= applicant.applicant_language %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 bluetext">
+					Skills
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= applicant.applicant_skills %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 bluetext">
+					Description
+				</div>
+				<div class="col-md-1">
+					:
+				</div>
+				<div class="col-md-6 blacktext">
+					<%= applicant.applicant_description %>
+				</div>
+			</div>
+			<br />
+			<%= if can? :show,applicant then link_to 'Show', [applicant.user,applicant], :class=>"btn btn-primary" end%>
+			<!--<%= if can? :edit,applicant then link_to 'Edit', edit_user_applicant_path([@applicant]), :class=>"btn btn-primary" end%>-->
+			<%= if can? :destroy,applicant then link_to 'Destroy', user_applicant_path(:user_id=>applicant.user_id,:id=>applicant.id,:method=>:delete),:class=>"btn btn-primary" end%>
+		
+			
+		<hr />
+	
+	<% end %>
 
-<% @applicants.each do |applicant| %>
-  <tr style="background-color: <%= cycle("#EBEBEB", "c5c5c5") %>">
-    <td><%= applicant.applicant_name %></td>
-    <td><%= applicant.applicant_nrc %></td>
-    <td><%= applicant.applicant_contact_email %></td>
-    <td><%= applicant.applicant_gender %></td>
-    <td>
-    	<%= applicant.applicant_marital_status %>
-    </td>
-    <td><%= applicant.applicant_dob %></td>
-    <td><%= applicant.applicant_address %></td>
-    <td><%= applicant.applicant_phone_number %></td>
-    <td><%= applicant.applicant_language %></td>
-    <td><%= applicant.applicant_skills %></td>
-    <td><%= applicant.applicant_description %></td>
-    
-	    <td><%= if can? :show,applicant then link_to 'Show', [applicant.user,applicant] end%></td>
-	    <td><%= if can? :edit,applicant then link_to 'Edit', edit_user_applicant_path([@applicant]) end%></td>
-   
-    <td><%= if can? :destroy,applicant then link_to 'Destroy', applicant, method: :delete, data: { confirm: 'Are you sure?' } end%></td>
-  </tr>
-<% end %>
 <%= will_paginate @applicants, :renderer=> BootstrapPagination::Rails %>
-</table>
 
 <br />
 <%= sidebar_chooser(current_user)%>

@@ -1,7 +1,9 @@
-<h1>Editing applicant_education_history</h1>
+<h1 class="text-center stitle">Editing applicant_education_history</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', [@applicant_education_history.applicant.user,@applicant_education_history.applicant,@applicant_education_history] %> |
+<!--<%= link_to 'Back', [@applicant_education_history.applicant.user,@applicant_education_history.applicant,@applicant_education_history],:class=>"btn btn-primary" %>-->
 
+<%= link_to 'Back', user_applicant_applicant_education_histories_path(@applicant.user,@applicant), :class=>"btn btn-primary" %>
 <%= render :partial=>"layouts/applicant_sidebars"%>
+

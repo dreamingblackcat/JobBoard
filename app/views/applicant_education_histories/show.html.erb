@@ -1,26 +1,63 @@
-<p id="notice"><%= notice %></p>
+<h1 class="text-center stitle">Your Education History</h1>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<p id="notice">
+			<%= notice %>
+		</p>
+		<div class="row">
+			<div class="col-md-4 bluetext">
+				Institute Name
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-7 blacktext">
+				<%= @applicant_education_history.institute_name %>
+			</div>
+		</div>
 
-<p>
-  <b>Institute name:</b>
-  <%= @applicant_education_history.institute_name %>
-</p>
+		<div class="row">
+			<div class="col-md-4 bluetext">
+				Location
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6 blacktext">
+				<%= @applicant_education_history.location %>
+			</div>
+		</div>
 
-<p>
-  <b>Location:</b>
-  <%= @applicant_education_history.location %>
-</p>
+		<div class="row">
+			<div class="col-md-4 bluetext">
+				Diploma/Certificate
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6 blacktext">
+				<%= @applicant_education_history.diploma_degree_certificate %>
+			</div>
+		</div>
 
-<p>
-  <b>Diploma degree certificate:</b>
-  <%= @applicant_education_history.diploma_degree_certificate %>
-</p>
+		<div class="row">
+			<div class="col-md-4 bluetext">
+				Course of Study
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-6 blacktext">
+				<%= @applicant_education_history.course_of_study %>
+			</div>
+		</div>
+		<br />
+		<p>
+			<%= link_to "Download soft copy",user_applicant_applicant_education_history_path(:user_id=>@applicant_education_history.applicant.user.id,:applicant_id=>@applicant_education_history.applicant.id,:id=>@applicant_education_history.id,:format=>content_type_format(@applicant_education_history.certificate_content_type)), :class=>"btn btn-primary"%>&nbsp;
+		
 
-<p>
-  <b>Course of study:</b>
-  <%= @applicant_education_history.course_of_study %>
-</p>
-<p><%=link_to "Download soft copy",user_applicant_applicant_education_history_path(:user_id=>@applicant_education_history.applicant.user.id,:applicant_id=>@applicant_education_history.applicant.id,:id=>@applicant_education_history.id,:format=>content_type_format(@applicant_education_history.certificate_content_type))%></p>
-
-
-<%= link_to 'Edit', edit_user_applicant_applicant_education_history_path(:applicant_id=>@applicant_education_history.applicant.id,:id=>@applicant_education_history.id) %> 
+		<%= link_to 'Edit', edit_user_applicant_applicant_education_history_path(:applicant_id=>@applicant_education_history.applicant.id,:id=>@applicant_education_history.id),:class=>"btn btn-primary" %>
+		</p>
+	</div>
+</div>
 <%= render :partial=>"layouts/applicant_sidebars"%>

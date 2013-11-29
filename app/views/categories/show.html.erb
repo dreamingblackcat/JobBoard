@@ -1,10 +1,20 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @category.name %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_category_path(:user_id=>current_user.id,:id=>@category.id) %> |
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="row">
+			<div class="col-md-3 bluetext">
+				Name
+			</div>
+			<div class="col-md-1">
+				:
+			</div>
+			<div class="col-md-4 blacktext">
+				<%= @category.name%>
+			</div>
+		</div>
+		<br />
+<%= link_to 'Edit', edit_user_category_path(@category,:user_id=>current_user.id),:class=>"btn btn-primary" %>
+<%= link_to 'Back',user_categories_path(:user_id=>current_user.id),:class =>"btn btn-primary" %>
+</div>
+</div>
 <%= sidebar_chooser(current_user)%>

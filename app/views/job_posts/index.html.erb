@@ -1,44 +1,38 @@
-<h1>Listing job_posts</h1>
+<h1 class="stitle">Listing job_posts</h1>
 
-<table>
-  <tr>
-    <th>Job post title</th>
-    <th>Job post gender</th>
-    <th>Job post</th>
-    <th>Job post start date</th>
-    <th>Job post end date</th>
-    <th>Job post salary</th>
-    <th>Job post requirement</th>
+<table class="table table-bordered" >
+  <tr class="title">
+    <th>Title</th>
+    <th>Gender</th>    
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Salary</th>
     <th>Company</th>
     <th>Category</th>
     <th>Location</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th></th>    
   </tr>
 
 <% @job_posts.each do |job_post| %>
-  <tr>
+  <tr class="content">
     <td><% if current_user.nil? then %>
     		<%= link_to "#{job_post.job_post_title}",url_for(:controller=>'job_posts',:action=>'show',:id=>job_post.id)%>
     	<%else%>
     		<%= link_to "#{job_post.job_post_title}",[current_user,job_post.company,job_post] %>
     	<%end%>
     </td>
-    <td><%= job_post.job_post_gender %></td>
-    <td><%= job_post.job_post_description %></td>
+    <td><%= job_post.job_post_gender %></td>    
     <td><%= job_post.job_post_start_date %></td>
     <td><%= job_post.job_post_end_date %></td>
     <td><%= job_post.job_post_basic_salary %></td>
-    <td><%= job_post.job_post_requirement %></td>
     <td>
     	<%= show_path_for_company(current_user,job_post.company)%>
     </td>
-    <td><%= job_post.category_id %></td>
-    <td><%= job_post.location_id %></td>
-    <td><%= if can? :show,job_post then link_to 'Show', [job_post.company.user,job_post.company,job_post] end%></td>
+    <td><%= job_post.category.name %></td>
+    <td><%= job_post.location.name %></td>
+    <!--<td><%= if can? :show,job_post then link_to 'Show', [job_post.company.user,job_post.company,job_post] end%></td>-->
     <td><%= if can? :edit,job_post then link_to 'Edit', edit_user_company_job_post_path({:user_id=>job_post.company.user,:company_id=>job_post.company.id,:id=>job_post.id}) end%></td>
-    <td><%= if can? :destroy,job_post then link_to 'Destroy', job_post, method: :delete, data: { confirm: 'Are you sure?' } end%></td>
+    <!--<td><%= if can? :destroy,job_post then link_to 'Destroy', job_post, method: :delete, data: { confirm: 'Are you sure?' } end%></td>-->
   </tr>
 <% end %>
 </table>

@@ -1,18 +1,18 @@
-<h1>Listing applicant_education_histories</h1>
+<h1 class="text-center stitle">Listing applicant_education_histories</h1>
 
-<table>
-  <tr>
-    <th>Institute name</th>
+<table class="table table-bordered">
+  <tr class="title">
+    <th>Institute Name</th>
     <th>Location</th>
-    <th>Diploma degree certificate</th>
-    <th>Course of study</th>
+    <th>Diploma/Certificate</th>
+    <th>Course of Study</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @applicant_education_histories.each do |applicant_education_history| %>
-  <tr>
+  <tr class="content">
     <td><%= applicant_education_history.institute_name %></td>
     <td><%= applicant_education_history.location %></td>
     <td><%= applicant_education_history.diploma_degree_certificate %></td>
@@ -26,5 +26,5 @@
 
 <br />
 
-<%= link_to 'New Applicant education history', new_user_applicant_applicant_education_history_path %>
+<%= link_to 'New', new_user_applicant_applicant_education_history_path, :class=>"btn btn-primary" %>
 <%= render :partial=>"layouts/applicant_sidebars"%>

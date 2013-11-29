@@ -72,11 +72,19 @@ module ApplicationHelper
         link_to "Home",root_url
       else
          if(current_user.role=="admin") then
-          link_to "Home",user_admin_path(:user_id=>current_user.id,:id=>current_user.admin)
+          link_to "Home",user_admin_path(:user_id=>current_user.id,:id=>current_user.admin.id)
          elsif(current_user.role=="company") then
-           link_to "Home",user_company_path(:user_id=>current_user.id,:id=>current_user.company.id)
+           if(current_user.company.nil?) then
+            link_to "Home",new_user_company_path(:user_id=>current_user.id)
+           else
+            link_to "Home",user_company_path(:user_id=>current_user.id,:id=>current_user.company.id)
+           end
          else
-           link_to "Home",user_admin_path(:user_id=>current_user.id,:id=>current_user.applicant.id) 
+           if(current_user.applicant.nil?)then
+            link_to "Home",new_user_applicant_path(:user_id=>current_user.id) 
+           else
+            link_to "Home",user_applicant_path(:user_id=>current_user.id,:id=>current_user.applicant.id) 
+           end
          end
        end
     end

@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html>
-	 <head>
+	<head>
 		<title>Job Match Basic</title>
 		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= javascript_include_tag "application" %>
 		<%= csrf_meta_tags %>
 	</head>
- 	<body>
-    <header class="header-gradient-pay">
-      <img src="agnes.jpg" width="100px" height="100px" class="img-circle border-double-pay" />
-      <span class="banner">AWITD Online Job Match System</span>
-    </header>
-    <div class="navbar navbar-inverse bg-gradient-pay">
-      
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <%= link_to "AWITD Job Match", [current_user,current_user.applicant] ,:class=>'navbar-brand'%>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><%= home_chooser(current_user)%></li>
-            <li><%=link_to "About Us",about_path()%></li>
-            <li><%=link_to "Contact Us",new_contact_message_path%></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">View Job Posts<b class="caret"></b></a>
-              <ul class="dropdown-menu">
+	<body>
+		<header class="header-gradient-pay">
+			<%= image_tag "rails.png",:width=>"100px",:height=>"100px",:class=>"img-circle align-image"%>
+			<span class="banner">AWITD Online Job Match System</span>
+		</header>
+		<div class="navbar navbar-inverse">
+
+			<div class="navbar-header">				
+				<%= link_to "AWITD Job Match", root_path,:class=>'navbar-brand'%>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li>
+					<% unless user_signed_in? then%>
+					<%= link_to "Home",root_path%>
+					<%else %>
+					<%= link_to "Home",new_user_session_path%>
+					<%end%>
+					<li>
+						<%= link_to 'About', about_path %>
+					</li>
+					<li>
+						<%= link_to 'Contact', new_contact_message_path %>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">View Job Posts<b class="caret"></b></a>
+						<ul class="dropdown-menu">
 							<div class="row">
 								<div class="col-md-6 margin5">
 									<li>
@@ -48,41 +52,46 @@
 									<%end%>
 
 								</div>
-							</div>                     
-              </ul>
-            </li>
+							</div>
+						</ul>
+					</li>
 
-          </ul>
-          <ul class="nav navbar-nav pull-right">
-          <li class="pull-right">				
-			<% unless user_signed_in? then%>
-				<%= link_to "log in now",new_user_session_path,:class=>'btn btn-primary pull-right'%>
-			<%else %>
-			
-				<div style="float: left; color: red!important;">Welcome <%= current_user.email %> !! </div>
-				<%= link_to "log out now",destroy_session_path(current_user),:class=>'btn btn-primary pull-right',:method=>:delete%>
-			<%end%>
-		  </li>
-          </ul>
-          </div><!--/.navbar-collapse -->
-      
-    </div>
-	    <div class="row">
-      <div class="col-md-2 sidenav-deco">
-      	<%= yield :left_bar%>
-        
-      </div>
-      <div class="col-md-8">
-        <div class="middlecontent box-shadow-pay">
-          <div class="container">
-            <%= yield%>  
-          </div> 
-        </div>
-      </div>
-      <div class="col-md-2">
-      	<%= yield :right_bar%>
-        
-      </div>
-    </div>
-  </body>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<div class="btn-align">
+					<li class="pull-right">
+						<% unless user_signed_in? then%>
+						<%= link_to "log in now",new_user_session_path,:class=>'btn btn-default pull-right'%>
+						<%else %>
+						
+						<div class="loginmessage" style="float: left; color: white!important;">
+							Welcome <%= current_user.email %>!&nbsp;&nbsp;&nbsp;
+						</div>
+						
+						<%= link_to "log out now",destroy_session_path(current_user),:class=>'btn btn-default pull-right',:method=>:delete%>
+						<%end%>
+					</li>
+					</div>
+				</ul>
+			</div><!--/.navbar-collapse -->
+
+		</div>
+		<div class="row">
+			<div class="col-md-2 sidenav-deco">
+				<%= yield :left_bar%>
+
+			</div>
+			<div class="col-md-8">
+				<div class="middlecontent box-shadow-pay">
+					<div class="container">
+						<%= yield%>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<%= yield :right_bar%>
+
+			</div>
+		</div>
+	</body>
 </html>

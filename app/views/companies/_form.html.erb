@@ -16,49 +16,49 @@
 		<% end %>
 
 		<div class="form-group">
-			<%= f.label :com_name ,:class=>"label label-primary"%>
+			<%= f.label :com_name, "Name",{:class=>"label label-primary"}%>
 			<br />
 			<%= f.text_field :com_name ,{:class=>"form-control",:placeholder=>"Company Name"}%>
 		</div>
 		<div class="form-group">
-			<%= f.label :com_logo_name ,{:class=>"label label-primary"}%>
+			<%= f.label :com_logo_name, "Logo Name",{:class=>"label label-primary"}%>
 			<br />
 			<%= f.text_field :com_logo_name ,{:class=>"form-control",:placeholder=>"Company Logo Name"}%>
 		</div>
 		<div class="form-group">
-			<%= f.label :com_email ,{:class=>"label label-primary"}%>
+			<%= f.label :com_email , "Email",{:class=>"label label-primary"}%>
 			<br />
 			<%= f.text_field :com_email ,{:class=>"form-control",:placeholder=>"Company email"} %>
 		</div>
 		<div class="form-group">
-			<%= f.label :com_address,{:class=>"label label-primary"} %>
+			<%= f.label :com_address, "Address",{:class=>"label label-primary"} %>
 			<br />
 			<%= f.text_area :com_address ,{:class=>"form-control",:placeholder=>"Company address"}%>
 		</div>
 		<div class="form-group">
-			<%= f.label :com_web_url ,{:class=>"label label-primary"}%>
+			<%= f.label :com_web_url, "Website", {:class=>"label label-primary"}%>
 			<br />
 			<%= f.text_field :com_web_url,{:class=>"form-control",:placeholder=>"Company Website Url"} %>
 		</div>
 		<div class="form-group">
-			<%= f.label :com_phone_number,{:class=>"label label-primary"} %>
+			<%= f.label :com_phone_number, "Phone", {:class=>"label label-primary"} %>
 			<br />
 			<%= f.text_field :com_phone_number,{:class=>"form-control",:placeholder=>"Company Phone Number"} %>
 		</div>
 		<div class="form-group">
-			<%= f.label :com_fax_number,{:class=>"label label-primary"} %>
+			<%= f.label :com_fax_number, "Fax",{:class=>"label label-primary"} %>
 			<br />
-			<%= f.text_field :com_fax_number %>
+			<%= f.text_field :com_fax_number,{:class=>"form-control",:placeholder=>"Company Fax Number"} %>
 		</div>
 		<div class="form-group">
-			<%= f.label :com_description ,{:class=>"label label-primary"}%>
+			<%= f.label :com_description , "Description",{:class=>"label label-primary"}%>
 			<br />
 			<%= f.text_area :com_description,{:class=>"form-control",:placeholder=>"Briefly describe about your company"} %>
 		</div>
 		<div class="form-group">
-			<%= f.label :photo ,{:class=>"label label-primary"}%>
+			<%= f.label :photo , "Photo",{:class=>"label label-primary"}%>
 			<br />
-			<%= f.file_field :photo,{:class=>"form-control"} %>
+			<%= f.file_field :photo %>			           
 		</div>
 
 		<div class="actions">

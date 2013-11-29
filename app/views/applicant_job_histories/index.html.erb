@@ -1,38 +1,76 @@
-<h1>Welcome from applicant job history</h1>
+<h1 class="text-center stitle">Welcome from applicant job history</h1>
 
 <%@applicant_job_histories.each do |ajh|%>
-<p>
-  <b>Company name:</b>
-  <%= ajh.company_name %>
-</p>
+<div class="row">
+	<div class="col-md-2 bluetext">
+		Company Name
+	</div>
+	<div class="col-md-1">
+		:
+	</div>
+	<div class="col-md-6 blacktext">
+		<%= ajh.company_name %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-2 bluetext">
+		Job Title
+	</div>
+	<div class="col-md-1">
+		:
+	</div>
+	<div class="col-md-6 blacktext">
+		<%= ajh.job_title %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-2 bluetext">
+		Address
+	</div>
+	<div class="col-md-1">
+		:
+	</div>
+	<div class="col-md-6 blacktext">
+		<%= ajh.address %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-2 bluetext">
+		Start Date
+	</div>
+	<div class="col-md-1">
+		:
+	</div>
+	<div class="col-md-6 blacktext">
+		<%= ajh.start_date %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-2 bluetext">
+		End Date
+	</div>
+	<div class="col-md-1">
+		:
+	</div>
+	<div class="col-md-6 blacktext">
+		<%= ajh.end_date %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-2 bluetext">
+		Reason
+	</div>
+	<div class="col-md-1">
+		:
+	</div>
+	<div class="col-md-6 blacktext">
+		<%= ajh.reason %>
+	</div>
+</div>
 
-<p>
-  <b>Job title:</b>
-  <%= ajh.job_title %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= ajh.address %>
-</p>
-
-<p>
-  <b>Start date:</b>
-  <%= ajh.start_date %>
-</p>
-
-<p>
-  <b>End date:</b>
-  <%= ajh.end_date %>
-</p>
-
-<p>
-  <b>Reason:</b>
-  <%= ajh.reason %>
-</p>
 <hr/>
 
 <%end%>
 <%= will_paginate @applicant_job_histories, :renderer=> BootstrapPagination::Rails %>
-<%= link_to 'New', new_user_applicant_applicant_job_history_path(@user,@applicant) %>
+<%= link_to 'New', new_user_applicant_applicant_job_history_path(@user,@applicant), :class => "btn btn-primary"%>
 <%= render :partial=>"layouts/applicant_sidebars"%>

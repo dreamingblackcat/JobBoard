@@ -7,14 +7,17 @@
 	font-size: 4em;
 	font-weight: bold;
 	font-family: ZawgyiOne;
-	color: #B99254;
+	
+	color: black;
 	text-shadow: 3px 3px #B99230;
+	vertical-align: middle;
 }
 
 .dropdown-menu
 {
 	background-color: #3A3B44;
 	width: 400%;
+	
 }
 .bg-gradient-pay
 {
@@ -48,7 +51,7 @@ table
 }
 body
 {
-	background: #9C9694; /* Old browsers */
+	background: #DCDCDC; /* Old browsers */
 	color: #DCDCDC;
 	font-family:Courier;
 	
@@ -82,7 +85,9 @@ text-decoration: none;
 }
 .header-gradient-pay
 {
-
+	text-align:center;
+	padding-bottom: 10px;
+	padding-top: 10px;
 	background: #e2e2e2; /* Old browsers */
 	background: -moz-linear-gradient(top,  #e2e2e2 0%, #dbdbdb 50%, #d1d1d1 51%, #fefefe 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e2e2e2), color-stop(50%,#dbdbdb), color-stop(51%,#d1d1d1), color-stop(100%,#fefefe)); /* Chrome,Safari4+ */
@@ -111,15 +116,7 @@ text-decoration: none;
 
 
 
-.jobpost-table
-{
-	//border: 1px solid rgb(200,0,0);
-	border-radius: 15px;
-	padding-left:10px;
-	background-color: #B7BD11;
 
-	
-}
 .jobpost_category
 {
 	border-bottom: 2px solid red;
@@ -161,26 +158,36 @@ td a:hover, td a:active {
 /*this section is used by home page*/
 .keynote
 {
-	border:2px solid blue;
+	color:#000000;
+	border:2px solid #111111;
 	border-radius:0% 50% 0% 50%;
+}
+
+.keynote h3
+{
+	color:#084B5B;
 }
 .keynote-applicant
 {
-	background-color: #33CC66;
+	
+	background-color: #999999;
 }
 .keynote-employer
 {
-	background-color: #0080D0;
+	background-color: #999999;
 }
+
+
 .pad
 {
 	margin:0px 5px 5px 0px;
 }
 .intro
 {
-	border:2px solid #ED9C28;
-	background-color: #E24838;
+	border:2px solid #000000;
+	background-color: #999999;
 	text-align: center;
+	color: #000000;
 	border-radius: 10px 10px 10px 10px;
 	margin-bottom: 10px;
 }
@@ -195,11 +202,18 @@ td a:hover, td a:active {
 	padding:10px;
 }
 
+.company-name a
+{
+	font: PT serif;
+	font-size: 25px;
+	color: #003366;
+}
+
 .company-name
 {
 	font: PT serif;
 	font-size: 2em;
-	color: red;
+	color: #003366;
 }
 .company-logoname
 {
@@ -209,16 +223,19 @@ td a:hover, td a:active {
 }
 .company-description
 {
-	border:1px solid green;
-	border-radius: 10px 10px 10px 10px;
-	background-color: #39B3D7;
+	border:1px solid #FFFFFF;
+	border-radius: 5px;
+	background-color: #333333;
+	
 }
 .company-description h4
 {
+	color: #0153A3;
 	padding-left:10px;
 }
 .company-description section
 {
+	color: #999999;
 	padding-left: 10px;
 }
 .box-shadow-pay-gray
@@ -227,8 +244,9 @@ td a:hover, td a:active {
 }
 .label-primary
 {
-	background-color: #808080!important;
+	background-color: transparent!important;
 	color: #39B3D7;
+	font: normal 15px courier !important;
 }
 .preference-table td
 {
@@ -246,6 +264,77 @@ td a:hover, td a:active {
 	margin-left: 20%;
 	color: black;
 }
-.panel-heading{
-	text-align: center;
+
+
+.align-image
+{
+	vertical-align: middle;
+	
 }
+
+
+
+.btn-align
+{
+	padding: 8px 10px 0 0;
+}
+
+.loginmessage
+{
+	padding-top: 7px;
+}
+.btn-default{
+	background-color: #000000;
+}
+
+.bluetext
+{
+	color: #003366;
+}
+
+.blacktext
+{
+	color: black;
+}
+
+hr { display: block; height: 1px;
+    border: 0; border-top: 2px solid #000000;
+    margin: 1em 0; padding: 0; }
+    
+.title
+{
+	color: #000000;
+	font-size: 9pt;
+	background: #999967;
+}
+
+.content
+{
+	color: #000000;
+	font-size: 8pt;
+	background: #CCCCCC;
+}
+
+.posttitle
+{
+	color:#003366;
+	font-size: 12pt;
+}
+
+.stitle
+{
+	color: #003366;
+	
+}
+    
+#notice{
+	display:block;
+	background:#000000;
+	color: #003366;
+	margin: 10px 0 0 0;
+	text-align:center;
+}
+
+
+
+

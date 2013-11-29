@@ -1,18 +1,19 @@
-
-<h3>Applicant List</h3>
+<h1 class="stitle">Applicant List</h1>
 
 <%@company.job_posts.each do |jp|%>
 
-	<%= jp.job_post_title %>
-	<br />
-	<%unless jp.applicants.nil? then %>
-		<% jp.applicants.each do |a|%>
-			<%= link_to "#{a.applicant_name}",user_applicant_path(current_user,a) %><br />
-		<%end%>
-	<% else %>
-	 	<%= puts 'no applicant'%>
-	<%end%>
-	<hr />
+<div class="posttitle"><%= jp.job_post_title %></div>
+<br />
+<%unless jp.applicants.empty?  %>
+
+<% jp.applicants.each do |a|%>
+<%= link_to "#{a.applicant_name}",user_applicant_path(current_user,a) %>
+<br />
+<%end%>
+<% else %>
+No one yet!!
+<%end%>
+<hr />
 
 <%end%>
 

@@ -8,29 +8,28 @@
 	</head>
 	<body>
 		<header class="header-gradient-pay">
-			<img src="agnes.jpg" width="100px" height="100px" class="img-circle border-double-pay" />
+			<%= image_tag "rails.png",:width=>"100px",:height=>"100px",:class=>"img-circle align-image"%>
 			<span class="banner">AWITD Online Job Match System</span>
 		</header>
-		<div class="navbar navbar-inverse bg-gradient-pay">
+		<div class="navbar navbar-inverse">
 
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<%= link_to "AWITD Job Match", root_url ,:class=>'navbar-brand'%>
+			<div class="navbar-header">				
+				<%= link_to "AWITD Job Match", root_path ,:class=>'navbar-brand'%>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active">
-						<%= home_chooser(current_user)%>
+					<li>
+						<% unless user_signed_in? then%>
+						<%= link_to "Home",root_path%>
+						<%else %>
+						<%= link_to "Home",new_user_session_path%>
+						<%end%>
 					</li>
 					<li>
-						<%=link_to "About Us",about_path()%>
+						<%= link_to 'About', about_path %>
 					</li>
 					<li>
-						<%=link_to "Contact Us",new_contact_message_path%>
+						<%= link_to 'Contact', new_contact_message_path %>
 					</li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">View Job Posts<b class="caret"></b></a>
@@ -59,18 +58,21 @@
 					</li>
 
 				</ul>
-				<ul class="nav navbar-nav pull-right">
+				<ul class="nav navbar-nav navbar-right">
+					<div class="btn-align">
 					<li class="pull-right">
 						<% unless user_signed_in? then%>
-						<%= link_to "log in now",new_user_session_path,:class=>'btn btn-primary pull-right'%>
+						<%= link_to "log in now",new_user_session_path,:class=>'btn btn-default pull-right'%>
 						<%else %>
-
-						<div style="float: left; color: red!important;">
-							Welcome <%= current_user.email %> !!
+						
+						<div class="loginmessage" style="float: left; color: white!important;">
+							Welcome <%= current_user.email %>!&nbsp;&nbsp;&nbsp;
 						</div>
-						<%= link_to "log out now",destroy_session_path(current_user),:class=>'btn btn-primary pull-right',:method=>:delete%>
+						
+						<%= link_to "log out now",destroy_session_path(current_user),:class=>'btn btn-default pull-right',:method=>:delete%>
 						<%end%>
 					</li>
+					</div>
 				</ul>
 			</div><!--/.navbar-collapse -->
 

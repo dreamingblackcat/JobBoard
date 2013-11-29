@@ -1,48 +1,99 @@
-<h1>Listing companies</h1>
+<h1 class="text-center stitle">Listing companies</h1>
 
 <article>
 
-<% @companies.each do |company| %>
-	
-<header class="row">
-              <div class="col-md-8">
-              	<p id="notice" class="form-error"><%= notice %></p>
-                <h1 class="company-name"><%= link_to company.com_name,user_company_path(current_user,company) %></h1>
-                <div class="company-logoname">
-                  <%= company.com_logo_name %>
-                </div>
-              </div>
-              <div class="col-md-3 col-md-offset-1 company-logo">
-                <%= image_tag company.com_logo_image_url,:class=>"img-rounded pull-right box-shadow-pay-gray",:width=>"100px",:height=>"100px"%>
-              </div>
-            </header>
-            <article class="company-meta-data">
-              <section class="row">
-                <div class="col-md-8 company-description">
-                  <h4>About</h4>
-                  <section>
-                    <%= company.com_description %>
-                  </section>
-                </div>
-              </section>
-              <br/>
-              <section class="company-contact-info">
-                <div class="company-email">Email : <%= company.com_email %></div>
-                <div class="company-weburl">Website : <%= link_to company.com_web_url, company.com_web_url %></div>
-                <div class="company-phone-number">Phone: <%= company.com_phone_number %></div>
-                <div class="company-faxnumber">Fax: <%= company.com_fax_number %></div>
-                <div class="company-address">
-                  <h4>Address</h4>
-                  <%= company.com_address %>
-                </div>
-              </section>
-              <%= if can? :destroy,company then link_to 'Destroy', user_company_path(:user_id=>company.user_id,:id=>company.id,:method=>:delete) end%>
-            </article>
-            <hr/><hr />
-<% end %>
+	<% @companies.each do |company| %>
+
+	<header class="row">
+		<div class="col-md-8">
+			<p id="notice" class="form-error">
+				<%= notice %>
+			</p>
+			<h1 class="company-name"><%= link_to company.com_name,user_company_path(current_user,company) %></h1>
+			<div class="company-logoname">
+			<%= company.com_logo_name %>
+			</div>
+
+			<article class="company-meta-data">
+				<section class="row">
+					<div class="col-md-8 company-description">
+						<h4>About</h4>
+						<section>
+							<%= company.com_description %>
+						</section>
+					</div>
+				</section>
+				<br/>
+				<section class="company-contact-info">
+					<div class="row">
+						<div class="col-md-2 bluetext">
+							Email
+						</div>
+						<div class="col-md-1">
+							:
+						</div>
+						<div class="col-md-6 blacktext">
+							<%= company.com_email %>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 bluetext">
+							Website
+						</div>
+						<div class="col-md-1">
+							:
+						</div>
+						<div class="col-md-6">
+							<%= link_to company.com_web_url, company.com_web_url, :class=>"text-danger" %>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 bluetext">
+							Phone
+						</div>
+						<div class="col-md-1">
+							:
+						</div>
+						<div class="col-md-6 blacktext">
+							<%= company.com_phone_number %>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 bluetext">
+							Fax
+						</div>
+						<div class="col-md-1">
+							:
+						</div>
+						<div class="col-md-6 blacktext">
+							<%= company.com_fax_number %>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 bluetext">
+							Address
+						</div>
+						<div class="col-md-1">
+							:
+						</div>
+						<div class="col-md-6 blacktext">
+							<%= company.com_address %>
+						</div>
+					</div>
+				</section>
+				<br />
+				<%= if can? :destroy,company then link_to 'Destroy', user_company_path(:user_id=>company.user_id,:id=>company.id,:method=>:delete), :class=>"btn btn-primary" end%>
+			</article>
+		</div>
+		<div class="col-md-3 company-logo">
+			<%= image_tag company.photo.url(:medium),:class=>"img-rounded pull-right box-shadow-pay-gray",:width=>"100px",:height=>"100px"%>
+		</div>
+	</header>
+	<hr/>
+
+	<% end %>
 </article>
 <%= will_paginate @companies, :renderer=> BootstrapPagination::Rails %>
 <br />
-
 
 <%= sidebar_chooser(current_user)%>

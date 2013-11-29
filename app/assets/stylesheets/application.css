@@ -11,4 +11,5 @@
  *= require_self
  *= require twitter/bootstrap
  *= require jm 
+ *= require jquery.ui.datepicker
  */

@@ -19,8 +19,9 @@
   </div>
   <div class="form-group">
     <%= f.label :job_type,{:class=>"label label-primary"} %><br />
-    <%= f.select :job_type,["Full Time","Part Time","Freelance","Internship","Temporary"],{:class=>"form-control",:placeholder=>"Job Nature"}%>
+    <%= f.select :job_type,["Full Time","Part Time","Freelance","Internship","Temporary"],{},{:class=>"form-control"}%>
   </div>
+  
   <div class="form-group">
     <%= f.label :job_post_gender,{:class=>"label label-primary"} %><br />
     <%= f.radio_button :job_post_gender,'male',:checked=>'checked',:class=>'radio-inline' %>Male
@@ -33,11 +34,11 @@
   </div>
   <div class="form-group">
     <%= f.label :job_post_start_date,{:class=>"label label-primary"} %><br />
-    <%= f.date_select :job_post_start_date ,{:class=>"form-control"}%>
+    <%= f.text_field :job_post_start_date ,{'data-behaviour' => 'datepicker',:class=>"form-control dpk"}%>
   </div>
   <div class="form-group">
     <%= f.label :job_post_end_date,{:class=>"label label-primary"} %><br />
-    <%= f.date_select :job_post_end_date ,{:class=>"form-control"}%>
+    <%= f.text_field :job_post_end_date ,{'data-behavior' => 'datepicker',:class=>"form-control dpk"}%>
   </div>
   <div class="form-group">
     <%= f.label :job_post_basic_salary,{:class=>"label label-primary"} %><br />
@@ -49,11 +50,11 @@
   </div>
   <div class="form-group">
     <%= f.label :category_id,"Category" ,{:class=>"label label-primary"}%><br />
-    <%= f.select :category_id, Category.all_for_select,{:class=>"form-control"} %>
+    <%= f.select :category_id, Category.all_for_select,{},{:class=>"form-control"} %>
   </div>
    <div class="form-group">
     <%= f.label :location_id,"Location" ,{:class=>"label label-primary"}%><br />
-    <%= f.select :location_id, Location.all_for_select,{:class=>"form-control"} %>
+    <%= f.select :location_id, Location.all_for_select,{},{:class=>"form-control"} %>
   </div><br/>
   <div class="actions">
     <%= f.submit "Submit",:class=>"btn btn-primary" %>

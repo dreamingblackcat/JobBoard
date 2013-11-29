@@ -1,21 +1,21 @@
 <% content_for :left_bar do %>
 	<nav>
 		<ul class="sidenav-ul">
-			<%= link_to 'Profile', user_applicant_path({:user_id=>@applicant.user,:id=>@applicant}),:class=>"btn btn-primary btn-lg btn-block" %>
-			<%= link_to 'Preferences',user_applicant_applicant_job_preferences_path(@applicant.user,@applicant),:class=>"btn btn-primary btn-lg btn-block"%>
-			<%= link_to 'Job Histories', user_applicant_applicant_job_histories_path(@applicant.user,@applicant),:class=>"btn btn-primary btn-lg btn-block"%>
-			<%= link_to 'Education Info',user_applicant_applicant_education_histories_path(@applicant.user,@applicant),:class=>"btn btn-primary btn-lg btn-block"%>
+			<%= link_to 'Profile', user_applicant_path({:user_id=>@applicant.user,:id=>@applicant}),:class=>"btn btn-default btn-lg btn-block" %>
+			<%= link_to 'Preferences',user_applicant_applicant_job_preferences_path(@applicant.user,@applicant),:class=>"btn btn-default btn-lg btn-block"%>
+			<%= link_to 'Job Histories', user_applicant_applicant_job_histories_path(@applicant.user,@applicant),:class=>"btn btn-default btn-lg btn-block"%>
+			<%= link_to 'Education Info',user_applicant_applicant_education_histories_path(@applicant.user,@applicant),:class=>"btn btn-default btn-lg btn-block"%>
 		</ul>
 	</nav>	
 <%end%>
 <% content_for :right_bar do %>
 	<ul class="sidenav-ul">
 		<% if @applicant.resume.nil? then%>
-			<%= link_to "Publish CV",new_user_applicant_resume_path(@applicant.user,@applicant,@applicant.resume),:class=>"btn btn-warning"%>
+			<%= link_to "Publish CV",new_user_applicant_resume_path(@applicant.user,@applicant,@applicant.resume),:class=>"btn btn-default"%>
         <%else%>  
-          <li><%= link_to "View CV",user_applicant_resume_path(@applicant.user,@applicant,@applicant.resume),:class=>"btn btn-warning"%></li>
+          <li><%= link_to "View CV",user_applicant_resume_path(@applicant.user,@applicant,@applicant.resume),:class=>"btn btn-default"%></li>
         <%end%> 
-          <li><%= link_to "view Applied Jobs",user_applicant_apply_jobs_path(:user_id=>@applicant.user,:applicant_id=>@applicant),:class=>"btn btn-info"%></li>
-          <li><%= link_to 'Recommended jobs',url_for(:controller=>"applicant_job_search",:action=>"recommendedjobposts",:applicant_id=>@applicant.id,:user_id=>@applicant.user.id),:class=>"btn btn-success"%></li>
+          <li><%= link_to "view Applied Jobs",user_applicant_apply_jobs_path(:user_id=>@applicant.user,:applicant_id=>@applicant),:class=>"btn btn-default"%></li>
+          <li><%= link_to 'Recommended jobs',url_for(:controller=>"applicant_job_search",:action=>"recommendedjobposts",:applicant_id=>@applicant.id,:user_id=>@applicant.user.id),:class=>"btn btn-default"%></li>
      </ul>
 <%end%>

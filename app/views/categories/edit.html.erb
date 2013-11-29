@@ -1,6 +1,6 @@
-<h1>Editing category</h1>
+<h1 class="text-center stitle">Editing category</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', user_category_path(current_user,@category) %> |
+<!--<%= link_to 'Show', user_category_path(@category,:user_id=>current_user.id) %> |-->
 <%= sidebar_chooser(current_user)%>
