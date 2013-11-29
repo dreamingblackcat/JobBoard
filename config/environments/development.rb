@@ -32,16 +32,27 @@ JobMatchBasic::Application.configure do
   # Do not compress assets
   config.assets.compress = false
   #Devise mail setting
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  ActionMailer::Base.smtp_settings = {
-  :address                => "smtp.gmail.com",
-  :port                   => 587,
-  :domain                 => "baci.lindsaar.net",
-  :user_name              => "dreamingblackcat10@gmail.com",
-  :password               => "jjrofriloc",
-  :authentication         => "plain",
-  :enable_starttls_auto   => true
-}
+    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+#==================================================================
+  config.action_mailer.delivery_method = :sendmail
+# Defaults to:
+# config.action_mailer.sendmail_settings = {
+#   location: '/usr/sbin/sendmail',
+#   arguments: '-i -t'
+# }
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
+#config.action_mailer.default_options = {from: 'no-reply@example.com'}
+#======================================================================#
+  # ActionMailer::Base.smtp_settings = {
+  # :address                => "smtp.gmail.com",
+  # :port                   => 587,
+  # :domain                 => "baci.lindsaar.net",
+  # :user_name              => "chanmyae.awitd@gmail.com",
+  # :password               => "password_of_chanmyae.awitd.com",
+  # :authentication         => "plain",
+  # :enable_starttls_auto   => true
+# }
   # Expands the lines which load the assets
   config.assets.debug = true
   #Will paginate setting
