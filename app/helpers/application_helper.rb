@@ -1,7 +1,5 @@
 module ApplicationHelper
-	  def active? hclass
-	     hclass== @hero_class
-	  end
+
 	  #these are helpers overriding devise built in ones
 	  #they are required to display log in form in the view of other controller(eg. heros controller in this case)
 	  def resource_name
@@ -15,6 +13,11 @@ module ApplicationHelper
 	  def devise_mapping
 	    @devise_mapping ||= Devise.mappings[:user]
 	  end
+	  
+	  #this is helper method for pdf downloading
+	  #eg.
+	  #if given content type is applicantion/pdf the method will return :pdf as a symbol
+	  #if given content type is image/jpeg, the method will return :jpeg as a symbol
 	  def content_type_format(content_type)
 	   # content_type.split("/").last.to_sym
 	    format=""
@@ -23,6 +26,10 @@ module ApplicationHelper
 	   end
 	   format.to_sym
 	  end
+	  
+	  #this helper method is used for job application of applicant
+	  # for every job post that an applicant view, it will generate a link if the job is not already applied.
+	  #if the job is already applied, the method generate a message div to tell the applicant that the job is already applied
   	def apply_job_link(applicant,job_post)
       
       already=false
@@ -37,7 +44,7 @@ module ApplicationHelper
         " <div class='text-warning'>Applied</div> ".html_safe
       end
      end
-     
+     #this helper method is used for most view pages to choose a sidebar according to current user
      def sidebar_chooser(current_user)
        unless current_user.nil?
         case current_user.role
