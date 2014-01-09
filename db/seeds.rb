@@ -13,7 +13,7 @@ puts "Destroyed all user,User count is#{User.all.count}"
 Company.destroy_all
 admin=User.new
 admin.email="admin@gmail.com"
-admin.password=admin
+admin.password="admin"
 admin.role="admin"
 admin.skip_confirmation!
 admin.save!
