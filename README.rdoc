@@ -1,12 +1,12 @@
-JobBoard
-========
+#JobBoard
+
 
 
 JobBoard is my first project with ruby on rails.
 It is a system for companies and job applicants to communicate about job positions and requirements.
 
-About the System
-================
+##About the System
+
 
 It has three main users. Admin user for management of the systems, company user for job advertising and job applicants for applying jobs.
 
@@ -16,8 +16,8 @@ Job applicants can view job posts and apply for it. Also they can post their res
 
 Admin can moderate all resources.
 
-Technical Notes
-===============
+##Technical Notes
+
 Rails version is 3.2.13, with postgres sql database.
 
 *The system is written in a restful style controller actions.
@@ -27,8 +27,8 @@ Rails version is 3.2.13, with postgres sql database.
 *Authentication with devise gem
 *Total number of controllers = 18
 
-Note
-====
+##Note
+
 
 I am using the repo as a backup for me.
 I declare the license of this repo to be (MIT License)[http://en.wikipedia.org/wiki/MIT_License]
